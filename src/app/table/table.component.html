@@ -8,18 +8,11 @@
             <!-- LOGO -->
             <div class="app-col app-col-logo"></div>
             <!-- NAZEV -->
-            <div class="app-col app-col-name" id="name" (click)="onCellClicked('name', this.direction)">
-                <div *ngIf="(this.direction !== 'asc-name') && (this.direction !== 'desc-name')" class="app-col-sort">
+            <div class="app-col app-col-name" id="name" (click)="onCellClicked('name')">
+                <div class="app-col-sort">
                     <span>{{ 'table.cols.name' | translate }}</span>
-                    <span><mat-icon style="color: rgb(175, 175, 175);">arrow_upward</mat-icon></span>
-                </div>
-                <div *ngIf="this.direction === 'asc-name'" class="app-col-sort">
-                    <span>{{ 'table.cols.name' | translate }}</span>
-                    <span><mat-icon>arrow_upward</mat-icon></span>
-                </div>
-                <div *ngIf="this.direction === 'desc-name'" class="app-col-sort">
-                    <span>{{ 'table.cols.name' | translate }}</span>
-                    <span><mat-icon>arrow_downward</mat-icon></span>
+                    <mat-icon *ngIf="direction === 'desc-name'">arrow_downward</mat-icon>
+                    <mat-icon *ngIf="direction === 'asc-name'">arrow_upward</mat-icon>
                 </div>
             </div>
             <!-- STAV -->
@@ -29,18 +22,11 @@
             <!-- URL KR -->
             <div class="app-col app-col-url">Kramerius</div>
             <!-- VERZE -->
-            <div class="app-col app-col-version" (click)="onCellClicked('version', this.direction)">
-                <div *ngIf="(this.direction !== 'asc-version') && (this.direction !== 'desc-version')" class="app-col-sort">
-                    <span>Verze</span>
-                    <span><mat-icon style="color: rgb(175, 175, 175);">arrow_upward</mat-icon></span>
-                </div>
-                <div *ngIf="this.direction === 'asc-version'" class="app-col-sort">
-                    <span>Verze</span>
-                    <span><mat-icon>arrow_upward</mat-icon></span>
-                </div>
-                <div *ngIf="this.direction === 'desc-version'" class="app-col-sort">
-                    <span>Verze</span>
-                    <span><mat-icon>arrow_downward</mat-icon></span>
+            <div class="app-col app-col-version" (click)="onCellClicked('version')">
+                <div class="app-col-sort">
+                    <span>{{ 'table.cols.version' | translate }}</span>
+                    <mat-icon *ngIf="direction === 'desc-version'">arrow_downward</mat-icon>
+                    <mat-icon *ngIf="direction === 'asc-version'">arrow_upward</mat-icon>
                 </div>
             </div>
         </div>

@@ -8,34 +8,31 @@ import { DataService } from '../services/data.service';
 })
 export class TableComponent implements OnInit {
   data: any[] = [];
-  direction = 'none';
+  direction = 'asc-name';
 
   constructor(public dataService: DataService) {
     this.data = this.dataService.data;
     console.log(this.dataService.data);
+    
   }
 
-  onCellClicked(value: any, direction: any) {
-    console.log("clicked cell: ", value, direction)
-    if (direction === "none") {
-      this.onSortChanged(value, 'asc-'+value);
-      this.direction = 'asc-'+value;
-    }
-    if (direction === "asc-"+value) {
-      this.onSortChanged(value, 'desc-'+value);
+  onCellClicked(value: any) {
+    console.log("clicked cell: ", value, this.direction)
+    if (this.direction === "asc-"+value) {
+      this.direction = 'desc-'+value;
+    } else if (this.direction === "desc-"+value) {
+      this.direction = "asc-"+ value;
+    } else {
       this.direction = 'desc-'+value;
     }
-    if (direction === "desc-"+value) {
-      this.onSortChanged(value, 'none');
-      this.direction = 'none'
-    }   
+    this.onSortChanged(value); 
   }
 
-  onSortChanged(value:string, direction:string) {
-    console.log("clicked cell: ", value, direction);
-    if ((direction === 'asc-'+value) || (direction === 'desc-'+value)) {
+  onSortChanged(value:string) {
+    console.log("clicked cell: ", value, this.direction);
+    if ((this.direction === 'asc-'+value) || (this.direction === 'desc-'+value)) {
       if (value === "id") {
-        this.data.sort((a,b) => (b["id"] - a["id"]) * (direction == 'desc-'+value ? -1 : 1))
+        this.data.sort((a,b) => (b["id"] - a["id"]) * (this.direction == 'desc-'+value ? -1 : 1))
       }
       else {
         this.data.sort((a,b) => {
@@ -47,7 +44,7 @@ export class TableComponent implements OnInit {
           if (b[value] && b[value].length > 0) {
             y = b[value];
           }
-          return x.localeCompare(y) * (direction == 'desc-'+value ? -1 : 1);
+          return x.localeCompare(y) * (this.direction == 'desc-'+value ? -1 : 1);
         })
       }
     }
@@ -57,6 +54,7 @@ export class TableComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.onSortChanged('name');
   }
 
 }
