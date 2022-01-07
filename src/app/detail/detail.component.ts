@@ -37,20 +37,19 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
+    console.log('AA1');
     this.route.params.subscribe(params => {
       console.log(params);
       const code = params['code']; 
       this.code = code;
       this.record = this.dataService.getRecordByCode(code);
       console.log(this.record)
+      this.http.get(this.baseUrl + '/libraries/' + this.code + '.json').subscribe((data: any) => {
+        this.setDetail(data);
+        this.loading = false;
+      });
     });
-
-    this.loading = true;
-    this.http.get(this.baseUrl + '/libraries/' + this.code + '.json').subscribe((data: any) => {
-      this.setDetail(data);
-      this.loading = false;
-    });
-
     
   }
 }
