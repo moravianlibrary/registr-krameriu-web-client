@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    .title {
+        display: flex;
+        justify-content: center;
+        margin: 40px;
+        font-size: 35px;
+        color: navy
+    }
+    .text {
+        display: flex;
+        justify-content: center;
+    }
+    .button {
+        display: flex;
+        justify-content: center;
+        margin: 30px;
+        button {
+            background-color: navy;
+            color: white;
+            font-size: larger;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+}

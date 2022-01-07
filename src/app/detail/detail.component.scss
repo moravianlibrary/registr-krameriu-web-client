@@ -1,0 +1,97 @@
+.app-container {
+    background-color: rgb(230, 230, 230);
+    height: 100%;
+    width: 100%;
+    .app-card {
+        display: flex;
+        margin: 10px 10% 30px 10%;
+        .app-card-left {
+            background-color: white;
+            width: 900px;
+            .app-title-container {
+                display: flex;
+                .app-title-title {
+                    display: flex;
+                    flex-direction: column;
+                    .app-title-name {
+                        margin: 35px 15px 0 15px;
+                        color: navy;
+                        font-size: 25px;
+                    }
+                    .app-title-url {
+                        font-size: 15px;
+                        font-weight: lighter;
+                        margin: 15px;
+                        a {
+                            cursor: pointer;
+                            text-decoration: none;
+                            color: black;
+                        }
+                    }
+                }      
+            }
+            .app-dl-container {
+                margin: 20px 50px;
+                .app-dl-body {
+                    margin: 0px;
+                    font-weight: lighter;
+                    .app-title-left {
+                        font-size: 11px;
+                    }
+                    .app-text-left {
+                        margin: 0 0 15px 0;
+                        a {
+                            color: navy;
+                            text-decoration: none;
+                        }
+                    }
+                    .app-dl-kramerius {
+                        display: flex;
+                        .app-dl-url {
+                            margin: 0 50px 0 0;
+                        }
+                    }
+                    .app-dl-intro-title {
+                        // margin: 5px 0 5px 20px;
+                        display: flex;
+                        cursor: pointer;
+                    }
+                    .app-dl-intro {
+                        font-size: smaller;
+                        margin: 10px 20px;
+                        border: 1px solid rgb(179, 179, 179);
+                        padding: 20px;
+                    }
+                }
+            } 
+        }
+        .app-card-right {
+            background-color: whitesmoke;
+            width: 200px;
+            .app-title-right {
+                font-weight: lighter;
+                font-size: 16px;
+                margin: 15px 0 0 0;
+            }
+            .app-contact-container {
+                margin: 30px 20px;
+                font-weight: lighter; 
+                .app-contact-map {
+                    width: 160px;
+                    height: 130px;
+                    margin: 0 0 10px 0;
+                    border: 1px solid silver;
+                }
+                .app-contact-address {
+                    margin: 0px;
+                }
+                .app-contact-mail {
+                    margin: 0px;
+                    a {
+                        color: black;
+                    }
+                }
+            }
+        }   
+    }  
+}

@@ -1,0 +1,86 @@
+<div class="app-container">
+    <app-header></app-header>
+    <div class="app-card" *ngIf='!loading'>
+        <div class="app-card-left">
+            <div class="app-title-container">
+                <img src="{{detail.logo}}" style="height: 80px; margin: 20px 20px 20px 50px;">
+                <div class="app-title-title">
+                    <div class="app-title-name">{{detail.name}}</div>
+                    <div class="app-title-url">
+                        <a href="{{record.new_client_url}}">{{detail.new_client_url}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-dl-container">
+                <!-- <div class="app-title app-dl-title">O digitální knihovně</div> -->
+                <div class="app-dl-body">
+                    <div class="app-dl-new-client-url">
+                        <div class="app-title-left app-dl-url-title">DIGITÁLNÍ KNIHOVNA</div>
+                        <div class="app-text-left app-dl-url-text">
+                            <a href="{{detail.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
+                        </div>
+                    </div>
+                    <div class="app-dl-kramerius">
+                        <div class="app-dl-url">
+                            <div class="app-title-left app-dl-url-title">KRAMERIUS</div>
+                            <div class="app-text-left app-dl-url-text">
+                                <a href="{{detail.url}}" target="_blank">{{detail.url}}</a>
+                            </div>
+                        </div>
+                        <div class="app-dl-version">
+                            <div class="app-title-left app-dl-url-title">VERZE</div>
+                            <div class="app-text-left app-dl-url-text">{{detail.version}}</div>
+                        </div>
+                    </div>
+                    
+
+                    <div *ngIf="!this.intro" (click)="toggleExpandIntro()">
+                        <div class="app-dl-intro-title">
+                            <div>Obsah záložky informace</div>
+                            <mat-icon >expand_more</mat-icon>
+                        </div>
+                    </div>
+                    <div *ngIf="this.intro" (click)="toggleExpandIntro()">
+                        <div class="app-dl-intro-title"><div>Obsah záložky informace</div><mat-icon>expand_less</mat-icon></div>
+                        <div class="app-dl-intro" [innerHTML]="detail.intro"></div>
+                    </div>
+                    <div *ngIf="!this.private" (click)="toggleExpandPrivate()">
+                        <div class="app-dl-intro-title"><div>Informace o dostupnosti</div><mat-icon>expand_more</mat-icon></div>
+                    </div>
+                    <div *ngIf="this.private" (click)="toggleExpandPrivate()">
+                        <div class="app-dl-intro-title"><div>Informace o dostupnosti</div><mat-icon>expand_less</mat-icon></div>
+                        <div class="app-dl-intro" [innerHTML]="detail.right_msg"></div>
+                    </div>         
+                </div>
+            </div>
+        </div>
+        <div class="app-card-right">   
+            <div class="app-contact-container">
+                <!-- MAPA -->
+                <!-- <div class="app-title-right"><mat-icon>place</mat-icon></div> -->
+                <div class="app-contact-map">
+                    <div>{{detail.longitude}}</div>
+                    <div>{{detail.latitude}}</div>
+                </div>   
+                <!-- ADRESA -->
+                <div class="app-contact-address">
+                    <div class="app-title-right"><mat-icon>home</mat-icon></div>
+                    <div>{{detail.street}}</div>
+                    <div>{{detail.city}}</div>
+                    <div>{{detail.zip}}</div>
+                </div>
+                <!-- MAIL a WEB -->
+                <div class="app-contact-mail">
+                    <div class="app-title-right"><mat-icon>mail_outline</mat-icon></div>
+                    <div>{{detail.mail}}</div>
+                    <div><a href="{{detail.web}}" target="_blank">{{detail.web}}</a></div>
+                </div>
+                <!-- SIGLA-->
+                <div class="app-contact-sigla">
+                    <div class="app-title-right"><mat-icon>local_library</mat-icon></div>
+                    <div>{{detail.sigla}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
