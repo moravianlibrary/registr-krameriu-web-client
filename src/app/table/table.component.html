@@ -10,15 +10,15 @@
             <!-- NAZEV -->
             <div class="app-col app-col-name" id="name" (click)="onCellClicked('name', this.direction)">
                 <div *ngIf="(this.direction !== 'asc-name') && (this.direction !== 'desc-name')" class="app-col-sort">
-                    <span>Název</span>
+                    <span>{{ 'table.cols.name' | translate }}</span>
                     <span><mat-icon style="color: rgb(175, 175, 175);">arrow_upward</mat-icon></span>
                 </div>
                 <div *ngIf="this.direction === 'asc-name'" class="app-col-sort">
-                    <span>Název</span>
+                    <span>{{ 'table.cols.name' | translate }}</span>
                     <span><mat-icon>arrow_upward</mat-icon></span>
                 </div>
                 <div *ngIf="this.direction === 'desc-name'" class="app-col-sort">
-                    <span>Název</span>
+                    <span>{{ 'table.cols.name' | translate }}</span>
                     <span><mat-icon>arrow_downward</mat-icon></span>
                 </div>
             </div>
