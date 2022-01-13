@@ -1,19 +1,19 @@
-.container {
+.app-container {
     display: flex;
     flex-direction: column;
     align-content: center;
-    .title {
+    .app-title {
         display: flex;
         justify-content: center;
         margin: 40px;
         font-size: 35px;
         color: navy
     }
-    .text {
+    .app-text {
         display: flex;
         justify-content: center;
     }
-    .button {
+    .app-button {
         display: flex;
         justify-content: center;
         margin: 30px;

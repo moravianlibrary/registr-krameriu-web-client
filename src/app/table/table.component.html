@@ -8,19 +8,44 @@
             <!-- LOGO -->
             <div class="app-col app-col-logo"></div>
             <!-- NAZEV -->
-            <div class="app-col app-col-name" id="name" (click)="onCellClicked('name')">
+            <div class="app-col app-col-name" *ngIf="translate.currentLang == 'cs'" (click)="onCellClicked('name')">
                 <div class="app-col-sort">
                     <span>{{ 'table.cols.name' | translate }}</span>
                     <mat-icon *ngIf="direction === 'desc-name'">arrow_downward</mat-icon>
                     <mat-icon *ngIf="direction === 'asc-name'">arrow_upward</mat-icon>
                 </div>
             </div>
+            <div class="app-col app-col-name" *ngIf="translate.currentLang == 'en'" (click)="onCellClicked('name_en')">
+                <div class="app-col-sort">
+                    <span>{{ 'table.cols.name' | translate }}</span>
+                    <mat-icon *ngIf="direction === 'desc-name_en'">arrow_downward</mat-icon>
+                    <mat-icon *ngIf="direction === 'asc-name_en'">arrow_upward</mat-icon>
+                </div>
+            </div>
             <!-- STAV -->
-            <div class="app-col app-col-alive">Stav</div>
+            <div class="app-col app-col-alive" (click)="onCellClicked('alive')">
+                <div class="app-col-sort">
+                    <span>    {{ 'table.cols.alive' | translate }}</span>
+                    <mat-icon *ngIf="direction === 'desc-alive'">arrow_downward</mat-icon>
+                    <mat-icon *ngIf="direction === 'asc-alive'">arrow_upward</mat-icon>
+                </div>
+            </div>
             <!-- URL UI -->
-            <div class="app-col app-col-url">Uživatelské rozhraní</div>
+            <div class="app-col app-col-url"  (click)="onCellClicked('new_client_url')">
+                <div class="app-col-sort">
+                    <span>{{ 'table.cols.new_client_url' | translate }}</span>
+                    <mat-icon *ngIf="direction === 'desc-new_client_url'">arrow_downward</mat-icon>
+                    <mat-icon *ngIf="direction === 'asc-new_client_url'">arrow_upward</mat-icon>
+                </div>
+            </div>
             <!-- URL KR -->
-            <div class="app-col app-col-url">Kramerius</div>
+            <div class="app-col app-col-url"  (click)="onCellClicked('url')">
+                <div class="app-col-sort">
+                    <span>{{ 'table.cols.url' | translate }}</span>
+                    <mat-icon *ngIf="direction === 'desc-url'">arrow_downward</mat-icon>
+                    <mat-icon *ngIf="direction === 'asc-url'">arrow_upward</mat-icon>
+                </div>
+            </div>
             <!-- VERZE -->
             <div class="app-col app-col-version" (click)="onCellClicked('version')">
                 <div class="app-col-sort">
@@ -29,13 +54,48 @@
                     <mat-icon *ngIf="direction === 'asc-version'">arrow_upward</mat-icon>
                 </div>
             </div>
+            <div class="app-col app-col-documents">
+                <div class="app-col-sort-center">
+                    <div>{{ 'table.cols.documents' | translate }}</div>
+                </div>
+                <div class="app-col-sort-all-public"> 
+                    <div class="app-col-documents_all" (click)="onCellClicked('documents_all')">
+                        <div>{{ 'table.cols.all' | translate }}</div>                    
+                        <mat-icon *ngIf="direction === 'desc-documents_all'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-documents_all'">arrow_upward</mat-icon>
+                    </div>
+                    <div class="app-col-documents_public" (click)="onCellClicked('documents_public')">
+                        <div>{{ 'table.cols.public' | translate }}</div>             
+                        <mat-icon *ngIf="direction === 'desc-documents_public'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-documents_public'">arrow_upward</mat-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="app-col app-col-pages">
+                <div class="app-col-sort-center">
+                    <div>{{ 'table.cols.pages' | translate }}</div>
+                </div>
+                <div class="app-col-sort-all-public"> 
+                    <div class="app-col-documents_all" (click)="onCellClicked('pages_all')">
+                        <div>{{ 'table.cols.all' | translate }}</div>                    
+                        <mat-icon *ngIf="direction === 'desc-pages_all'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-pages_all'">arrow_upward</mat-icon>
+                    </div>
+                    <div class="app-col-documents_public" (click)="onCellClicked('pages_public')">
+                        <div>{{ 'table.cols.public' | translate }}</div>             
+                        <mat-icon *ngIf="direction === 'desc-pages_public'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-pages_public'">arrow_upward</mat-icon>
+                    </div>
+                </div>
+            </div> 
         </div>
         <!-- TABULKA -->
         <div class="app-scrollable" >
             <div class="app-row" *ngFor="let record of this.data">
                 <div class="app-col app-col-logo"><img src="{{ record.logo }}" style="height: 20px;"></div>
                 <div class="app-col app-col-name">
-                    <a href="./library/{{ record.code }}">{{ record.name }}</a>
+                    <a href="./library/{{ record.code }}" target="_blank" *ngIf="translate.currentLang == 'cs'">{{ record.name }}</a>
+                    <a href="./library/{{ record.code }}" target="_blank" *ngIf="translate.currentLang == 'en'">{{ record.name_en }}</a>
                 </div>
                 <div class="app-col app-col-alive">
                     <div class="app-col-alive-true" *ngIf="record.alive === true"></div>
@@ -49,6 +109,16 @@
                 </div>
                 <div class="app-col app-col-version">
                     <a href="https://github.com/ceskaexpedice/kramerius/releases/tag/v{{ record.version }}" target="_blank">{{ record.version }}</a>
+                </div>
+                <div class="app-col app-col-documents">
+                    <div class="app-col-number1">{{record.documents_all | number:'':'cs'}}</div>
+                    <div>|</div> 
+                    <div class="app-col-number2">{{record.documents_public | number:'':'cs'}}</div>
+                </div>
+                <div class="app-col app-col-pages">
+                    <div class="app-col-number1">{{record.pages_all | number:'':'cs'}}</div>
+                    <div>|</div> 
+                    <div class="app-col-number2">{{record.pages_public | number:'':'cs'}}</div>
                 </div>
             </div>
         </div>

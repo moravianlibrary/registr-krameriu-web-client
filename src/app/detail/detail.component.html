@@ -1,84 +1,172 @@
 <div class="app-container">
     <app-header></app-header>
     <div class="app-card" *ngIf='!loading'>
-        <div class="app-card-left">
+         <!-- TITLE-->
+        <div class="app-card-1">
             <div class="app-title-container">
                 <img src="{{detail.logo}}" style="height: 80px; margin: 20px 20px 20px 50px;">
                 <div class="app-title-title">
-                    <div class="app-title-name">{{detail.name}}</div>
-                    <div class="app-title-url">
-                        <a href="{{record.new_client_url}}">{{detail.new_client_url}}</a>
-                    </div>
-                </div>
-            </div>
-            <div class="app-dl-container">
-                <!-- <div class="app-title app-dl-title">O digitální knihovně</div> -->
-                <div class="app-dl-body">
-                    <div class="app-dl-new-client-url">
-                        <div class="app-title-left app-dl-url-title">DIGITÁLNÍ KNIHOVNA</div>
-                        <div class="app-text-left app-dl-url-text">
-                            <a href="{{detail.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
-                        </div>
-                    </div>
-                    <div class="app-dl-kramerius">
-                        <div class="app-dl-url">
-                            <div class="app-title-left app-dl-url-title">KRAMERIUS</div>
-                            <div class="app-text-left app-dl-url-text">
-                                <a href="{{detail.url}}" target="_blank">{{detail.url}}</a>
+                    <div class="app-title-name" *ngIf="translate.currentLang == 'cs'">{{detail.name}}</div>
+                    <div class="app-title-name" *ngIf="translate.currentLang == 'en'">{{detail.name_en}}</div>
+                    <div *ngIf="detail.new_client_url; then thenBlock else elseBlock"></div>
+                        <ng-template #thenBlock>
+                            <div class="app-title-url">
+                                <a href="{{record.new_client_url}}">{{detail.new_client_url}}</a>
                             </div>
-                        </div>
-                        <div class="app-dl-version">
-                            <div class="app-title-left app-dl-url-title">VERZE</div>
-                            <div class="app-text-left app-dl-url-text">{{detail.version}}</div>
-                        </div>
-                    </div>
-                    
-
-                    <div *ngIf="!this.intro" (click)="toggleExpandIntro()">
-                        <div class="app-dl-intro-title">
-                            <div>Obsah záložky informace</div>
-                            <mat-icon >expand_more</mat-icon>
-                        </div>
-                    </div>
-                    <div *ngIf="this.intro" (click)="toggleExpandIntro()">
-                        <div class="app-dl-intro-title"><div>Obsah záložky informace</div><mat-icon>expand_less</mat-icon></div>
-                        <div class="app-dl-intro" [innerHTML]="detail.intro"></div>
-                    </div>
-                    <div *ngIf="!this.private" (click)="toggleExpandPrivate()">
-                        <div class="app-dl-intro-title"><div>Informace o dostupnosti</div><mat-icon>expand_more</mat-icon></div>
-                    </div>
-                    <div *ngIf="this.private" (click)="toggleExpandPrivate()">
-                        <div class="app-dl-intro-title"><div>Informace o dostupnosti</div><mat-icon>expand_less</mat-icon></div>
-                        <div class="app-dl-intro" [innerHTML]="detail.right_msg"></div>
-                    </div>         
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            <div class="app-title-url">
+                                <a href="{{record.url}}">{{detail.url}}</a>
+                            </div>
+                        </ng-template>
                 </div>
             </div>
-        </div>
-        <div class="app-card-right">   
-            <div class="app-contact-container">
-                <!-- MAPA -->
-                <!-- <div class="app-title-right"><mat-icon>place</mat-icon></div> -->
-                <div class="app-contact-map">
-                    <div>{{detail.longitude}}</div>
-                    <div>{{detail.latitude}}</div>
-                </div>   
-                <!-- ADRESA -->
+            <!-- O KNIHOVNE V HLAVICCE -->
+            <!-- <div class="app-title-contact-container">
+                <div class="app-contact-sigla">
+                    <div class="app-title-right"><mat-icon>local_library</mat-icon></div>
+                    <div>{{detail.sigla}}</div>
+                </div>
+                <div class="app-contact-mail">
+                    <div class="app-title-right"><mat-icon>mail_outline</mat-icon></div>
+                    <div>{{detail.mail}}</div>
+                    <div><a href="{{detail.web}}" target="_blank">{{detail.web}}</a></div>
+                </div>
                 <div class="app-contact-address">
                     <div class="app-title-right"><mat-icon>home</mat-icon></div>
                     <div>{{detail.street}}</div>
                     <div>{{detail.city}}</div>
                     <div>{{detail.zip}}</div>
                 </div>
-                <!-- MAIL a WEB -->
-                <div class="app-contact-mail">
-                    <div class="app-title-right"><mat-icon>mail_outline</mat-icon></div>
+            </div> -->
+        </div>
+        <!-- O DIGITALNI KNIHOVE -->
+        <div  class="app-card-2">
+            <div class="app-dl-container">
+                <!-- <div class="app-title app-dl-title">O digitální knihovně</div> -->
+                <div class="app-dl-body">
+                    <div class="app-dl-new-client-url" *ngIf="detail.new_client_url">
+                        <div class="app-title-2 app-dl-url-title">{{'table.cols.new_client_url' | translate}}</div>
+                        <div class="app-text-2 app-dl-url-text">
+                            <a href="{{detail.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
+                        </div>
+                    </div>
+                    <div class="app-dl-kramerius"  *ngIf="detail.url">
+                        <div class="app-dl-url">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.url' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">
+                                <a href="{{detail.url}}" target="_blank">{{detail.url}}</a>
+                            </div>
+                        </div>
+                        <div class="app-dl-version"  *ngIf="detail.version">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.version' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.version}}</div>
+                        </div>
+                    </div>
+                    <div class="app-dl-documents">
+                        <div class="app-dl-documents-all" *ngIf="detail.documents_all">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.documents_all' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.documents_all | number:'':'cs'}}</div>
+                        </div>
+                        <div class="app-dl-documents-public" *ngIf="detail.documents_public">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.documents_public' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.documents_public | number:'':'cs'}}</div>
+                        </div>
+                    </div>
+                    <div class="app-dl-pages">
+                        <div class="app-dl-pages-all" *ngIf="detail.pages_all">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.pages_all' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.pages_all | number:'':'cs'}}</div>
+                        </div>
+                        <div class="app-dl-pages-public" *ngIf="detail.pages_public">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.pages_public' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.pages_public | number:'':'cs'}}</div>
+                        </div>
+                    </div>
+                    <div class="app-dl-recommended">
+                        <div class="app-dl-recommended-all" *ngIf="detail.recommended_all">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.recommended_all' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.recommended_all | number:'':'cs'}}</div>
+                        </div>
+                        <div class="app-dl-recommended-public" *ngIf="detail.recommended_public">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.recommended_public' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.recommended_public | number:'':'cs'}}</div>
+                        </div>
+                    </div>
+                    <div class="app-dl-pdf" *ngIf="detail.pdf_max">
+                        <div class="app-title-2 app-dl-url-title">{{'table.cols.pdf_max' | translate}}</div>
+                        <div class="app-text-2 app-dl-url-text">{{detail.pdf_max | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-dl-time">
+                        <div class="app-dl-time-created">
+                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.created_at' | translate}}</div>
+                            {{detail.created_at | date: 'medium':'':'cs'}}
+                        </div>
+                        <div class="app-dl-time-updated">
+                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.updated_at' | translate}}</div>
+                            {{detail.updated_at | date: 'medium':'':'cs'}}
+                        </div>
+                        <div class="app-dl-time-days">
+                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.days' | translate}}</div>
+                            {{days | number:'1.0-0'}}
+                        </div>
+                    </div>
+
+                    <div *ngIf="!this.intro && detail.intro" (click)="toggleExpandIntro()">
+                        <div class="app-dl-intro-title">
+                            <div class="app-title-2 app-dl-url-title">Obsah záložky informace</div>
+                            <mat-icon >expand_more</mat-icon>
+                        </div>
+                    </div>
+                    <div *ngIf="this.intro && detail.intro" (click)="toggleExpandIntro()">
+                        <div class="app-dl-intro-title">
+                            <div class="app-title-2 app-dl-url-title">Obsah záložky informace</div>
+                            <mat-icon>expand_less</mat-icon>
+                        </div>
+                        <div class="app-dl-intro" [innerHTML]="detail.intro"></div>
+                    </div>
+                    <div *ngIf="!this.private && detail.private" (click)="toggleExpandPrivate()">
+                        <div class="app-dl-intro-title">
+                            <div class="app-title-2 app-dl-url-title">Informace o dostupnosti</div>
+                            <mat-icon>expand_more</mat-icon>
+                        </div>
+                    </div>
+                    <div *ngIf="this.private && detail.private" (click)="toggleExpandPrivate()">
+                        <div class="app-dl-intro-title">
+                            <div class="app-title-2 app-dl-url-title">Informace o dostupnosti</div>
+                            <mat-icon>expand_less</mat-icon>
+                        </div>
+                        <div class="app-dl-intro" [innerHTML]="detail.right_msg"></div>
+                    </div>         
+                </div>
+            </div>
+        </div>
+        <!-- O KNIHOVNE JAKO PATICKA-->
+        <div class="app-card-3">   
+            <div class="app-contact-container">
+                <div class="app-contact-address"  *ngIf="detail.city">
+                    <div class="app-title-3"><mat-icon>home</mat-icon></div>
+                    <div>{{detail.street}}</div>
+                    <div>{{detail.zip}} {{detail.city}}</div>
+                    <!-- <div>{{detail.zip}}</div> -->
+                </div>
+                <div class="app-contact-map"  *ngIf="detail.longitude">
+                    <div class="app--title-3"><mat-icon>place</mat-icon></div>
+                    <!-- <div>{{detail.longitude}}</div>
+                    <div>{{detail.latitude}}</div> -->
+                    <!-- <a href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">Zobraz v mapě</a> -->
+                    <a href="https://www.google.com/maps/search/{{detail.name}}" target="_blank">Zobraz na mapě</a>
+                </div>   
+                <div class="app-contact-mail"  *ngIf="detail.web">
+                    <div class="app-title-3"><mat-icon>mail_outline</mat-icon></div>
                     <div>{{detail.mail}}</div>
                     <div><a href="{{detail.web}}" target="_blank">{{detail.web}}</a></div>
                 </div>
-                <!-- SIGLA-->
-                <div class="app-contact-sigla">
-                    <div class="app-title-right"><mat-icon>local_library</mat-icon></div>
-                    <div>{{detail.sigla}}</div>
+
+                <div class="app-contact-sigla" *ngIf="detail.sigla">
+                    <div class="app-title-3"><mat-icon>local_library</mat-icon></div>
+                    <div><a href="http://aleph.nkp.cz/F?func=find-c&local_base=ADR&ccl_term=SIG={{detail.sigla}}" target="_blank">{{detail.sigla}}</a></div>
+                    
                 </div>
             </div>
         </div>

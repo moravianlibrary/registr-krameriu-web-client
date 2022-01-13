@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class TableComponent implements OnInit {
   data: any[] = [];
   direction = 'asc-name';
 
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService,
+              public translate: TranslateService) {
     this.data = this.dataService.data;
     console.log(this.dataService.data);
     
@@ -21,18 +23,25 @@ export class TableComponent implements OnInit {
     if (this.direction === "asc-"+value) {
       this.direction = 'desc-'+value;
     } else if (this.direction === "desc-"+value) {
-      this.direction = "asc-"+ value;
+      this.direction = "asc-"+value;
     } else {
-      this.direction = 'desc-'+value;
+      this.direction = 'asc-'+value;
     }
     this.onSortChanged(value); 
   }
 
   onSortChanged(value:string) {
     console.log("clicked cell: ", value, this.direction);
-    if ((this.direction === 'asc-'+value) || (this.direction === 'desc-'+value)) {
-      if (value === "id") {
-        this.data.sort((a,b) => (b["id"] - a["id"]) * (this.direction == 'desc-'+value ? -1 : 1))
+    // if ((this.direction === 'asc-'+value) || (this.direction === 'desc-'+value)) {
+      if ((value === "id") || 
+          (value === "documents_all") || 
+          (value === "documents_public") ||
+          (value === "pages_all") || 
+          (value === "pages_public")) {
+        this.data.sort((a,b) => (b[value] - a[value]) * (this.direction == 'asc-'+value ? -1 : 1))
+      }
+      else if (value === "alive") {
+      this.data.sort((a,b)=> ((a[value]===b[value])?0 :(a[value]===true)?1:-1) * (this.direction == 'asc-'+value ? -1 : 1)) 
       }
       else {
         this.data.sort((a,b) => {
@@ -47,10 +56,10 @@ export class TableComponent implements OnInit {
           return x.localeCompare(y) * (this.direction == 'desc-'+value ? -1 : 1);
         })
       }
-    }
-    else {
-      this.data.sort((a,b) => (b["id"] - a["id"]) * -1)
-    }
+    // }
+    // else {
+    //   this.data.sort((a,b) => (b["id"] - a["id"]) * -1)
+    // }
   }
   
   ngOnInit(): void {

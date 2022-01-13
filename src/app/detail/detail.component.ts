@@ -4,6 +4,7 @@ import { DataService } from '../services/data.service';
 import { Record } from '../services/record.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-detail',
@@ -18,10 +19,12 @@ export class DetailComponent implements OnInit {
   code: string;
   intro: boolean = false;
   private: boolean = false;
+  days: number;
 
   constructor(private route: ActivatedRoute, 
               public dataService: DataService, 
-              private http: HttpClient) { 
+              private http: HttpClient,
+              public translate: TranslateService) { 
   }
 
   setDetail(data:any) {
@@ -35,20 +38,27 @@ export class DetailComponent implements OnInit {
   toggleExpandPrivate() {
     this.private = !this.private;
   }
-
+  getDiffDays(sDate:any, eDate:any) {
+    var startDate = new Date(sDate);
+    var endDate = new Date(eDate);
+  
+    var Time = endDate.getTime() - startDate.getTime();
+    return Time / (1000 * 3600 * 24);
+  }
   ngOnInit(): void {
     this.loading = true;
-    console.log('AA1');
     this.route.params.subscribe(params => {
       console.log(params);
       const code = params['code']; 
       this.code = code;
       this.record = this.dataService.getRecordByCode(code);
       console.log(this.record)
-      this.http.get(this.baseUrl + '/libraries/' + this.code + '.json').subscribe((data: any) => {
+      this.http.get(this.baseUrl + '/libraries/' + this.code).subscribe((data: any) => {
         this.setDetail(data);
+        this.days = this.getDiffDays(this.detail['updated_at'], Date.now())
         this.loading = false;
       });
+      
     });
     
   }

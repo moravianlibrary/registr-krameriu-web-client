@@ -2,7 +2,32 @@
     "table": {
       "cols": {
         "name": "Název",
-        "version": "Verze"
+        "version": "Verze",
+        "alive": "Stav",
+        "new_client_url": "Digitální knihovna",
+        "url": "Kramerius",
+        "documents_all": "Počet dokumentů",
+        "documents_public": "Počet veřejných dokumentů",
+        "pages_all": "Počet stránek",
+        "pages_public": "Počet veřejných stránek",
+        "recommended_all": "Počet doporučených dokumentů",
+        "recommended_public": "Počet veřejných doporučených dokumentů",
+        "pdf_max": "Maximální počet stran pro generování pdf",
+        "created_at": "Vytvořeno",
+        "updated_at": "Poslední update",
+        "days": "Počet dnů od poslední změny",
+        "all": "Všechny",
+        "public": "Veřejné",
+        "documents": "Dokumenty",
+        "pages": "Stránky"
       }
+    },
+    "home": {
+      "title": "Registr Krameriů",
+      "text": "Rozcestník instalací digitální knihovny Kramerius.",
+      "button": "Pokračuj na tabulku"
+    },
+    "header": {
+      "title": "Registr Krameriů"
     }
   }

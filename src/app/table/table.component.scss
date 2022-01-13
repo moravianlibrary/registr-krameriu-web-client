@@ -1,15 +1,16 @@
 .app-container {
     height: 100%;
     .app-header {
+        position: fixed;
         height: 50px;
         width: 100%;
     }
     .app-table {
-        padding: 0px;
+        padding: 50px 0 0 0;
+        width: fit-content;
         .app-row-header {
-            height: 30px;
-            width: 100%;
-            background-color: white;
+            height: 45px;
+            background-color: white;  
             .app-col {
                 color: navy;
                 font-weight: bolder;
@@ -20,34 +21,80 @@
             .app-col-version {
                 cursor: pointer;
             }
+            .app-col-documents {
+                display: flex;
+                flex-direction: column;
+            }
+            .app-col-pages {
+                display: flex;
+                flex-direction: column;
+            }
             .app-col-sort {
                 display: flex;
                 justify-content: flex-start;
+                padding-top: 3px;
+            }
+            .app-col-sort-center {
+                display: flex;
+                justify-content: center;
+                padding-top: 3px;
             }
             mat-icon {
                 margin: 3px 0px 0px 5px;
                 font-size: 15px;
             }
+            .app-col-sort-all-public {
+                display: flex;
+                justify-content: space-between;
+                .app-col-documents_all {
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 13px;
+                    font-weight: normal;
+                    mat-icon {
+                        font-size: 13px;
+                        width: auto;
+                        height: auto;
+                    }
+                    // width: 75px;
+                }
+                .app-col-documents_public {
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 13px;
+                    font-weight: normal;
+                    mat-icon {
+                        font-size: 13px;
+                        width: auto;
+                        height: auto;
+                    }
+                    // width: 75px;
+                }
+            }   
         }
         .app-scrollable {
             overflow-y: auto;
-            position: fixed;
+            overflow-x: auto;
+            // position: fixed;
             height: calc(100% - 80px);
-            width: 100%;
+            width: fit-content;
         }
         .app-row {
             display: flex;  
-            border-bottom: 1px solid rgb(216, 216, 216);   
+            border-bottom: 1px solid rgb(216, 216, 216);  
         }
         .app-col {
-            padding: 5px;
-            
+            padding: 5px;         
         }
         .app-col-logo {
             width: 25px;
         }
         .app-col-name {
             width: 280px;
+            a {
+                color: navy;
+                text-decoration: none;
+            }
         }
         .app-col-alive {
             width: 30px;
@@ -74,11 +121,35 @@
             }
         }
         .app-col-version {
+            width: 50px;
             a {
                 color: black;
                 text-decoration: none;
             }
         }
-        
+        .app-col-documents {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+        .app-col-pages {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+        .app-col-number1 {
+            padding: 0 5px 0 0;
+        }
+        .app-col-number2 {
+            padding: 0 0 0 5px;
+        }
     }
 }

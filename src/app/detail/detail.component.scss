@@ -2,12 +2,15 @@
     background-color: rgb(230, 230, 230);
     height: 100%;
     width: 100%;
+    overflow-y: auto;
     .app-card {
         display: flex;
+        flex-direction: column;
         margin: 10px 10% 30px 10%;
-        .app-card-left {
+        .app-card-1 {
             background-color: white;
-            width: 900px;
+            display: flex;
+            justify-content: space-between;
             .app-title-container {
                 display: flex;
                 .app-title-title {
@@ -30,25 +33,80 @@
                     }
                 }      
             }
+            .app-title-contact-container {
+                font-weight: lighter;
+                display: flex;
+                justify-content: space-between;
+                .app-contact-sigla {
+                    margin: 30px 20px;
+                }
+                .app-contact-mail {
+                    margin: 30px 20px;
+                    a {
+                        cursor: pointer;
+                            text-decoration: none;
+                            color: black;
+                    }
+                }
+                .app-contact-address {
+                    margin: 30px 20px;
+                }
+            }
+        }
+        .app-card-2 {
+            background-color: white;
+            
             .app-dl-container {
                 margin: 20px 50px;
                 .app-dl-body {
                     margin: 0px;
                     font-weight: lighter;
-                    .app-title-left {
-                        font-size: 11px;
+                    .app-title-2 {
+                        font-size: 14px;
+                        font-variant: all-small-caps;
                     }
-                    .app-text-left {
-                        margin: 0 0 15px 0;
+                    .app-text-2 {
+                        margin: 0 0 17px 0;
                         a {
                             color: navy;
                             text-decoration: none;
+                            font-size: 15px;
                         }
                     }
                     .app-dl-kramerius {
                         display: flex;
                         .app-dl-url {
-                            margin: 0 50px 0 0;
+                            width: 250px;
+                        }
+                    }
+                    .app-dl-documents {
+                        display: flex;
+                        .app-dl-documents-all {
+                            width: 250px;
+                        }
+                    }
+                    .app-dl-pages {
+                        display: flex;
+                        .app-dl-pages-all {
+                            width: 250px;
+                        }
+                    }
+                    .app-dl-recommended {
+                        display: flex;
+                        .app-dl-recommended-all {
+                            width: 250px;
+                        }
+                    }
+                    .app-dl-pdf {
+                        width: 250px;
+                    }
+                    .app-dl-time {
+                        display: flex;
+                        .app-dl-time-created {
+                            width: 250px;
+                        }
+                        .app-dl-time-updated {
+                            width: 250px;
                         }
                     }
                     .app-dl-intro-title {
@@ -57,40 +115,38 @@
                         cursor: pointer;
                     }
                     .app-dl-intro {
-                        font-size: smaller;
+                        font-size: normal;
                         margin: 10px 20px;
                         border: 1px solid rgb(179, 179, 179);
-                        padding: 20px;
+                        padding: 10px;
                     }
                 }
             } 
         }
-        .app-card-right {
+        .app-card-3 {
             background-color: whitesmoke;
-            width: 200px;
-            .app-title-right {
+             .app-contact-container {
+                margin: 20px 70px 10px 50px;
                 font-weight: lighter;
-                font-size: 16px;
-                margin: 15px 0 0 0;
-            }
-            .app-contact-container {
-                margin: 30px 20px;
-                font-weight: lighter; 
+                display: flex;
+                justify-content: space-between;
+                a {
+                    color: black;
+                }
                 .app-contact-map {
-                    width: 160px;
-                    height: 130px;
                     margin: 0 0 10px 0;
-                    border: 1px solid silver;
                 }
                 .app-contact-address {
                     margin: 0px;
                 }
                 .app-contact-mail {
                     margin: 0px;
-                    a {
-                        color: black;
-                    }
                 }
+            }
+            .app-title-3 {
+                font-weight: lighter;
+                font-size: 16px;
+                margin: 0px 0 0 0;
             }
         }   
     }  

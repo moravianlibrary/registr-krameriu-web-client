@@ -14,7 +14,9 @@ export class AppComponent {
   loading: boolean = true;
   baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient, private translate: TranslateService, private dataService: DataService) {}
+  constructor(private http: HttpClient, 
+              private translate: TranslateService, 
+              private dataService: DataService) {}
 
   ngOnInit() {
     this.translate.use('cs');
@@ -26,7 +28,7 @@ export class AppComponent {
     // // 2 synchronne
     // console.log(this.translate.instant('table.cols.name'));
     this.loading = true;
-    this.http.get(this.baseUrl + '/libraries.json').subscribe((data: any) => {
+    this.http.get(this.baseUrl + '/libraries').subscribe((data: any) => {
       this.dataService.setData(data);
       this.loading = false;
     });
