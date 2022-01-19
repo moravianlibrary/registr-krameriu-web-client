@@ -1,8 +1,9 @@
 <div class="app-container">
     <p class="app-title">{{ 'home.title' | translate }}</p>
     <p class="app-text">{{ 'home.text' | translate }}</p>
+    <p class="app-text">Registr obsahuje {{ libraries }} digitálních knihoven. Ty celkem obsahují {{ documents | number:'':'cs'}} dokumentů, z toho je {{ documents_public | number:'':'cs'}} veřejných. </p>
     <div class="app-button">
-        <a href="./table">
+        <a href="/table">
             <button>{{ 'home.button' | translate }}</button>
         </a>
     </div>

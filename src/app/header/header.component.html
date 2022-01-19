@@ -1,7 +1,14 @@
-<div style="float: right; padding: 0 10px; cursor: pointer; color: white; line-height: 50px; margin-right: 8px;" 
-    (click)="toggleLanguage()">{{ translate.currentLang }}</div>
+<div class="app-header-container">
+    <div class="app-header-title">
+        <a href="/">{{'header.title' | translate}}</a>
+    </div>
+    <div class="app-header-links">
+        <div class="app-table"><a href="/table">Tabulka</a></div>
+        <div class="app-lang" (click)="toggleLanguage()">{{ translate.currentLang }}</div>
+    </div>
+    
+</div>
 
-<div class="app-title">{{'header.title' | translate}}</div>
 
 
 

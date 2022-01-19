@@ -1,6 +1,33 @@
-.app-title {
-    padding: 15px 25px;
-    font-size: 25px;
+.app-header-container {
     background-color: navy;
     color: white;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .app-header-title {
+        padding: 15px 25px;
+        font-size: 25px;
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
+    .app-header-links {
+        display: flex;
+        justify-content: space-between;
+        .app-table {
+            margin: 15px 25px;
+            color: white;
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        }
+        .app-lang {
+            margin: 15px 25px;
+            color: white;
+            cursor: pointer;
+        }
+    }
+    
 }

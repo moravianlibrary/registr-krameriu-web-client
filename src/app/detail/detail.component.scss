@@ -1,8 +1,9 @@
 .app-container {
     background-color: rgb(230, 230, 230);
-    height: 100%;
+    height: calc(100% - 50px);
     width: 100%;
     overflow-y: auto;
+    padding: 50px 0 0 0;
     .app-card {
         display: flex;
         flex-direction: column;
@@ -129,18 +130,11 @@
                 margin: 20px 70px 10px 50px;
                 font-weight: lighter;
                 display: flex;
-                justify-content: space-between;
                 a {
                     color: black;
                 }
-                .app-contact-map {
-                    margin: 0 0 10px 0;
-                }
-                .app-contact-address {
-                    margin: 0px;
-                }
-                .app-contact-mail {
-                    margin: 0px;
+                .app-contact-item {
+                    margin: 10px 70px 30px 0;
                 }
             }
             .app-title-3 {

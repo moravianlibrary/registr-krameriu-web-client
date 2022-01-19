@@ -25,7 +25,7 @@ export class TableComponent implements OnInit {
     } else if (this.direction === "desc-"+value) {
       this.direction = "asc-"+value;
     } else {
-      this.direction = 'asc-'+value;
+      this.direction = 'desc-'+value;
     }
     this.onSortChanged(value); 
   }
@@ -33,28 +33,29 @@ export class TableComponent implements OnInit {
   onSortChanged(value:string) {
     console.log("clicked cell: ", value, this.direction);
     // if ((this.direction === 'asc-'+value) || (this.direction === 'desc-'+value)) {
-      if ((value === "id") || 
-          (value === "documents_all") || 
-          (value === "documents_public") ||
-          (value === "pages_all") || 
-          (value === "pages_public")) {
-        this.data.sort((a,b) => (b[value] - a[value]) * (this.direction == 'asc-'+value ? -1 : 1))
+      if ((value === "name") || 
+          (value === "name_en") || 
+          (value === "url") ||
+          (value === "new_client_url") ||
+          (value === "version")
+          ) {
+            this.data.sort((a,b) => {
+              let x = "";
+              let y = "";
+              if (a[value] && a[value].length > 0) {
+                x = a[value];
+              }
+              if (b[value] && b[value].length > 0) {
+                y = b[value];
+              }
+              return x.localeCompare(y) * (this.direction == 'desc-'+value ? -1 : 1);
+            })
       }
       else if (value === "alive") {
       this.data.sort((a,b)=> ((a[value]===b[value])?0 :(a[value]===true)?1:-1) * (this.direction == 'asc-'+value ? -1 : 1)) 
       }
       else {
-        this.data.sort((a,b) => {
-          let x = "";
-          let y = "";
-          if (a[value] && a[value].length > 0) {
-            x = a[value];
-          }
-          if (b[value] && b[value].length > 0) {
-            y = b[value];
-          }
-          return x.localeCompare(y) * (this.direction == 'desc-'+value ? -1 : 1);
-        })
+        this.data.sort((a,b) => (b[value] - a[value]) * (this.direction == 'asc-'+value ? -1 : 1))
       }
     // }
     // else {

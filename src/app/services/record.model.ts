@@ -13,4 +13,6 @@ export interface Record {
     ios: number;
     logo: string;
     library_url: string;
+    documents_all: number;
+    documents_public: number;
 }

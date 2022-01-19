@@ -1,31 +1,30 @@
 .app-container {
     height: 100%;
-    .app-header {
-        position: fixed;
-        height: 50px;
-        width: 100%;
-    }
+    // .app-header {
+    //     position: fixed;
+    //     height: 50px;
+    //     width: 100%;
+    //     z-index: 2;
+    // }
     .app-table {
-        padding: 50px 0 0 0;
+        padding: 0 0 0 0;
         width: fit-content;
+        // overflow-x: auto;
         .app-row-header {
             height: 45px;
             background-color: white;  
+            position: sticky;
+            top: 50px;
+            z-index: 1;
             .app-col {
                 color: navy;
                 font-weight: bolder;
             }
-            .app-col-name {
+            .app-col-simple {
                 cursor: pointer;
+                user-select: none;
             }
-            .app-col-version {
-                cursor: pointer;
-            }
-            .app-col-documents {
-                display: flex;
-                flex-direction: column;
-            }
-            .app-col-pages {
+            .app-col-double  {
                 display: flex;
                 flex-direction: column;
             }
@@ -51,6 +50,8 @@
                     flex-direction: row;
                     font-size: 13px;
                     font-weight: normal;
+                    cursor: pointer;
+                    user-select: none;
                     mat-icon {
                         font-size: 13px;
                         width: auto;
@@ -63,6 +64,8 @@
                     flex-direction: row;
                     font-size: 13px;
                     font-weight: normal;
+                    cursor: pointer;
+                    user-select: none;
                     mat-icon {
                         font-size: 13px;
                         width: auto;
@@ -73,11 +76,9 @@
             }   
         }
         .app-scrollable {
-            overflow-y: auto;
-            overflow-x: auto;
-            // position: fixed;
             height: calc(100% - 80px);
             width: fit-content;
+            padding: 50px 0 0 0;
         }
         .app-row {
             display: flex;  
@@ -87,10 +88,35 @@
             padding: 5px;         
         }
         .app-col-logo {
-            width: 25px;
+            position: sticky;
+            left: 0;
+            width: 30px;
+            background-color: white;
+            display: flex;
+            z-index: 0;
+            a img {
+                padding: 0 0 0 5px;
+
+            }
+        }
+        .app-col-logo .app-logo-hover-text {
+            visibility: hidden;
+            position: absolute;
+            z-index: 1;
+            width: 200px;
+            margin: 0 0 0 35px;
+            padding: 5px;
+            border-radius: 4px;
+            background: rgba(66, 66, 66, 0.9);
+            color: white;
+        }
+
+        .app-col-logo:hover .app-logo-hover-text {
+            visibility: visible;
         }
         .app-col-name {
             width: 280px;
+            margin: 0 0 0 0px;
             a {
                 color: navy;
                 text-decoration: none;
@@ -112,6 +138,12 @@
                 border-radius: 50%;
                 background: #b11c1c;;
             }
+            .app-col-alive-null {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #838383;;
+            }
         }
         .app-col-url {
             width: 280px;
@@ -127,23 +159,115 @@
                 text-decoration: none;
             }
         }
+        .app-col-collections {
+            width: 80px;
+            display: flex;
+            justify-content: center;
+        }
         .app-col-documents {
             width: 150px;
             display: flex;
             justify-content: center;
-            a {
-                color: black;
-                text-decoration: none;
-            }
         }
         .app-col-pages {
             width: 150px;
             display: flex;
             justify-content: center;
-            a {
-                color: black;
-                text-decoration: none;
-            }
+        }
+        .app-col-recommended {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-monograph {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-periodical {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-soundrecording {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-map {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-graphic {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-sheetmusic {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-archive {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-manuscript {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-article {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-periodicalitem {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-supplement {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-periodicalvolume {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-monographunit {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-track {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-soundunit {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-internalpart {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-oldprintomnibusvolume {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-col-picture {
+            width: 130px;
+            display: flex;
+            justify-content: center;
         }
         .app-col-number1 {
             padding: 0 5px 0 0;

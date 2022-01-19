@@ -1,5 +1,4 @@
 <div class="app-container">
-    <app-header></app-header>
     <div class="app-card" *ngIf='!loading'>
          <!-- TITLE-->
         <div class="app-card-1">
@@ -11,12 +10,12 @@
                     <div *ngIf="detail.new_client_url; then thenBlock else elseBlock"></div>
                         <ng-template #thenBlock>
                             <div class="app-title-url">
-                                <a href="{{record.new_client_url}}">{{detail.new_client_url}}</a>
+                                <a href="{{record.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
                             </div>
                         </ng-template>
                         <ng-template #elseBlock>
                             <div class="app-title-url">
-                                <a href="{{record.url}}">{{detail.url}}</a>
+                                <a href="{{record.url}}" target="_blank">{{detail.url}}</a>
                             </div>
                         </ng-template>
                 </div>
@@ -144,26 +143,26 @@
         <!-- O KNIHOVNE JAKO PATICKA-->
         <div class="app-card-3">   
             <div class="app-contact-container">
-                <div class="app-contact-address"  *ngIf="detail.city">
+                <div class="app-contact-item app-contact-address"  *ngIf="detail.city">
                     <div class="app-title-3"><mat-icon>home</mat-icon></div>
                     <div>{{detail.street}}</div>
                     <div>{{detail.zip}} {{detail.city}}</div>
                     <!-- <div>{{detail.zip}}</div> -->
                 </div>
-                <div class="app-contact-map"  *ngIf="detail.longitude">
+                <div class="app-contact-item app-contact-map"  *ngIf="detail.longitude">
                     <div class="app--title-3"><mat-icon>place</mat-icon></div>
                     <!-- <div>{{detail.longitude}}</div>
                     <div>{{detail.latitude}}</div> -->
                     <!-- <a href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">Zobraz v mapě</a> -->
                     <a href="https://www.google.com/maps/search/{{detail.name}}" target="_blank">Zobraz na mapě</a>
                 </div>   
-                <div class="app-contact-mail"  *ngIf="detail.web">
+                <div class="app-contact-item app-contact-mail"  *ngIf="detail.web">
                     <div class="app-title-3"><mat-icon>mail_outline</mat-icon></div>
                     <div>{{detail.mail}}</div>
                     <div><a href="{{detail.web}}" target="_blank">{{detail.web}}</a></div>
                 </div>
 
-                <div class="app-contact-sigla" *ngIf="detail.sigla">
+                <div class="app-contact-item app-contact-sigla" *ngIf="detail.sigla">
                     <div class="app-title-3"><mat-icon>local_library</mat-icon></div>
                     <div><a href="http://aleph.nkp.cz/F?func=find-c&local_base=ADR&ccl_term=SIG={{detail.sigla}}" target="_blank">{{detail.sigla}}</a></div>
                     
