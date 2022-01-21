@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
-import { Record } from '../services/record.model';
+import { Record } from '../models/record.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
 import { TranslateService } from '@ngx-translate/core';

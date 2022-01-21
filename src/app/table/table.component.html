@@ -14,20 +14,20 @@
                 <!-- LOGO -->
                 <div class="app-col app-col-logo"></div>
                 <!-- NAZEV -->
-                <div class="app-col app-col-simple app-col-name" *ngIf="translate.currentLang == 'cs'" (click)="onCellClicked('name')">
+                <div class="app-col app-col-simple app-col-name" (click)="onCellClicked('name')">
                     <div class="app-col-sort">
                         <span>{{ 'table.cols.name' | translate }}</span>
                         <mat-icon *ngIf="direction === 'desc-name'">arrow_downward</mat-icon>
                         <mat-icon *ngIf="direction === 'asc-name'">arrow_upward</mat-icon>
                     </div>
                 </div>
-                <div class="app-col app-col-simple app-col-name" *ngIf="translate.currentLang == 'en'" (click)="onCellClicked('name_en')">
+                <!-- <div class="app-col app-col-simple app-col-name" *ngIf="translate.currentLang == 'en'" (click)="onCellClicked('name_en')">
                     <div class="app-col-sort">
                         <span>{{ 'table.cols.name' | translate }}</span>
                         <mat-icon *ngIf="direction === 'desc-name_en'">arrow_downward</mat-icon>
                         <mat-icon *ngIf="direction === 'asc-name_en'">arrow_upward</mat-icon>
                     </div>
-                </div>
+                </div> -->
                 <!-- STAV -->
                 <div class="app-col app-col-simple app-col-alive" (click)="onCellClicked('alive')">
                     <div class="app-col-sort">

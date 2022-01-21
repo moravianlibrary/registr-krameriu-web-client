@@ -1,14 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { Record } from './record.model';
+import { Record } from '../models/record.model';
 
 @Injectable()
 export class  DataService {
     data: Record[] = [];
 
-    setData(data: Record[]) {
-        this.data = data;
+    setData(data: any[]) {
+        for (const item of data) {
+            this.data.push(Record.build(item));
+        }
+        console.log('a', this.data[0]);
     }
 
     getRecordByCode(code: string) {
@@ -17,7 +18,6 @@ export class  DataService {
             if (rec.code) {
                 if (rec.code === code) {
                     record = rec;
-
                 }
             }   
         }

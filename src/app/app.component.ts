@@ -19,7 +19,7 @@ export class AppComponent {
               private dataService: DataService) {}
 
   ngOnInit() {
-    this.translate.use('cs');
+    this.translate.use(localStorage.getItem('app.lang') || 'cs');
     // // Pouziti translate v kodu
     // // 1 Asynchronne
     // this.translate.get('table.cols.name').subscribe(a => {

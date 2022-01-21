@@ -16,12 +16,14 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleLanguage() {
+    let lang = '';
     if (this.translate.currentLang == 'cs') {
-      this.translate.use('en');
+      lang = 'en';
     } else {
-      this.translate.use('cs');
+      lang = 'cs';
     }
+    this.translate.use(lang);
+    localStorage.setItem('app.lang', lang);
   }
-
 
 }
