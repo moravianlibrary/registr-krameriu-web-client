@@ -6,12 +6,10 @@ import { Record } from './record.model';
 @Injectable()
 export class  DataService {
     data: Record[] = [];
-    // record: Record;
 
     setData(data: Record[]) {
         this.data = data;
     }
-
 
     getRecordByCode(code: string) {
         let record: Record;

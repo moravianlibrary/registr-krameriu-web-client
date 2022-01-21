@@ -7,15 +7,28 @@
     //     z-index: 2;
     // }
     .app-table {
-        padding: 0 0 0 0;
+        padding: 0px 0 0 0;
         width: fit-content;
         // overflow-x: auto;
         .app-row-header {
-            height: 45px;
-            background-color: white;  
+            height: 54px;
+            background-color: white;
             position: sticky;
             top: 50px;
             z-index: 1;
+            padding: 35px 0 0 0;
+            .app-filter {
+                padding: 10px 20px;
+                position: fixed;
+                top: 50px;
+                left: 20px;
+                display: flex;
+                .app-button {
+                    margin: 3px 15px;
+                    border: 1px solid grey;
+                    padding: 0px 10px;
+                }
+            }
             .app-col {
                 color: navy;
                 font-weight: bolder;
@@ -78,7 +91,7 @@
         .app-scrollable {
             height: calc(100% - 80px);
             width: fit-content;
-            padding: 50px 0 0 0;
+            padding: 57px 0 0 0;
         }
         .app-row {
             display: flex;  

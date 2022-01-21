@@ -8,7 +8,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public translate: TranslateService) { }
+  constructor(public translate: TranslateService) { 
+
+  }
 
   ngOnInit(): void {
   }

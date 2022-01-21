@@ -19,7 +19,27 @@
         "all": "Všechny",
         "public": "Veřejné",
         "documents": "Dokumenty",
-        "pages": "Stránky"
+        "pages": "Stránky",
+        "recommended": "Doporučené",
+        "collections": "Sbírky",
+        "monograph": "Monografie",
+        "periodical": "Periodika",
+        "soundrecording": "Zvukové nahrávky",
+        "map": "Mapy",
+        "graphic": "Grafiky",
+        "sheetmusic": "Noty",
+        "archive": "Archivní dokumenty",
+        "manuscript": "Rukopisy",
+        "article": "Články",
+        "periodicalitem": "Čísla periodika",
+        "supplement": "Přílohy",
+        "periodicalvolume": "Ročník periodika",
+        "monographunit": "Kapitola knihy",
+        "track": "track",
+        "soundunit": "soundunit",
+        "internalpart": "internalpart",
+        "oldprintomnibusvolume": "oldprintomnibusvolume",
+        "picture": "picture"
       }
     },
     "home": {

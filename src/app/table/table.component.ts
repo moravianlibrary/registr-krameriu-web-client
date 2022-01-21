@@ -9,13 +9,19 @@ import { DataService } from '../services/data.service';
 })
 export class TableComponent implements OnInit {
   data: any[] = [];
-  direction = 'asc-name';
+  direction = 'desc-pages_all';
+  filteredData: any[] = this.data;
+  filter: string = '';
 
   constructor(public dataService: DataService,
               public translate: TranslateService) {
-    this.data = this.dataService.data;
-    console.log(this.dataService.data);
-    
+    this.data = dataService.data;
+    this.filteredData = this.data.filter(p => p.name.includes(this.filter))
+    console.log(this.filteredData);
+  }
+  
+  filterMe(filter:string) {
+    this.filteredData = this.data.filter(record => record.name.toLowerCase().includes(filter))
   }
 
   onCellClicked(value: any) {
@@ -39,7 +45,7 @@ export class TableComponent implements OnInit {
           (value === "new_client_url") ||
           (value === "version")
           ) {
-            this.data.sort((a,b) => {
+            this.filteredData.sort((a,b) => {
               let x = "";
               let y = "";
               if (a[value] && a[value].length > 0) {
@@ -52,10 +58,10 @@ export class TableComponent implements OnInit {
             })
       }
       else if (value === "alive") {
-      this.data.sort((a,b)=> ((a[value]===b[value])?0 :(a[value]===true)?1:-1) * (this.direction == 'asc-'+value ? -1 : 1)) 
+      this.filteredData.sort((a,b)=> ((a[value]===b[value])?0 :(a[value]===true)?1:-1) * (this.direction == 'asc-'+value ? -1 : 1)) 
       }
       else {
-        this.data.sort((a,b) => (b[value] - a[value]) * (this.direction == 'asc-'+value ? -1 : 1))
+        this.filteredData.sort((a,b) => (b[value] - a[value]) * (this.direction == 'asc-'+value ? -1 : 1))
       }
     // }
     // else {
@@ -64,7 +70,7 @@ export class TableComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.onSortChanged('name');
+    this.onSortChanged('pages_all');
   }
 
 }
