@@ -1,5 +1,13 @@
 {
     "table": {
+      "filter": {
+        "placeholder": "Filtruj podle instituce",
+        "button1": "Základní pohled",
+        "button2": "Zobrazit vše",
+        "display_all": "Vše",
+        "display_public": "Veřejné",
+        "display_both": "Obojí"
+      },
       "cols": {
         "name": "Název",
         "version": "Verze",
@@ -45,9 +53,18 @@
     "home": {
       "title": "Registr Krameriů",
       "text": "Rozcestník instalací digitální knihovny Kramerius.",
+      "statistic-part1": "Registr sdružuje ",
+      "statistic-part2": " digitálních knihoven. Ty obsahují celkem ",
+      "statistic-part3": " dokumentů, z toho je ",
+      "statistic-part4": " veřejných.",
       "button": "Pokračuj na tabulku"
     },
     "header": {
-      "title": "Registr Krameriů"
+      "title": "Registr Krameriů",
+      "table": "Tabulka"
+    },
+    "detail": {
+      "intro": "Obsah záložky informace",
+      "right_msg": "Informace o dostupnosti"
     }
   }

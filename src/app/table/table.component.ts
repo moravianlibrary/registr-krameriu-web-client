@@ -12,12 +12,16 @@ import { Record } from '../models/record.model';
 export class TableComponent implements OnInit {
   
   data: Record[] = [];
-  direction = 'desc-pages_all';
-  value = 'pages_all';
+  direction = 'desc-documents_all';
+  value = 'documents_all';
   filteredData: Record[] = [];
   filter: string = '';
   viewAllCols: boolean = false;
   view: number = 0;
+  display: number = 0;
+  display_all: boolean = true;
+  display_public: boolean = false;
+  display_both: boolean = false;
 
   constructor(public dataService: DataService,
               public translate: TranslateService) {
@@ -47,6 +51,24 @@ export class TableComponent implements OnInit {
   viewCols() {
     this.viewAllCols = true;
     this.view = 1;
+  }
+  displayAll() {
+    this.display_all = true;
+    this.display_public = false;
+    this.display_both = false;
+    this.display = 0;
+  }
+  displayPublic() {
+    this.display_all = false;
+    this.display_public = true;
+    this.display_both = false;
+    this.display = 1;
+  }
+  displayBoth() {
+    this.display_all = false;
+    this.display_public = false;
+    this.display_both = true;
+    this.display = 2;
   }
 
   onCellClicked(value: any) {

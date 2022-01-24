@@ -113,26 +113,26 @@
 
                     <div *ngIf="!this.intro && detail.intro" (click)="toggleExpandIntro()">
                         <div class="app-dl-intro-title">
-                            <div class="app-title-2 app-dl-url-title">Obsah záložky informace</div>
+                            <div class="app-title-2 app-dl-url-title">{{ 'detail.intro' | translate}}</div>
                             <mat-icon >expand_more</mat-icon>
                         </div>
                     </div>
                     <div *ngIf="this.intro && detail.intro" (click)="toggleExpandIntro()">
                         <div class="app-dl-intro-title">
-                            <div class="app-title-2 app-dl-url-title">Obsah záložky informace</div>
+                            <div class="app-title-2 app-dl-url-title">{{ 'detail.intro' | translate}}</div>
                             <mat-icon>expand_less</mat-icon>
                         </div>
                         <div class="app-dl-intro" [innerHTML]="detail.intro"></div>
                     </div>
                     <div *ngIf="!this.private && detail.private" (click)="toggleExpandPrivate()">
                         <div class="app-dl-intro-title">
-                            <div class="app-title-2 app-dl-url-title">Informace o dostupnosti</div>
+                            <div class="app-title-2 app-dl-url-title">{{ 'detail.right_msg' | translate}}</div>
                             <mat-icon>expand_more</mat-icon>
                         </div>
                     </div>
                     <div *ngIf="this.private && detail.private" (click)="toggleExpandPrivate()">
                         <div class="app-dl-intro-title">
-                            <div class="app-title-2 app-dl-url-title">Informace o dostupnosti</div>
+                            <div class="app-title-2 app-dl-url-title">{{ 'detail.right_msg' | translate}}</div>
                             <mat-icon>expand_less</mat-icon>
                         </div>
                         <div class="app-dl-intro" [innerHTML]="detail.right_msg"></div>

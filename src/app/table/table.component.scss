@@ -11,48 +11,61 @@
         width: fit-content;
         // overflow-x: auto;
         .app-row-header {
-            height: 54px;
+            height: 34px;
             background-color: white;
             position: sticky;
-            top: 63px;
+            top: 70px;
             z-index: 1;
             padding: 35px 0 0 0;
-            .app-filter {
+            .app-filters {
                 padding: 10px 40px;
                 position: fixed;
                 width: 100%;
-                background-color: lightblue;
+                background-color: #EFF6FB;
                 top: 50px;
                 display: flex;
                 input {
                     padding: 0 15px 0 10px;
                     margin: 0 15px 0 0;
                 }
-                .app-button {
-                    margin: 0px 0px;
+                input:focus-visible {
+                    outline: none;
+                }
+                .app-filter {
+                    display: flex;
+                    margin: 0px 15px;
                     border: 1px solid grey;
-                    padding: 3px 10px;
+                    border-radius: 4px;
                     cursor: pointer;
                 }
-                .app-button:hover, 
-                .app-button:target,
-                .active {
-                    background-color: navy;
+                .app-button {
+                    padding: 5px 10px;
+                }
+                .app-button:not(:last-child) {
+                    border-right: 1px solid grey;
+                }
+                .app-button:hover {
+                    background-color: #d2e3f0;
+                }
+                .app-button:active,
+                .active, 
+                .active:hover {
+                    background-color: #276690;
                     color: white;
                 }
             }
             .app-col {
-                color: navy;
+                color: #276690;
                 font-weight: bolder;
             }
             .app-col-simple {
                 cursor: pointer;
                 user-select: none;
             }
-            .app-col-double  {
-                display: flex;
-                flex-direction: column;
-            }
+            // .app-col-double  {
+            //     display: flex;
+            //     flex-direction: column;
+            // }
             .app-col-sort {
                 display: flex;
                 justify-content: flex-start;
@@ -66,6 +79,8 @@
             mat-icon {
                 margin: 3px 0px 0px 5px;
                 font-size: 15px;
+                width: auto;
+                height: auto;
             }
             .app-col-sort-all-public {
                 display: flex;
@@ -103,7 +118,7 @@
         .app-scrollable {
             height: calc(100% - 80px);
             width: fit-content;
-            padding: 66px 0 0 0;
+            padding: 75px 0 0 0;
         }
         .app-row {
             display: flex;  
@@ -118,7 +133,7 @@
             width: 30px;
             background-color: white;
             display: flex;
-            z-index: 0;
+            // z-index: 0;
             a img {
                 padding: 0 0 0 5px;
 
@@ -143,7 +158,7 @@
             width: 280px;
             margin: 0 0 0 0px;
             a {
-                color: navy;
+                color: #276690;
                 text-decoration: none;
             }
         }
@@ -171,9 +186,9 @@
             }
         }
         .app-col-url {
-            width: 280px;
+            width: 220px;
             a {
-                color: navy;
+                color: #276690;
                 text-decoration: none;
             }
         }

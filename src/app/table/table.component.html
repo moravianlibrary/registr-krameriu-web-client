@@ -4,11 +4,19 @@
         <!-- HLAVICKA -->
         <div class="app-row-items app-row-header">
             
-            <div class="app-filter">
-                <input type="text" [(ngModel)]="filter" (ngModelChange)="filterMe(filter)" placeholder="Filtruj podle instituce" />
-                <div class="app-button app-button-basic" (click)="viewSomeCols()" [ngClass]="{'active' : view === 0}">Základní pohled</div>
-                <div class="app-button app-button-all" (click)="viewCols()" [ngClass]="{'active' : view === 1}">Zobrazit vše</div>
+            <div class="app-filters">
+                <input type="text" [(ngModel)]="filter" (ngModelChange)="filterMe(filter)" placeholder="{{ 'table.filter.placeholder' | translate }}" />
+                <div class="app-filter">
+                    <div class="app-button app-button-basic" (click)="viewSomeCols()" [ngClass]="{'active' : view === 0}">{{ 'table.filter.button1' | translate }}</div>
+                    <div class="app-button app-button-all" (click)="viewCols()" [ngClass]="{'active' : view === 1}">{{ 'table.filter.button2' | translate }}</div>
+                </div>
+                <div class="app-filter">
+                    <div class="app-button app-button-col-all" (click)="displayAll()" [ngClass]="{'active' : display === 0}">{{ 'table.filter.display_all' | translate }}</div>
+                    <div class="app-button app-button-col-public" (click)="displayPublic()" [ngClass]="{'active' : display === 1}">{{ 'table.filter.display_public' | translate }}</div>
+                    <div class="app-button app-button-col-public" (click)="displayBoth()" [ngClass]="{'active' : display === 2}">{{ 'table.filter.display_both' | translate }}</div>
+                </div>    
             </div>
+            
 
             <div class="app-row">
                 <!-- LOGO -->
@@ -69,11 +77,13 @@
                     </div>
                 </div>
                 <!-- DOKUMENTY -->
-                <div class="app-col app-col-double app-col-documents">
-                    <div class="app-col-sort-center">
-                        <div>{{ 'table.cols.documents' | translate }}</div>
+                <div class="app-col app-col-simple app-col-documents" (click)="onCellClicked('documents_all')">
+                    <div class="app-col-sort">
+                        <span>{{ 'table.cols.documents' | translate }}</span>
+                        <mat-icon *ngIf="direction === 'desc-documents_all'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-documents_all'">arrow_upward</mat-icon>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('documents_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-documents_all'">arrow_downward</mat-icon>
@@ -84,14 +94,16 @@
                             <mat-icon *ngIf="direction === 'desc-documents_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-documents_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- STRANKY -->
-                <div class="app-col app-col-double app-col-pages">
+                <div class="app-col app-col-simple app-col-pages" (click)="onCellClicked('pages_all')">
                     <div class="app-col-sort-center">
-                        <div>{{ 'table.cols.pages' | translate }}</div>
+                        <span>{{ 'table.cols.pages' | translate }}</span>
+                        <mat-icon *ngIf="direction === 'desc-pages_all'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-pages_all'">arrow_upward</mat-icon>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('pages_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-pages_all'">arrow_downward</mat-icon>
@@ -102,14 +114,14 @@
                             <mat-icon *ngIf="direction === 'desc-pages_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-pages_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- DOPORUCENE -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-recommended">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.recommended' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('recommended_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-recommended_all'">arrow_downward</mat-icon>
@@ -120,14 +132,14 @@
                             <mat-icon *ngIf="direction === 'desc-recommended_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-recommended_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- monograph -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-monograph">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.monograph' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_monograph_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_monograph_all'">arrow_downward</mat-icon>
@@ -138,14 +150,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_monograph_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_monograph_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- periodical -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-periodical">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.periodical' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_periodical_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_periodical_all'">arrow_downward</mat-icon>
@@ -156,14 +168,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_periodical_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_periodical_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- soundrecording -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-soundrecording">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.soundrecording' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_soundrecording_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_soundrecording_all'">arrow_downward</mat-icon>
@@ -174,14 +186,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_soundrecording_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_soundrecording_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- map -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-map">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.map' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_map_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_map_all'">arrow_downward</mat-icon>
@@ -192,14 +204,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_map_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_map_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- graphic -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-graphic">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.graphic' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_graphic_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_graphic_all'">arrow_downward</mat-icon>
@@ -210,14 +222,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_graphic_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_graphic_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- sheetmusic -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-sheetmusic">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.sheetmusic' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_sheetmusic_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_sheetmusic_all'">arrow_downward</mat-icon>
@@ -228,14 +240,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_sheetmusic_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_sheetmusic_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- archive -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-archive">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.archive' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_archive_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_archive_all'">arrow_downward</mat-icon>
@@ -246,14 +258,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_archive_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_archive_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- manucript -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-manuscript">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.manuscript' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_manuscript_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_manuscript_all'">arrow_downward</mat-icon>
@@ -264,14 +276,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_manuscript_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_manuscript_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- article -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-article">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.article' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_article_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_article_all'">arrow_downward</mat-icon>
@@ -282,14 +294,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_article_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_article_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- periodicalitem -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-periodicalitem">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.periodicalitem' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_periodicalitem_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_periodicalitem_all'">arrow_downward</mat-icon>
@@ -300,14 +312,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_periodicalitem_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_periodicalitem_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- supplement -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-supplement">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.supplement' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_supplement_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_supplement_all'">arrow_downward</mat-icon>
@@ -318,14 +330,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_supplement_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_supplement_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- periodicalvolume -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-periodicalvolume">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.periodicalvolume' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_periodicalvolume_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_periodicalvolume_all'">arrow_downward</mat-icon>
@@ -336,14 +348,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_periodicalvolume_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_periodicalvolume_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- monographunit -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-monographunit">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.monographunit' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_monographunit_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_monographunit_all'">arrow_downward</mat-icon>
@@ -354,14 +366,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_monographunit_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_monographunit_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- track -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-track">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.track' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_track_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_track_all'">arrow_downward</mat-icon>
@@ -372,14 +384,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_track_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_track_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- soundunit -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-soundunit">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.soundunit' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_soundunit_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_soundunit_all'">arrow_downward</mat-icon>
@@ -390,14 +402,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_soundunit_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_soundunit_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- internalpart -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-internalpart">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.internalpart' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_internalpart_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_internalpart_all'">arrow_downward</mat-icon>
@@ -408,14 +420,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_internalpart_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_internalpart_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- oldprintomnibusvolume -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-oldprintomnibusvolume">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.oldprintomnibusvolume' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_oldprintomnibusvolume_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_oldprintomnibusvolume_all'">arrow_downward</mat-icon>
@@ -426,14 +438,14 @@
                             <mat-icon *ngIf="direction === 'desc-model_oldprintomnibusvolume_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_oldprintomnibusvolume_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- picture -->
                 <div *ngIf="viewAllCols" class="app-col app-col-double app-col-picture">
                     <div class="app-col-sort-center">
                         <div>{{ 'table.cols.picture' | translate }}</div>
                     </div>
-                    <div class="app-col-sort-all-public"> 
+                    <!-- <div class="app-col-sort-all-public"> 
                         <div class="app-col-documents_all" (click)="onCellClicked('model_picture_all')">
                             <div>{{ 'table.cols.all' | translate }}</div>                    
                             <mat-icon *ngIf="direction === 'desc-model_picture_all'">arrow_downward</mat-icon>
@@ -444,7 +456,7 @@
                             <mat-icon *ngIf="direction === 'desc-model_picture_public'">arrow_downward</mat-icon>
                             <mat-icon *ngIf="direction === 'asc-model_picture_public'">arrow_upward</mat-icon>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>               
         </div>
@@ -483,109 +495,109 @@
                     <div class="app-col-number1">{{record.collections | number:'':'cs'}}</div>
                 </div>
                 <div class="app-col app-col-documents">
-                    <div class="app-col-number1">{{record.documents_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.documents_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.documents_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.documents_public | number:'':'cs'}}</div>
                 </div>
                 <div class="app-col app-col-pages">
-                    <div class="app-col-number1">{{record.pages_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.pages_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.pages_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.pages_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-recommended">
-                    <div class="app-col-number1">{{record.recommended_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.recommended_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.recommended_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.recommended_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-monograph">
-                    <div class="app-col-number1">{{record.model_monograph_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_monograph_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_monograph_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_monograph_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-periodical">
-                    <div class="app-col-number1">{{record.model_periodical_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_periodical_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_periodical_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_periodical_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-soundrecording">
-                    <div class="app-col-number1">{{record.model_soundrecording_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_soundrecording_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_soundrecording_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_soundrecording_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-map">
-                    <div class="app-col-number1">{{record.model_map_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_map_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_map_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_map_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-graphic">
-                    <div class="app-col-number1">{{record.model_graphic_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_graphic_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_graphic_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_graphic_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-sheetmusic">
-                    <div class="app-col-number1">{{record.model_sheetmusic_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_sheetmusic_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_sheetmusic_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_sheetmusic_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-archive">
-                    <div class="app-col-number1">{{record.model_archive_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_archive_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_archive_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_archive_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-manuscript">
-                    <div class="app-col-number1">{{record.model_manuscript_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_manuscript_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_manuscript_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_manuscript_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-article">
-                    <div class="app-col-number1">{{record.model_article_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_article_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_article_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_article_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-periodicalitem">
-                    <div class="app-col-number1">{{record.model_periodicalitem_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_periodicalitem_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_periodicalitem_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_periodicalitem_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-supplement">
-                    <div class="app-col-number1">{{record.model_supplement_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_supplement_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_supplement_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_supplement_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-periodicalvolume">
-                    <div class="app-col-number1">{{record.model_periodicalvolume_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_periodicalvolume_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_periodicalvolume_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_periodicalvolume_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-monographunit">
-                    <div class="app-col-number1">{{record.model_monographunit_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_monographunit_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_monographunit_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_monographunit_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-track">
-                    <div class="app-col-number1">{{record.model_track_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_track_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_track_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_track_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-soundunit">
-                    <div class="app-col-number1">{{record.model_soundunit_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_soundunit_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_soundunit_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_soundunit_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-internalpart">
-                    <div class="app-col-number1">{{record.model_internalpart_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_internalpart_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_internalpart_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_internalpart_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-oldprintomnibusvolume">
-                    <div class="app-col-number1">{{record.model_oldprintomnibusvolume_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_oldprintomnibusvolume_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_oldprintomnibusvolume_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_oldprintomnibusvolume_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols" class="app-col app-col-picture">
-                    <div class="app-col-number1">{{record.model_picture_all | number:'':'cs'}}</div>
-                    <div>|</div> 
-                    <div class="app-col-number2">{{record.model_picture_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_picture_all | number:'':'cs'}}</div>
+                    <div *ngIf="display_both" >|</div> 
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_picture_public | number:'':'cs'}}</div>
                 </div>
             </div>
         </div>
