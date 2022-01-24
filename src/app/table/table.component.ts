@@ -16,6 +16,8 @@ export class TableComponent implements OnInit {
   value = 'pages_all';
   filteredData: Record[] = [];
   filter: string = '';
+  viewAllCols: boolean = false;
+  view: number = 0;
 
   constructor(public dataService: DataService,
               public translate: TranslateService) {
@@ -35,7 +37,16 @@ export class TableComponent implements OnInit {
   }
   
   filterMe(filter:string) {
-    this.filteredData = this.data.filter(record => record.name.toLowerCase().includes(filter))
+    this.filteredData = this.data.filter(record => record.name.toLowerCase().includes(filter.toLowerCase()))
+  }
+
+  viewSomeCols() {
+    this.viewAllCols = false;
+    this.view = 0;
+  }
+  viewCols() {
+    this.viewAllCols = true;
+    this.view = 1;
   }
 
   onCellClicked(value: any) {
@@ -87,7 +98,7 @@ export class TableComponent implements OnInit {
       this.filteredData.sort((a,b)=> ((a[value]===b[value])?0 :(a[value]===true)?1:-1) * (this.direction == 'asc-'+value ? -1 : 1)) 
       }
       else {
-        this.filteredData.sort((a,b) => ((<any>b)[value] - (<any>b)[value]) * (this.direction == 'asc-'+value ? -1 : 1))
+        this.filteredData.sort((a,b) => ((<any>b)[value] - (<any>a)[value]) * (this.direction == 'asc-'+value ? -1 : 1))
       }
     // }
     // else {

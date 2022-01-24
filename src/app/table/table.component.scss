@@ -14,19 +14,31 @@
             height: 54px;
             background-color: white;
             position: sticky;
-            top: 50px;
+            top: 63px;
             z-index: 1;
             padding: 35px 0 0 0;
             .app-filter {
-                padding: 10px 20px;
+                padding: 10px 40px;
                 position: fixed;
+                width: 100%;
+                background-color: lightblue;
                 top: 50px;
-                left: 20px;
                 display: flex;
+                input {
+                    padding: 0 15px 0 10px;
+                    margin: 0 15px 0 0;
+                }
                 .app-button {
-                    margin: 3px 15px;
+                    margin: 0px 0px;
                     border: 1px solid grey;
-                    padding: 0px 10px;
+                    padding: 3px 10px;
+                    cursor: pointer;
+                }
+                .app-button:hover, 
+                .app-button:target,
+                .active {
+                    background-color: navy;
+                    color: white;
                 }
             }
             .app-col {
@@ -91,7 +103,7 @@
         .app-scrollable {
             height: calc(100% - 80px);
             width: fit-content;
-            padding: 57px 0 0 0;
+            padding: 66px 0 0 0;
         }
         .app-row {
             display: flex;  
