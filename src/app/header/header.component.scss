@@ -31,3 +31,48 @@
     }
     
 }
+
+@media screen and (max-width: 710px) {
+    .app-header-container {
+        .app-header-title {
+            padding: 15px 10px;
+            font-size: 22px;
+        }
+        .app-header-links {
+            .app-table {
+                margin: 15px 20px;
+            }
+            .app-lang {
+                margin: 15px 20px;
+            }
+        }
+    }  
+}
+
+@media screen and (max-width: 350px) {
+    .app-header-container {
+        .app-header-title {
+            padding: 15px 10px;
+            font-size: 20px;
+        }
+        .app-header-links {
+            .app-table {
+                margin: 15px 15px;
+                font-size: smaller;
+            }
+            .app-lang {
+                margin: 15px 15px;
+                font-size: smaller;
+            }
+        }
+    }  
+}
+
+@media screen and (max-width: 280px) {
+    .app-header-container {
+        .app-header-title {
+            padding: 15px 10px;
+            font-size: 16px;
+        }
+    }  
+}

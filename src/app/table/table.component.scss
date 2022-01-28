@@ -1,11 +1,5 @@
 .app-container {
     height: 100%;
-    // .app-header {
-    //     position: fixed;
-    //     height: 50px;
-    //     width: 100%;
-    //     z-index: 2;
-    // }
     .app-table {
         padding: 0px 0 0 0;
         width: fit-content;
@@ -14,24 +8,29 @@
             height: 34px;
             background-color: white;
             position: sticky;
-            top: 70px;
+            top: 87px;
             z-index: 1;
             padding: 35px 0 0 0;
             .app-filters {
-                padding: 10px 40px;
+                padding: 10px 20px;
                 position: fixed;
                 width: 100%;
                 background-color: #EFF6FB;
                 top: 50px;
                 display: flex;
-                input {
+                .input {
                     padding: 0 15px 0 10px;
-                    margin: 0 15px 0 0;
+                    margin: 0 15px 0 15px;
+                    height: 28px;
                 }
-                input:focus-visible {
+                .input:focus-visible {
                     outline: none;
                 }
-                .app-filter {
+                .app-button-title {
+                    padding: 0 15px;
+                    font-variant: all-small-caps;
+                }
+                .app-button-container {
                     display: flex;
                     margin: 0px 15px;
                     border: 1px solid grey;
@@ -40,19 +39,24 @@
                 }
                 .app-button {
                     padding: 5px 10px;
+                    user-select: none;
                 }
                 .app-button:not(:last-child) {
                     border-right: 1px solid grey;
                 }
-                .app-button:hover {
+                .app-button:hover,
+                .app-button:active {
                     background-color: #d2e3f0;
                 }
-                .app-button:active,
+
                 .active, 
                 .active:hover {
                     background-color: #276690;
                     color: white;
                 }
+            }
+            .app-filters-small-screen {
+                display: none;
             }
             .app-col {
                 color: #276690;
@@ -62,10 +66,10 @@
                 cursor: pointer;
                 user-select: none;
             }
-            // .app-col-double  {
-            //     display: flex;
-            //     flex-direction: column;
-            // }
+            .app-col-double  {
+                cursor: pointer;
+                user-select: none;
+            }
             .app-col-sort {
                 display: flex;
                 justify-content: flex-start;
@@ -118,7 +122,7 @@
         .app-scrollable {
             height: calc(100% - 80px);
             width: fit-content;
-            padding: 75px 0 0 0;
+            padding: 88px 0 0 0;
         }
         .app-row {
             display: flex;  
@@ -167,22 +171,18 @@
             display: flex;
             justify-content: center;
             .app-col-alive-true {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #36b11c;;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #36b11c;
+                margin: 4px 0 0 0;
             }
             .app-col-alive-false {
                 width: 12px;
                 height: 12px;
                 border-radius: 50%;
-                background: #b11c1c;;
-            }
-            .app-col-alive-null {
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                background: #838383;;
+                background: #b11c1c;
+                margin: 4px 0 0 0;
             }
         }
         .app-col-url {
@@ -314,6 +314,74 @@
         }
         .app-col-number2 {
             padding: 0 0 0 5px;
+        }
+    }
+}
+
+@media screen and (max-width: 775px) {
+    .app-container {
+        .app-table {
+            .app-row-header {
+                .app-filters {
+                    display: none;
+                }
+                .app-filters-small-screen {
+                    padding: 10px 20px;
+                    position: fixed;
+                    width: 100%;
+                    background-color: #EFF6FB;
+                    top: 50px;
+                    display: flex;
+                    .line2 {
+                        display: flex;
+                        .app-filter {
+                            margin-right: 37px;
+                        }
+                    }
+                    
+                    .input {
+                        padding: 0 15px 0 10px;
+                        margin: 0 15px 0 0px;
+                        height: 28px;
+                        width: 125px;
+                    }
+                    .input:focus-visible {
+                        outline: none;
+                    }
+                    .app-button-title {
+                        // display: none;
+                        padding: 0 0px;
+                        font-variant: all-small-caps;
+                    }
+                    .app-button-container {
+                        padding: 5px 10px 5px 10px;
+                        margin: 0px 0px 0 0px;
+                        border: 1px solid grey;
+                        border-radius: 3px;
+                        background-color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 450px) {
+    .app-container {
+        .app-table {
+            .app-row-header {
+                height: 35px;
+                top: 140px;
+                .app-filters-small-screen {
+                    display: flex;
+                    flex-direction: column;
+                    .line2 {
+                        display: flex;
+                    }
+                }
+            }
+            .app-scrollable {
+                padding: 140px 0 0 0;
+            }
         }
     }
 }

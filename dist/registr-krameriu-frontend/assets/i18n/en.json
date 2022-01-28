@@ -1,8 +1,70 @@
 {
   "table": {
+    "filter": {
+      "placeholder": "Filter by institution",
+      "button1": "Basic view",
+      "button2": "View all",
+      "display_all": "All",
+      "display_public": "Public",
+      "display_both": "Both"
+    },
     "cols": {
       "name": "Name",
-      "version": "Version"
+      "version": "Version",
+      "alive": "Alive",
+      "new_client_url": "Digital library",
+      "url": "Kramerius",
+      "documents_all": "Documents",
+      "documents_public": "Public documents",
+      "pages_all": "Pages",
+      "pages_public": "Public pages",
+      "recommended_all": "Recommended",
+      "recommended_public": "Public recommended",
+      "pdf_max": "Generating PDF - pages",
+      "created_at": "Created",
+      "updated_at": "Last update",
+      "days": "Days from last update",
+      "all": "All",
+      "public": "Public",
+      "documents": "Documents",
+      "pages": "Pages",
+      "recommended": "Recommended",
+      "collections": "Collections",
+      "monograph": "Monographs",
+      "periodical": "Periodicals",
+      "soundrecording": "Soundrecordings",
+      "map": "Maps",
+      "graphic": "Graphics",
+      "sheetmusic": "Sheetmusic",
+      "archive": "Archivals",
+      "manuscript": "Manuscripts",
+      "article": "Articles",
+      "periodicalitem": "Periodical items",
+      "supplement": "Supplements",
+      "periodicalvolume": "Periodical volumes",
+      "monographunit": "Monograph units",
+      "track": "Tracks",
+      "soundunit": "Soundunits",
+      "internalpart": "Internal parts",
+      "oldprintomnibusvolume": "oldprintomnibusvolume",
+      "picture": "Pictures"
     }
+  },
+  "home": {
+    "title": "Kramerius registry",
+    "text": "List of  digital library Kramerius installations.",
+    "statistic-part1": "Register contains ",
+    "statistic-part2": " digital libraries. These contain total of ",
+    "statistic-part3": " digital documents, of which ",
+    "statistic-part4": " are publicly available.",
+    "button": "To the table"
+  },
+  "header": {
+    "title": "Kramerius registry",
+    "table": "Table"
+  },
+  "detail": {
+    "intro": "Introduction",
+    "right_msg": "Right message"
   }
 }

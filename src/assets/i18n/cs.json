@@ -2,9 +2,11 @@
     "table": {
       "filter": {
         "placeholder": "Filtruj podle instituce",
-        "button1": "Základní pohled",
-        "button2": "Zobrazit vše",
-        "display_all": "Vše",
+        "button1": "Základní",
+        "button2": "Vše",
+        "button3": "Technické",
+        "button4": "Statistické",
+        "display_all": "Všechny",
         "display_public": "Veřejné",
         "display_both": "Obojí"
       },
@@ -32,11 +34,11 @@
         "collections": "Sbírky",
         "monograph": "Monografie",
         "periodical": "Periodika",
-        "soundrecording": "Zvukové nahrávky",
+        "soundrecording": "Zvuk",
         "map": "Mapy",
         "graphic": "Grafiky",
         "sheetmusic": "Noty",
-        "archive": "Archivní dokumenty",
+        "archive": "Archiválie",
         "manuscript": "Rukopisy",
         "article": "Články",
         "periodicalitem": "Čísla periodika",

@@ -17,11 +17,15 @@ export class TableComponent implements OnInit {
   filteredData: Record[] = [];
   filter: string = '';
   viewAllCols: boolean = false;
+  viewSomeCols: boolean = true;
+  viewTechCols: boolean = false;
+  viewStatCols: boolean = false;
   view: number = 0;
   display: number = 0;
   display_all: boolean = true;
   display_public: boolean = false;
   display_both: boolean = false;
+  selectedView: 'some';
 
   constructor(public dataService: DataService,
               public translate: TranslateService) {
@@ -44,13 +48,33 @@ export class TableComponent implements OnInit {
     this.filteredData = this.data.filter(record => record.name.toLowerCase().includes(filter.toLowerCase()))
   }
 
-  viewSomeCols() {
+  viewSome() {
+    this.viewSomeCols = true;
     this.viewAllCols = false;
+    this.viewStatCols = false;
+    this.viewTechCols = false;
     this.view = 0;
   }
-  viewCols() {
+  viewAll() {
+    this.viewSomeCols = false;
     this.viewAllCols = true;
+    this.viewStatCols = false;
+    this.viewTechCols = false;
     this.view = 1;
+  }
+  viewTechnicInfo() {
+    this.viewSomeCols = false;
+    this.viewAllCols = false;
+    this.viewStatCols = false;
+    this.viewTechCols = true;
+    this.view = 2;
+  }
+  viewStaticticInfo() {
+    this.viewSomeCols = false;
+    this.viewAllCols = false;
+    this.viewStatCols = true;
+    this.viewTechCols = false;
+    this.view = 3;
   }
   displayAll() {
     this.display_all = true;
@@ -72,7 +96,7 @@ export class TableComponent implements OnInit {
   }
 
   onCellClicked(value: any) {
-    console.log("clicked cell: ", value, this.direction)
+    console.log("clicked cell: ", value, this.display_public, this.direction)
     if (this.direction === "asc-"+value) {
       this.direction = 'desc-'+value;
     } else if (this.direction === "desc-"+value) {
@@ -83,9 +107,32 @@ export class TableComponent implements OnInit {
     this.value = value;
     this.onSortChanged(); 
   }
+  onDoubleCellClicked(value: any) {
+    if (this.display_public) {
+      if (this.direction === "asc-"+value+'_public') {
+        this.direction = 'desc-'+value+'_public';
+      } else if (this.direction === "desc-"+value+'_public') {
+        this.direction = "asc-"+value+'_public';
+      } else {
+        this.direction = 'desc-'+value+'_public';
+      }
+      this.value = value+'_public';
+    }
+    else {
+      if (this.direction === "asc-"+value+'_all') {
+        this.direction = 'desc-'+value+'_all';
+      } else if (this.direction === "desc-"+value+'_all') {
+        this.direction = "asc-"+value+'_all';
+      } else {
+        this.direction = 'desc-'+value+'_all';
+      }
+      this.value = value+'_all';
+    }
+    this.onSortChanged(); 
+  }
 
   onSortChanged() {
-    console.log("clicked cell: ", this.value, this.direction);
+    // console.log("clicked cell: ", this.value, this.direction);
     const value = this.value;
     // if ((this.direction === 'asc-'+value) || (this.direction === 'desc-'+value)) {
       if (value === "name") {

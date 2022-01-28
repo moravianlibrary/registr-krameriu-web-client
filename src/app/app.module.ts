@@ -13,6 +13,8 @@ import { DataService } from './services/data.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import '@angular/common/locales/global/cs';
@@ -37,6 +39,8 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,
+    MatMenuModule,
+    MatSelectModule,
     TranslateModule.forRoot({
       defaultLanguage: 'cs',
       loader: {

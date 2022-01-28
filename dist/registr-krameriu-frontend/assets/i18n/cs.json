@@ -1,5 +1,15 @@
 {
     "table": {
+      "filter": {
+        "placeholder": "Filtruj podle instituce",
+        "button1": "Základní",
+        "button2": "Vše",
+        "button3": "Technické",
+        "button4": "Statistické",
+        "display_all": "Všechny",
+        "display_public": "Veřejné",
+        "display_both": "Obojí"
+      },
       "cols": {
         "name": "Název",
         "version": "Verze",
@@ -24,11 +34,11 @@
         "collections": "Sbírky",
         "monograph": "Monografie",
         "periodical": "Periodika",
-        "soundrecording": "Zvukové nahrávky",
+        "soundrecording": "Zvuk",
         "map": "Mapy",
         "graphic": "Grafiky",
         "sheetmusic": "Noty",
-        "archive": "Archivní dokumenty",
+        "archive": "Archiválie",
         "manuscript": "Rukopisy",
         "article": "Články",
         "periodicalitem": "Čísla periodika",
@@ -45,9 +55,18 @@
     "home": {
       "title": "Registr Krameriů",
       "text": "Rozcestník instalací digitální knihovny Kramerius.",
+      "statistic-part1": "Registr sdružuje ",
+      "statistic-part2": " digitálních knihoven. Ty obsahují celkem ",
+      "statistic-part3": " dokumentů, z toho je ",
+      "statistic-part4": " veřejných.",
       "button": "Pokračuj na tabulku"
     },
     "header": {
-      "title": "Registr Krameriů"
+      "title": "Registr Krameriů",
+      "table": "Tabulka"
+    },
+    "detail": {
+      "intro": "Obsah záložky informace",
+      "right_msg": "Informace o dostupnosti"
     }
   }
