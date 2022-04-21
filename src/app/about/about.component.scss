@@ -1,0 +1,30 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 30px 30px 30px;
+    .app-title {
+        display: flex;
+        // justify-content: center;
+        margin: 40px;
+        font-size: 35px;
+        color: #276690
+    }
+    .app-text {
+        display: flex;
+        
+        // justify-content: center;
+    }
+    .app-button {
+        display: flex;
+        justify-content: center;
+        margin: 30px;
+        button {
+            background-color: #276690;
+            color: white;
+            font-size: larger;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+}

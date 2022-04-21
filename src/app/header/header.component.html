@@ -2,9 +2,14 @@
     <div class="app-header-title">
         <a href="/">{{'header.title' | translate}}</a>
     </div>
-    <div class="app-header-links">
-        <div class="app-table"><a href="/table">{{ 'header.table' | translate }}</a></div>
-        <div class="app-lang" (click)="toggleLanguage()">{{ translate.currentLang }}</div>
+    <div class="app-header-links" [class.app-expanded]="isExpanded">
+        <div class="app-table"><a href="/">{{ 'header.table' | translate }}</a></div>
+        <div class="app-about"><a href="/about">{{ 'header.about' | translate }}</a></div>
+        <div class="app-lang" (click)="toggleLanguage()">{{ displayLanguage }}</div>
+    </div>
+    <!-- HAMBURGER MENU -->
+    <div class="hamburger">
+        <mat-icon (click)="toggle()">menu</mat-icon>
     </div>
     
 </div>

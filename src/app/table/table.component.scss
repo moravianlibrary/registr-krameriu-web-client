@@ -3,16 +3,17 @@
     .app-table {
         padding: 0px 0 0 0;
         width: fit-content;
+        min-width: 100%;
         // overflow-x: auto;
         .app-row-header {
-            height: 34px;
+            height: 30px;
             background-color: white;
             position: sticky;
-            top: 87px;
+            top: 68px;
             z-index: 1;
             padding: 35px 0 0 0;
             .app-filters {
-                padding: 10px 20px;
+                padding: 10px 25px;
                 position: fixed;
                 width: 100%;
                 background-color: #EFF6FB;
@@ -20,21 +21,24 @@
                 display: flex;
                 .input {
                     padding: 0 15px 0 10px;
-                    margin: 0 15px 0 15px;
+                    margin: 0 15px 0 0px;
                     height: 28px;
+                    width: 150px;
                 }
                 .input:focus-visible {
                     outline: none;
                 }
                 .app-button-title {
                     padding: 0 15px;
-                    font-variant: all-small-caps;
+                    text-transform: uppercase;
+                    font-size: 11px;
                 }
                 .app-button-container {
                     display: flex;
-                    margin: 0px 15px;
-                    border: 1px solid grey;
-                    border-radius: 4px;
+                    margin: 0px 10px;
+                    border: 1px solid rgb(118 118 118);
+                    height: 30px;
+                    border-radius: 3px;
                     cursor: pointer;
                 }
                 .app-button {
@@ -42,7 +46,15 @@
                     user-select: none;
                 }
                 .app-button:not(:last-child) {
-                    border-right: 1px solid grey;
+                    border-right: 1px solid rgb(118 118 118);;
+                }
+                .app-button:first-child {
+                    border-top-left-radius: 2px;
+                    border-bottom-left-radius: 2px;
+                }
+                .app-button:last-child {
+                    border-top-right-radius: 2px;
+                    border-bottom-right-radius: 2px;
                 }
                 .app-button:hover,
                 .app-button:active {
@@ -54,13 +66,14 @@
                     background-color: #276690;
                     color: white;
                 }
+                
             }
             .app-filters-small-screen {
                 display: none;
             }
             .app-col {
-                color: #276690;
-                font-weight: bolder;
+                color: #64696d;
+                // font-weight: bolder;
             }
             .app-col-simple {
                 cursor: pointer;
@@ -122,14 +135,19 @@
         .app-scrollable {
             height: calc(100% - 80px);
             width: fit-content;
-            padding: 88px 0 0 0;
+            padding: 67px 0 0 0;
+            min-width: 100%;
         }
         .app-row {
             display: flex;  
-            border-bottom: 1px solid rgb(216, 216, 216);  
+            border-bottom: 1px solid rgb(216, 216, 216);
+        }
+        .app-row:hover:not(.app-row-first) {
+            border-bottom: 1px solid rgb(175, 175, 175);
+            background-color: rgb(236, 236, 236);
         }
         .app-col {
-            padding: 5px;         
+            padding: 5px 0px 0 5px;       
         }
         .app-col-logo {
             position: sticky;
@@ -137,11 +155,17 @@
             width: 30px;
             background-color: white;
             display: flex;
+            // overflow: hidden;
             // z-index: 0;
             a img {
                 padding: 0 0 0 5px;
+                // overflow: hidden;
 
             }
+        }
+        .app-row:hover:not(.app-row-first) .app-col-logo {
+            background-color: rgb(236, 236, 236);
+
         }
         .app-col-logo .app-logo-hover-text {
             visibility: hidden;
@@ -162,12 +186,15 @@
             width: 280px;
             margin: 0 0 0 0px;
             a {
-                color: #276690;
+                color: #000000;
                 text-decoration: none;
             }
         }
+        .app-col-code {
+            width: 80px;
+        }
         .app-col-alive {
-            width: 30px;
+            width: 40px;
             display: flex;
             justify-content: center;
             .app-col-alive-true {
@@ -186,14 +213,14 @@
             }
         }
         .app-col-url {
-            width: 220px;
+            width: 240px;
             a {
                 color: #276690;
                 text-decoration: none;
             }
         }
         .app-col-version {
-            width: 50px;
+            width: 60px;
             a {
                 color: black;
                 text-decoration: none;
@@ -351,7 +378,8 @@
                     .app-button-title {
                         // display: none;
                         padding: 0 0px;
-                        font-variant: all-small-caps;
+                        text-transform: uppercase;
+                        font-size: 11px;
                     }
                     .app-button-container {
                         padding: 5px 10px 5px 10px;
@@ -365,22 +393,23 @@
         }
     }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 320px) {
     .app-container {
         .app-table {
             .app-row-header {
-                height: 35px;
-                top: 140px;
+                top: 108px;
+                padding: 27px 0 0 0;
                 .app-filters-small-screen {
                     display: flex;
                     flex-direction: column;
                     .line2 {
                         display: flex;
+                        margin: 5px 0 0 0;
                     }
                 }
             }
             .app-scrollable {
-                padding: 140px 0 0 0;
+                padding: 108px 0 0 0;
             }
         }
     }

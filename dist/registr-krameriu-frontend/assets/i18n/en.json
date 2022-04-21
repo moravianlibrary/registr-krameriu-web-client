@@ -1,15 +1,21 @@
 {
   "table": {
     "filter": {
-      "placeholder": "Filter by institution",
-      "button1": "Basic view",
-      "button2": "View all",
+      "placeholder": "Search the table",
+      "button1": "Basic",
+      "button2": "All",
+      "button3": "Technical",
+      "button4": "Statistic",
       "display_all": "All",
       "display_public": "Public",
-      "display_both": "Both"
+      "display_both": "Both",
+      "filter": "Filter",
+      "view": "View",
+      "display": "Display"
     },
     "cols": {
       "name": "Name",
+      "code": "Code",
       "version": "Version",
       "alive": "Alive",
       "new_client_url": "Digital library",
@@ -52,7 +58,7 @@
   },
   "home": {
     "title": "Kramerius registry",
-    "text": "List of  digital library Kramerius installations.",
+    "text": "Kramerius registry is a list of digital library Kramerius installations.",
     "statistic-part1": "Register contains ",
     "statistic-part2": " digital libraries. These contain total of ",
     "statistic-part3": " digital documents, of which ",
@@ -61,7 +67,8 @@
   },
   "header": {
     "title": "Kramerius registry",
-    "table": "Table"
+    "table": "Table",
+    "about": "About"
   },
   "detail": {
     "intro": "Introduction",

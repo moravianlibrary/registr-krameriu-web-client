@@ -3,7 +3,7 @@
          <!-- TITLE-->
         <div class="app-card-1">
             <div class="app-title-container">
-                <img src="{{detail.logo}}" style="height: 80px; margin: 20px 20px 20px 50px;">
+                <img src="{{detail.logo}}" class="app-logo">
                 <div class="app-title-title">
                     <div class="app-title-name" *ngIf="translate.currentLang == 'cs'">{{detail.name}}</div>
                     <div class="app-title-name" *ngIf="translate.currentLang == 'en'">{{detail.name_en}}</div>
@@ -49,6 +49,7 @@
                         <div class="app-text-2 app-dl-url-text">
                             <a href="{{detail.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
                         </div>
+                        <div></div>
                     </div>
                     <div class="app-dl-kramerius"  *ngIf="detail.url">
                         <div class="app-dl-url">
@@ -97,15 +98,15 @@
                         <div class="app-text-2 app-dl-url-text">{{detail.pdf_max | number:'':'cs'}}</div>
                     </div>
                     <div class="app-dl-time">
-                        <div class="app-dl-time-created">
+                        <div class="app-dl-time-item app-dl-time-created">
                             <div class="app-title-2 app-dl-url-title">{{ 'table.cols.created_at' | translate}}</div>
                             {{detail.created_at | date: 'medium':'':'cs'}}
                         </div>
-                        <div class="app-dl-time-updated">
+                        <div class="app-dl-time-item app-dl-time-updated">
                             <div class="app-title-2 app-dl-url-title">{{ 'table.cols.updated_at' | translate}}</div>
                             {{detail.updated_at | date: 'medium':'':'cs'}}
                         </div>
-                        <div class="app-dl-time-days">
+                        <div class="app-dl-time-item app-dl-time-days">
                             <div class="app-title-2 app-dl-url-title">{{ 'table.cols.days' | translate}}</div>
                             {{days | number:'1.0-0'}}
                         </div>
@@ -143,29 +144,33 @@
         <!-- O KNIHOVNE JAKO PATICKA-->
         <div class="app-card-3">   
             <div class="app-contact-container">
-                <div class="app-contact-item app-contact-address"  *ngIf="detail.city">
-                    <div class="app-title-3"><mat-icon>home</mat-icon></div>
-                    <div>{{detail.street}}</div>
-                    <div>{{detail.zip}} {{detail.city}}</div>
-                    <!-- <div>{{detail.zip}}</div> -->
+                <div class="app-contact-container-row" *ngIf="detail.city || detail.longitude">
+                    <div class="app-contact-item app-contact-address"  *ngIf="detail.city">
+                        <div class="app-title-3"><mat-icon>home</mat-icon></div>
+                        <div>{{detail.street}}</div>
+                        <div>{{detail.zip}} {{detail.city}}</div>
+                        <!-- <div>{{detail.zip}}</div> -->
+                    </div>
+                    <div class="app-contact-item app-contact-map"  *ngIf="detail.longitude">
+                        <div class="app--title-3"><mat-icon>place</mat-icon></div>
+                        <!-- <div>{{detail.longitude}}</div>
+                        <div>{{detail.latitude}}</div> -->
+                        <!-- <a href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">Zobraz v mapě</a> -->
+                        <a href="https://www.google.com/maps/search/{{detail.name}}" target="_blank">Zobraz na mapě</a>
+                    </div> 
                 </div>
-                <div class="app-contact-item app-contact-map"  *ngIf="detail.longitude">
-                    <div class="app--title-3"><mat-icon>place</mat-icon></div>
-                    <!-- <div>{{detail.longitude}}</div>
-                    <div>{{detail.latitude}}</div> -->
-                    <!-- <a href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">Zobraz v mapě</a> -->
-                    <a href="https://www.google.com/maps/search/{{detail.name}}" target="_blank">Zobraz na mapě</a>
-                </div>   
-                <div class="app-contact-item app-contact-mail"  *ngIf="detail.web">
-                    <div class="app-title-3"><mat-icon>mail_outline</mat-icon></div>
-                    <div>{{detail.mail}}</div>
-                    <div><a href="{{detail.web}}" target="_blank">{{detail.web}}</a></div>
-                </div>
-
-                <div class="app-contact-item app-contact-sigla" *ngIf="detail.sigla">
-                    <div class="app-title-3"><mat-icon>local_library</mat-icon></div>
-                    <div><a href="http://aleph.nkp.cz/F?func=find-c&local_base=ADR&ccl_term=SIG={{detail.sigla}}" target="_blank">{{detail.sigla}}</a></div>
-                    
+                <div class="app-contact-container-row">
+                    <div class="app-contact-item app-contact-mail"  *ngIf="detail.web">
+                        <div class="app-title-3"><mat-icon>mail_outline</mat-icon></div>
+                        <div>{{detail.mail}}</div>
+                        <div><a href="{{detail.web}}" target="_blank">{{detail.web}}</a></div>
+                    </div>
+    
+                    <div class="app-contact-item app-contact-sigla" *ngIf="detail.sigla">
+                        <div class="app-title-3"><mat-icon>local_library</mat-icon></div>
+                        <div><a href="http://aleph.nkp.cz/F?func=find-c&local_base=ADR&ccl_term=SIG={{detail.sigla}}" target="_blank">{{detail.sigla}}</a></div>
+                        
+                    </div>
                 </div>
             </div>
         </div>

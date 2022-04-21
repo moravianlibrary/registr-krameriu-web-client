@@ -16,22 +16,22 @@ export class TableComponent implements OnInit {
   value = 'documents_all';
   filteredData: Record[] = [];
   filter: string = '';
-  viewAllCols: boolean = false;
-  viewSomeCols: boolean = true;
+  viewAllCols: boolean = true;
+  viewSomeCols: boolean = false;
   viewTechCols: boolean = false;
   viewStatCols: boolean = false;
-  view: number = 0;
+  view: number = 1;
   display: number = 0;
   display_all: boolean = true;
   display_public: boolean = false;
   display_both: boolean = false;
-  selectedView: 'some';
+  selectedView: 'all';
 
   constructor(public dataService: DataService,
               public translate: TranslateService) {
     this.data = dataService.data;
     this.filteredData = this.data.filter(p => p.name.includes(this.filter))
-    console.log(this.filteredData);
+    // console.log(this.filteredData);
   }
 
   ngOnInit(): void {
@@ -39,13 +39,54 @@ export class TableComponent implements OnInit {
 
       console.log('new lang', value.lang);
       this.onSortChanged();
+      this.filter = ''
+      this.filteredData = this.data.filter(p => p.name.includes(this.filter))
     });
 
     this.onSortChanged();
   }
   
-  filterMe(filter:string) {
-    this.filteredData = this.data.filter(record => record.name.toLowerCase().includes(filter.toLowerCase()))
+  filterMe(filter: string) {
+    if (this.translate.currentLang == 'cs') {
+      this.filteredData = this.data.filter(record => {
+        return (
+          record.name.toLowerCase().includes(filter.toLowerCase()) ||
+          record.code.toLowerCase().includes(filter.toLowerCase()) ||
+          record.url.toLowerCase().includes(filter.toLowerCase())
+        );
+      })
+    } else {
+      this.filteredData = this.data.filter(record => {
+        return (
+          record.name_en.toLowerCase().includes(filter.toLowerCase()) ||
+          record.code.toLowerCase().includes(filter.toLowerCase()) ||
+          record.url.toLowerCase().includes(filter.toLowerCase())
+        );
+      })
+    }
+    this.onSortChanged();
+    // this.filteredData = this.filteredData.map(record => {
+    //   record.name = record.name.replace(filter, (match) => match.toUpperCase()) 
+    //   return record;
+    // })
+   
+    
+    
+
+    // if (filter.length > 0) {
+    //   this.filteredData.map(record => {
+    //     record.name.replace(new RegExp(filter, "gi"), (match) => match.toUpperCase())
+    //     return record;})
+    // }
+      // console.log(filter)
+      // for (const record of this.filteredData) {
+      //   console.log((record.name).replace(new RegExp(filter, "gi"), (match) => {
+      //     return match.toUpperCase();
+      //   }));
+      //   (record.name).replace(new RegExp(filter, "gi"), (match) => {
+      //     return match.toUpperCase();
+      //   })
+      // }
   }
 
   viewSome() {
@@ -135,7 +176,7 @@ export class TableComponent implements OnInit {
     // console.log("clicked cell: ", this.value, this.direction);
     const value = this.value;
     // if ((this.direction === 'asc-'+value) || (this.direction === 'desc-'+value)) {
-      if (value === "name") {
+      if ((value === "name") || (value === "code")) {
             this.filteredData.sort((a,b) => {
               let x = "";
               let y = "";

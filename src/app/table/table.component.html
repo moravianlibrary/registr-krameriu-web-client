@@ -6,20 +6,20 @@
             
             <div class="app-filters">
                 <div class="app-filter">
-                    <div class="app-button-title">Filtr</div>
+                    <!-- <div class="app-button-title">{{ 'table.filter.filter' | translate }}</div> -->
                     <input class="input" type="text" [(ngModel)]="filter" (ngModelChange)="filterMe(filter)" placeholder="{{ 'table.filter.placeholder' | translate }}" />    
                 </div>
-                <div class="app-filter">
-                    <div class="app-button-title">Zobrazení</div>
+                <!-- <div class="app-filter">
+                    <div class="app-button-title">{{ 'table.filter.view' | translate }}</div>
                     <div class="app-button-container">
                         <div class="app-button app-button-basic" (click)="viewSome()" [ngClass]="{'active' : view === 0}">{{ 'table.filter.button1' | translate }}</div>
                         <div class="app-button app-button-all" (click)="viewAll()" [ngClass]="{'active' : view === 1}">{{ 'table.filter.button2' | translate }}</div>
                         <div class="app-button app-button-all" (click)="viewTechnicInfo()" [ngClass]="{'active' : view === 2}">{{ 'table.filter.button3' | translate }}</div>
                         <div class="app-button app-button-all" (click)="viewStaticticInfo()" [ngClass]="{'active' : view === 3}">{{ 'table.filter.button4' | translate }}</div>
                     </div>
-                </div>
+                </div> -->
                 <div class="app-filter">
-                    <div class="app-button-title">Počet dokumentů</div>
+                    <!-- <div class="app-button-title">{{ 'table.filter.display' | translate }}</div> -->
                     <div class="app-button-container">
                         <div class="app-button app-button-col-all" (click)="displayAll()" [ngClass]="{'active' : display === 0}">{{ 'table.filter.display_all' | translate }}</div>
                         <div class="app-button app-button-col-public" (click)="displayPublic()" [ngClass]="{'active' : display === 1}">{{ 'table.filter.display_public' | translate }}</div>
@@ -30,13 +30,13 @@
 
             <div class="app-filters-small-screen">
                 <div class="app-filter line1">
-                    <div class="app-button-title">Filtr</div>
+                    <!-- <div class="app-button-title">{{ 'table.filter.filter' | translate }}</div> -->
                     <input class="input" type="text" [(ngModel)]="filter" (ngModelChange)="filterMe(filter)" placeholder="{{ 'table.filter.placeholder' | translate }}" />    
                 </div>
                 <div class="line2">
-                    <div class="app-filter">
+                    <!-- <div class="app-filter">
                         <div>
-                            <div class="app-button-title">Zobrazení</div>
+                            <div class="app-button-title">{{ 'table.filter.view' | translate }}</div>
                             <mat-select value="some" class="app-button-container">
                                 <mat-option value="some"><div class="app-button app-button-basic" (click)="viewSome()" [ngClass]="{'active' : view === 0}">{{ 'table.filter.button1' | translate }}</div></mat-option>
                                 <mat-option value="all"><div class="app-button app-button-all" (click)="viewAll()" [ngClass]="{'active' : view === 1}">{{ 'table.filter.button2' | translate }}</div></mat-option>
@@ -44,10 +44,10 @@
                                 <mat-option value="statictic"><div class="app-button app-button-all" (click)="viewStaticticInfo()" [ngClass]="{'active' : view === 3}">{{ 'table.filter.button4' | translate }}</div></mat-option>
                             </mat-select>
                           </div>
-                    </div>
+                    </div> -->
                     <div class="app-filter">
                         <div>
-                            <div class="app-button-title">Počet dokumentů</div>
+                            <!-- <div class="app-button-title">{{ 'table.filter.display' | translate }}</div> -->
                             <mat-select value="all" class="app-button-container">
                                 <mat-option value="all"><div class="app-button app-button-col-all" (click)="displayAll()" [ngClass]="{'active' : display === 0}">{{ 'table.filter.display_all' | translate }}</div></mat-option>
                                 <mat-option value="public"><div class="app-button app-button-col-public" (click)="displayPublic()" [ngClass]="{'active' : display === 1}">{{ 'table.filter.display_public' | translate }}</div></mat-option>
@@ -58,9 +58,7 @@
                 </div>        
             </div>
   
-                        
-
-            <div class="app-row">
+            <div class="app-row app-row-first">
                 <!-- LOGO -->
                 <div class="app-col app-col-logo"></div>
                 
@@ -73,6 +71,15 @@
                     </div>
                 </div>
 
+                 <!-- KOD -->
+                 <div class="app-col app-col-simple app-col-code" (click)="onCellClicked('code')">
+                    <div class="app-col-sort">
+                        <span>{{ 'table.cols.code' | translate }}</span>
+                        <mat-icon *ngIf="direction === 'desc-code'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-code'">arrow_upward</mat-icon>
+                    </div>
+                </div>
+
                 <!-- URL UI -->
                 <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-simple app-col-url"  (click)="onCellClicked('new_client_url')">
                     <div class="app-col-sort">
@@ -82,21 +89,21 @@
                     </div>
                 </div>
 
-                <!-- STAV -->
-                <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-simple app-col-alive" (click)="onCellClicked('alive')">
-                    <div class="app-col-sort">
-                        <span>    {{ 'table.cols.alive' | translate }}</span>
-                        <mat-icon *ngIf="direction === 'desc-alive'">arrow_downward</mat-icon>
-                        <mat-icon *ngIf="direction === 'asc-alive'">arrow_upward</mat-icon>
-                    </div>
-                </div>
-
                 <!-- URL KR -->
                 <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-simple app-col-url"  (click)="onCellClicked('url')">
                     <div class="app-col-sort">
                         <span>{{ 'table.cols.url' | translate }}</span>
                         <mat-icon *ngIf="direction === 'desc-url'">arrow_downward</mat-icon>
                         <mat-icon *ngIf="direction === 'asc-url'">arrow_upward</mat-icon>
+                    </div>
+                </div>
+                
+                <!-- STAV -->
+                <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-simple app-col-alive" (click)="onCellClicked('alive')">
+                    <div class="app-col-sort">
+                        <span>    {{ 'table.cols.alive' | translate }}</span>
+                        <mat-icon *ngIf="direction === 'desc-alive'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-alive'">arrow_upward</mat-icon>
                     </div>
                 </div>
 
@@ -339,7 +346,7 @@
             <div class="app-row" *ngFor="let record of filteredData">
                 <div class="app-col app-col-logo">
                     <a href="./library/{{ record.code }}">
-                        <img src="{{ record.logo }}" style="height: 20px;">
+                        <img src="{{ record.logo }}" style="height: 20px; width: 20px; object-fit: cover; overflow: hidden;">
                     </a>
                     <div class="app-logo-hover-text">{{ record.name }}</div>
                 </div>
@@ -347,15 +354,18 @@
                     <a href="./library/{{ record.code }}" *ngIf="translate.currentLang == 'cs'">{{ record.name }}</a>
                     <a href="./library/{{ record.code }}" *ngIf="translate.currentLang == 'en'">{{ record.name_en }}</a>
                 </div>
+                <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-code">
+                    <div>{{ record.code }}</div>
+                </div>
                 <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-url">
                     <a href="{{ record.new_client_url }}" target="_blank">{{ record.new_client_url }}</a>
+                </div>
+                <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-url">
+                    <a href="{{ record.url }}" target="_blank">{{ record.url }}</a>
                 </div>
                 <div  *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-alive">
                     <div class="app-col-alive-true" *ngIf="record.alive === true"></div>
                     <div class="app-col-alive-false" *ngIf="record.alive === false"></div>
-                </div>
-                <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-url">
-                    <a href="{{ record.url }}" target="_blank">{{ record.url }}</a>
                 </div>
                 <div *ngIf="viewAllCols  || viewTechCols" class="app-col app-col-version">
                     <a href="https://github.com/ceskaexpedice/kramerius/releases/tag/v{{ record.version }}" target="_blank">{{ record.version }}</a>

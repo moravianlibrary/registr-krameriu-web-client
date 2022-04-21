@@ -8,12 +8,17 @@
         display: flex;
         flex-direction: column;
         margin: 10px 10% 30px 10%;
+        max-width: 1300px;
         .app-card-1 {
             background-color: white;
             display: flex;
             justify-content: space-between;
             .app-title-container {
                 display: flex;
+                .app-logo {
+                    height: 80px; 
+                    margin: 20px 20px 20px 50px;
+                }
                 .app-title-title {
                     display: flex;
                     flex-direction: column;
@@ -63,7 +68,8 @@
                     font-weight: lighter;
                     .app-title-2 {
                         font-size: 14px;
-                        font-variant: all-small-caps;
+                        text-transform: uppercase;
+                        font-size: 10px;
                     }
                     .app-text-2 {
                         margin: 0 0 17px 0;
@@ -73,40 +79,56 @@
                             font-size: 15px;
                         }
                     }
+                    .app-dl-new-client-url {
+                        // display: flex;
+                        .app-dl-url-title {
+                            width: 33%;
+                        }
+                    }
                     .app-dl-kramerius {
                         display: flex;
                         .app-dl-url {
-                            width: 250px;
+                            width: 33%;
+                        }
+                        .app-dl-version {
+                            width: 33%;
                         }
                     }
                     .app-dl-documents {
                         display: flex;
                         .app-dl-documents-all {
-                            width: 250px;
+                            width: 33%;
+                        }
+                        .app-dl-documents-public {
+                            width: 33%;
                         }
                     }
                     .app-dl-pages {
                         display: flex;
                         .app-dl-pages-all {
-                            width: 250px;
+                            width: 33%;
+                        }
+                        .app-dl-pages-public {
+                            width: 33%;
                         }
                     }
                     .app-dl-recommended {
                         display: flex;
                         .app-dl-recommended-all {
-                            width: 250px;
+                            width: 33%;
+                        }
+                        .app-dl-recommended-public {
+                            width: 33%;
                         }
                     }
                     .app-dl-pdf {
-                        width: 250px;
+                        width: 33%;
                     }
                     .app-dl-time {
                         display: flex;
-                        .app-dl-time-created {
-                            width: 250px;
-                        }
-                        .app-dl-time-updated {
-                            width: 250px;
+                        width: 100%;
+                        .app-dl-time-item {
+                            width: 33%;
                         }
                     }
                     .app-dl-intro-title {
@@ -126,15 +148,20 @@
         .app-card-3 {
             background-color: whitesmoke;
              .app-contact-container {
-                margin: 20px 70px 10px 50px;
+                margin: 20px 50px 10px 50px;
                 font-weight: lighter;
                 display: flex;
                 a {
                     color: black;
                 }
-                .app-contact-item {
-                    margin: 10px 70px 30px 0;
+                .app-contact-container-row {
+                    display: flex;
+                    width: 50%;
+                    .app-contact-item {
+                        width: 50%;
+                    }
                 }
+
             }
             .app-title-3 {
                 font-weight: lighter;
@@ -143,4 +170,178 @@
             }
         }   
     }  
+}
+
+@media screen and (max-width: 1050px) {
+    .app-container {
+        .app-card {
+            margin: 0 0 0 0;
+            .app-card-2 {
+                .app-dl-container {
+                    .app-dl-body {
+                        .app-dl-new-client-url {
+                            .app-dl-url-title {
+                                width: 50%;
+                            }
+                        }
+                        .app-dl-kramerius {
+                            display: flex;
+                            .app-dl-url {
+                                width: 50%;
+                            }
+                            .app-dl-version {
+                                width: 50%;
+                            }
+                        }
+                        .app-dl-documents {
+                            display: flex;
+                            .app-dl-documents-all {
+                                width: 50%;
+                            }
+                            .app-dl-documents-public {
+                                width: 50%;
+                            }
+                        }
+                        .app-dl-pages {
+                            display: flex;
+                            .app-dl-pages-all {
+                                width: 50%;
+                            }
+                            .app-dl-pages-public {
+                                width: 50%;
+                            }
+                        }
+                        .app-dl-recommended {
+                            display: flex;
+                            .app-dl-recommended-all {
+                                width: 50%;
+                            }
+                            .app-dl-recommended-public {
+                                width: 50%;
+                            }
+                        }
+                        .app-dl-pdf {
+                            width: 50%;
+                        }
+                    }
+                } 
+            }
+            .app-card-3 {
+                .app-contact-container {
+                    margin: 20px 30px 10px 50px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .app-container {
+        .app-card {
+            margin: 0 0 30px 0;
+            .app-card-2 {
+                .app-dl-container {
+                    .app-dl-body {
+                        .app-dl-new-client-url {
+                            .app-dl-url-title {
+                                width: 100%;
+                            }
+                        }
+                        .app-dl-kramerius {
+                            flex-direction: column;
+                            .app-dl-url {
+                                width: 100%;
+                            }
+                            .app-dl-version {
+                                width: 100%;
+                            }
+                        }
+                        .app-dl-documents {
+                            flex-direction: column;
+                            .app-dl-documents-all {
+                                width: 100%;
+                            }
+                            .app-dl-documents-public {
+                                width: 100%;
+                            }
+                        }
+                        .app-dl-pages {
+                            flex-direction: column;
+                            .app-dl-pages-all {
+                                width: 100%;
+                            }
+                            .app-dl-pages-public {
+                                width: 100%;
+                            }
+                        }
+                        .app-dl-recommended {
+                            flex-direction: column;
+                            .app-dl-recommended-all {
+                                width: 100%;
+                            }
+                            .app-dl-recommended-public {
+                                width: 100%;
+                            }
+                        }
+                        .app-dl-pdf {
+                            width: 100%;
+                        }
+                    }
+                } 
+            }
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .app-container {
+        .app-card {
+            .app-card-1 {
+                .app-title-container {
+                    .app-logo {
+                        height: 60px; 
+                        margin: 20px 10px 10px 30px;
+                    }
+                    .app-title-title {
+                        .app-title-name {
+                            margin: 25px 15px 0 15px;
+                            font-size: 20px;
+                        }
+                        .app-title-url {
+                            font-size: 13px;
+                            font-weight: lighter;
+                        }
+                    }      
+                }
+            }
+            .app-card-2 {
+                .app-dl-container {
+                    margin: 20px 30px;
+                    .app-dl-body {
+                        .app-dl-time {
+                            flex-direction: column;
+                            width: 100%;
+                            .app-dl-time-item {
+                                width: 100%;
+                                margin-bottom: 10px;
+                            }
+                        }
+                    } 
+                } 
+            }
+            .app-card-3 {
+                .app-contact-container {
+                    margin: 20px 30px;
+                    flex-direction: column;
+                    .app-contact-container-row {
+                        width: 100%;
+                        .app-contact-item {
+                            width: 50%;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+             
+        }
+    }
 }
