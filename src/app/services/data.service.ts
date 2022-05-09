@@ -9,7 +9,7 @@ export class  DataService {
         for (const item of data) {
             this.data.push(Record.build(item));
         }
-        console.log('a', this.data[0]);
+        // console.log('a', this.data[0]);
     }
 
     getRecordByCode(code: string) {
@@ -37,6 +37,24 @@ export class  DataService {
         for (const rec of this.data) {
             if (rec.documents_public) {
                 i = i + rec.documents_public;
+            }
+        }
+        return i;
+    }
+    getAllPagesCount() {
+        let i = 0;
+        for (const rec of this.data) {
+            if (rec.pages_all) {
+                i = i + rec.pages_all;
+            }
+        }
+        return i;
+    }
+    getPublicPagesCount() {
+        let i = 0;
+        for (const rec of this.data) {
+            if (rec.pages_public) {
+                i = i + rec.pages_public;
             }
         }
         return i;

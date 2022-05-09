@@ -1,5 +1,5 @@
 .app-header-container {
-    background-color: #276690;
+    background-color: #4896d1;
     color: white;
     display: flex;
     width: 100%;
@@ -16,13 +16,13 @@
     .app-header-links {
         display: flex;
         justify-content: space-between;
+        a {
+            color: white;
+            text-decoration: none;
+        }
         .app-about, .app-table {
             margin: 15px 20px;
             color: white;
-            a {
-                color: white;
-                text-decoration: none;
-            }
         }
         .app-lang {
             margin: 15px 25px;
@@ -52,6 +52,7 @@
             .app-lang {
                 margin: 15px 20px;
             }
+            
         }
     }  
 }
@@ -67,16 +68,13 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            a {
-                padding: 6px;
-                // &:hover {
-                //     background: #ffffff21;
-                // }
+            .app-about, .app-table  {
+                margin: 15px 20px;
             }
             &.app-expanded {
-                order: 1;
+                order: 1; 
                 display: flex;
-                background-color: #276690;
+                background-color: #3586bb;
                 width: 100%;
                 z-index: 2;
             }

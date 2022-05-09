@@ -18,8 +18,8 @@
       "code": "Code",
       "version": "Version",
       "alive": "Alive",
-      "new_client_url": "Digital library",
-      "url": "Kramerius",
+      "new_client_url": "Kramerius - client",
+      "url": "Kramerius - API",
       "documents_all": "Documents",
       "documents_public": "Public documents",
       "pages_all": "Pages",
@@ -63,7 +63,15 @@
     "statistic-part2": " digital libraries. These contain total of ",
     "statistic-part3": " digital documents, of which ",
     "statistic-part4": " are publicly available.",
-    "button": "To the table"
+    "button": "To the table",
+    "statistic-libraries": "libraries",
+    "statistic-documents": "documents",
+    "statistic-documents-public": "public  documents",
+    "statistic-pages": "pages",
+    "statistic-pages-public": "public pages",
+    "statistic-includes": "includes",
+    "statistic-public": "public",
+    "statistic": "Statistic"
   },
   "header": {
     "title": "Kramerius registry",
@@ -72,6 +80,7 @@
   },
   "detail": {
     "intro": "Introduction",
-    "right_msg": "Right message"
+    "right_msg": "Right message",
+    "display_on_map": "Display on map"
   }
 }

@@ -29,7 +29,7 @@ export class DetailComponent implements OnInit {
 
   setDetail(data:any) {
     this.detail = data;
-    console.log('detail: ', this.detail)
+    // console.log('detail: ', this.detail)
   }
 
   toggleExpandIntro() {
@@ -48,11 +48,11 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.route.params.subscribe(params => {
-      console.log(params);
+      // console.log(params);
       const code = params['code']; 
       this.code = code;
       this.record = this.dataService.getRecordByCode(code);
-      console.log(this.record)
+      // console.log(this.record)
       this.http.get(this.baseUrl + '/libraries/' + this.code).subscribe((data: any) => {
         this.setDetail(data);
         this.days = this.getDiffDays(this.detail['updated_at'], Date.now())

@@ -44,12 +44,17 @@
             <div class="app-dl-container">
                 <!-- <div class="app-title app-dl-title">O digitální knihovně</div> -->
                 <div class="app-dl-body">
-                    <div class="app-dl-new-client-url" *ngIf="detail.new_client_url">
-                        <div class="app-title-2 app-dl-url-title">{{'table.cols.new_client_url' | translate}}</div>
-                        <div class="app-text-2 app-dl-url-text">
-                            <a href="{{detail.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
+                    <div class="app-dl-kramerius"  *ngIf="record.new_client_url">
+                        <div class="app-dl-url">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.new_client_url' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">
+                                <a href="{{record.new_client_url}}" target="_blank">{{record.new_client_url}}</a>
+                            </div>
                         </div>
-                        <div></div>
+                        <div class="app-dl-version"  *ngIf="detail.version">
+                            <div class="app-title-2 app-dl-url-title">{{'table.cols.version' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.new_client_version}}</div>
+                        </div>
                     </div>
                     <div class="app-dl-kramerius"  *ngIf="detail.url">
                         <div class="app-dl-url">
@@ -156,7 +161,7 @@
                         <!-- <div>{{detail.longitude}}</div>
                         <div>{{detail.latitude}}</div> -->
                         <!-- <a href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">Zobraz v mapě</a> -->
-                        <a href="https://www.google.com/maps/search/{{detail.name}}" target="_blank">Zobraz na mapě</a>
+                        <a href="https://www.google.com/maps/search/{{detail.name}}" target="_blank">{{'detail.display_on_map' | translate}}</a>
                     </div> 
                 </div>
                 <div class="app-contact-container-row">

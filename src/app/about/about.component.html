@@ -1,9 +1,43 @@
 <div class="app-container">
-    <p class="app-text">{{ 'home.text' | translate }}</p>
-    <p class="app-text">{{ 'home.statistic-part1' | translate }} {{ libraries }}{{ 'home.statistic-part2' | translate }} {{ documents | number:'':'cs'}}{{ 'home.statistic-part3' | translate }} {{ documents_public | number:'':'cs'}} {{ 'home.statistic-part4' | translate }}  </p>
-    <!-- <div class="app-button">
-        <a href="/table">
-            <button>{{ 'home.button' | translate }}</button>
-        </a>
-    </div> -->
+    <div class="app-col1">
+        <div class="app-title">{{ 'header.about' | translate }}</div>
+        <div class="app-text">{{ 'home.text' | translate }}</div>
+        <div class="app-picture1">
+            <a href="https://www.digitalniknihovna.cz/" target="_blank">
+                <img src="assets/pictures/logo_main_cs.png">
+            </a> 
+        </div>
+    </div>
+    <div class="app-col2">
+        <div class="app-title">{{ 'home.statistic' | translate }}</div>
+        <!-- <p class="app-text">{{ 'home.statistic-part1' | translate }} 
+                            {{ libraries }}
+                            {{ 'home.statistic-part2' | translate }} 
+                            {{ documents | number:'':'cs'}}
+                            {{ 'home.statistic-part3' | translate }} 
+                            {{ documents_public | number:'':'cs'}} 
+                            {{ 'home.statistic-part4' | translate }}
+        </p> -->
+        <div class="app-row">
+            <div class="app-icon"><mat-icon>home</mat-icon></div>
+            <div class="app-number">{{ libraries }}</div>
+            <div class="app-text">{{ 'home.statistic-libraries' | translate }}</div>
+        </div>
+        <div class="app-row">
+            <div class="app-icon"><mat-icon>library_books</mat-icon></div>
+            <div class="app-number">{{ documents | number:'':'cs' }}</div>
+            <div class="app-text">{{ 'home.statistic-documents' | translate }}</div>
+            <div class="app-text">{{ 'home.statistic-includes' | translate }}</div>
+            <div class="app-number">{{ documents_public | number:'':'cs' }}</div>
+            <div class="app-text">{{ 'home.statistic-public' | translate }}</div>
+        </div>
+        <div class="app-row">
+            <div class="app-icon"><mat-icon>article</mat-icon></div>
+            <div class="app-number">{{ pages | number:'':'cs' }} </div>
+            <div class="app-text">{{ 'home.statistic-pages' | translate }}</div>
+            <div class="app-text">{{ 'home.statistic-includes' | translate }}</div>
+            <div class="app-number">{{ pages_public | number:'':'cs' }}</div>
+            <div class="app-text">{{ 'home.statistic-public' | translate }}</div>
+        </div>
+    </div>
 </div>

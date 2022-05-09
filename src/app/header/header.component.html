@@ -1,10 +1,10 @@
 <div class="app-header-container">
     <div class="app-header-title">
-        <a href="/">{{'header.title' | translate}}</a>
+        <a [routerLink]="['/']">{{'header.title' | translate}}</a>
     </div>
     <div class="app-header-links" [class.app-expanded]="isExpanded">
-        <div class="app-table"><a href="/">{{ 'header.table' | translate }}</a></div>
-        <div class="app-about"><a href="/about">{{ 'header.about' | translate }}</a></div>
+        <a [routerLink]="['/']"><div class="app-table">{{ 'header.table' | translate }}</div></a>
+        <a [routerLink]="['/about']"><div class="app-about">{{ 'header.about' | translate }}</div></a>
         <div class="app-lang" (click)="toggleLanguage()">{{ displayLanguage }}</div>
     </div>
     <!-- HAMBURGER MENU -->

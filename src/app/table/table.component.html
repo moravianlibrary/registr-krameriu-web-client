@@ -80,12 +80,13 @@
                     </div>
                 </div>
 
-                <!-- URL UI -->
-                <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-simple app-col-url"  (click)="onCellClicked('new_client_url')">
+                <!-- STAV -->
+                <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-simple app-col-alive" (click)="onCellClicked('alive')">
                     <div class="app-col-sort">
-                        <span>{{ 'table.cols.new_client_url' | translate }}</span>
-                        <mat-icon *ngIf="direction === 'desc-new_client_url'">arrow_downward</mat-icon>
-                        <mat-icon *ngIf="direction === 'asc-new_client_url'">arrow_upward</mat-icon>
+                        <!-- <span>    {{ 'table.cols.alive' | translate }}</span> -->
+                        <div class="app-col app-col-alive app-col-alive-grey"></div>
+                        <mat-icon *ngIf="direction === 'desc-alive'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-alive'">arrow_upward</mat-icon>
                     </div>
                 </div>
 
@@ -97,18 +98,27 @@
                         <mat-icon *ngIf="direction === 'asc-url'">arrow_upward</mat-icon>
                     </div>
                 </div>
-                
-                <!-- STAV -->
-                <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-simple app-col-alive" (click)="onCellClicked('alive')">
+
+                <!-- VERZE KR -->
+                <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-simple app-col-version" (click)="onCellClicked('version')">
                     <div class="app-col-sort">
-                        <span>    {{ 'table.cols.alive' | translate }}</span>
-                        <mat-icon *ngIf="direction === 'desc-alive'">arrow_downward</mat-icon>
-                        <mat-icon *ngIf="direction === 'asc-alive'">arrow_upward</mat-icon>
+                        <span>{{ 'table.cols.version' | translate }}</span>
+                        <mat-icon *ngIf="direction === 'desc-version'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-version'">arrow_upward</mat-icon>
                     </div>
                 </div>
 
-                <!-- VERZE -->
-                <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-simple app-col-version" (click)="onCellClicked('version')">
+                <!-- URL UI -->
+                <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-simple app-col-url"  (click)="onCellClicked('new_client_url')">
+                    <div class="app-col-sort">
+                        <span>{{ 'table.cols.new_client_url' | translate }}</span>
+                        <mat-icon *ngIf="direction === 'desc-new_client_url'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-new_client_url'">arrow_upward</mat-icon>
+                    </div>
+                </div>
+
+                <!-- VERZE UI -->
+                <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-simple app-col-version" (click)="onCellClicked('new_client_version')">
                     <div class="app-col-sort">
                         <span>{{ 'table.cols.version' | translate }}</span>
                         <mat-icon *ngIf="direction === 'desc-version'">arrow_downward</mat-icon>
@@ -351,24 +361,27 @@
                     <div class="app-logo-hover-text">{{ record.name }}</div>
                 </div>
                 <div class="app-col app-col-name">
-                    <a href="./library/{{ record.code }}" *ngIf="translate.currentLang == 'cs'">{{ record.name }}</a>
-                    <a href="./library/{{ record.code }}" *ngIf="translate.currentLang == 'en'">{{ record.name_en }}</a>
+                    <a [routerLink]="['/library/', record.code ]" *ngIf="translate.currentLang == 'cs'">{{ record.name }}</a>
+                    <a [routerLink]="['/library/', record.code ]" *ngIf="translate.currentLang == 'en'">{{ record.name_en }}</a>
                 </div>
                 <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-code">
                     <div>{{ record.code }}</div>
-                </div>
-                <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-url">
-                    <a href="{{ record.new_client_url }}" target="_blank">{{ record.new_client_url }}</a>
-                </div>
-                <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-url">
-                    <a href="{{ record.url }}" target="_blank">{{ record.url }}</a>
                 </div>
                 <div  *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-alive">
                     <div class="app-col-alive-true" *ngIf="record.alive === true"></div>
                     <div class="app-col-alive-false" *ngIf="record.alive === false"></div>
                 </div>
+                <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-url">
+                    <a href="{{ record.url }}" target="_blank">{{ record.url }}</a>
+                </div>
                 <div *ngIf="viewAllCols  || viewTechCols" class="app-col app-col-version">
                     <a href="https://github.com/ceskaexpedice/kramerius/releases/tag/v{{ record.version }}" target="_blank">{{ record.version }}</a>
+                </div>
+                <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-url">
+                    <a href="{{ record.new_client_url }}" target="_blank">{{ record.new_client_url }}</a>
+                </div>
+                <div *ngIf="viewAllCols  || viewTechCols" class="app-col app-col-version">
+                    <div *ngIf="record.new_client_version">{{ record.new_client_version }}</div>
                 </div>
                 <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-collections">
                     <div class="app-col-number1">{{record.collections | number:'':'cs'}}</div>

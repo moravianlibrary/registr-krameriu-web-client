@@ -12,8 +12,8 @@ import { Record } from '../models/record.model';
 export class TableComponent implements OnInit {
   
   data: Record[] = [];
-  direction = 'desc-documents_all';
-  value = 'documents_all';
+  direction = '';
+  value = '';
   filteredData: Record[] = [];
   filter: string = '';
   viewAllCols: boolean = true;
@@ -36,13 +36,13 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.translate.onLangChange.subscribe((value) => {
-
-      console.log('new lang', value.lang);
-      this.onSortChanged();
+      // console.log('new lang', value.lang);    
       this.filter = ''
-      this.filteredData = this.data.filter(p => p.name.includes(this.filter))
+      this.filteredData = this.data.filter(p => p.name.includes(this.filter));
+      this.onSortChanged();
     });
-
+    this.direction = 'desc-documents_all';
+    this.value = 'documents_all';
     this.onSortChanged();
   }
   
@@ -51,10 +51,14 @@ export class TableComponent implements OnInit {
       this.filteredData = this.data.filter(record => {
         return (
           record.name.toLowerCase().includes(filter.toLowerCase()) ||
-          record.code.toLowerCase().includes(filter.toLowerCase()) ||
-          record.url.toLowerCase().includes(filter.toLowerCase())
+          record.code.toLowerCase().includes(filter.toLowerCase())
         );
       })
+      // this.filteredData.map(record => {
+      //   return (
+      //     record.name.replace(new RegExp(filter, "gi"), (match) => match.toUpperCase())
+      //   );
+      // })
     } else {
       this.filteredData = this.data.filter(record => {
         return (
@@ -64,29 +68,27 @@ export class TableComponent implements OnInit {
         );
       })
     }
-    this.onSortChanged();
-    // this.filteredData = this.filteredData.map(record => {
-    //   record.name = record.name.replace(filter, (match) => match.toUpperCase()) 
-    //   return record;
-    // })
-   
     
-    
-
     // if (filter.length > 0) {
     //   this.filteredData.map(record => {
     //     record.name.replace(new RegExp(filter, "gi"), (match) => match.toUpperCase())
     //     return record;})
     // }
-      // console.log(filter)
-      // for (const record of this.filteredData) {
-      //   console.log((record.name).replace(new RegExp(filter, "gi"), (match) => {
-      //     return match.toUpperCase();
-      //   }));
-      //   (record.name).replace(new RegExp(filter, "gi"), (match) => {
-      //     return match.toUpperCase();
-      //   })
-      // }
+    // console.log(filter)
+    
+    // this.filteredData.forEach(record => {
+    //   record.name.replace(new RegExp(filter, "gi"), (match) => match.toUpperCase())
+    //   return record;})
+    
+    // for (const record of this.filteredData) {
+    //   console.log((record.name).replace(new RegExp(filter, "gi"), (match) => {
+    //     return match.toUpperCase();
+    //   }));
+    //   (record.name).replace(new RegExp(filter, "gi"), (match) => {
+    //     return match.toUpperCase();
+    //   })
+    // }
+    this.onSortChanged();
   }
 
   viewSome() {
@@ -122,22 +124,36 @@ export class TableComponent implements OnInit {
     this.display_public = false;
     this.display_both = false;
     this.display = 0;
+    this.onDisplayChanged();
   }
   displayPublic() {
     this.display_all = false;
     this.display_public = true;
     this.display_both = false;
     this.display = 1;
+    this.onDisplayChanged();
   }
   displayBoth() {
     this.display_all = false;
     this.display_public = false;
     this.display_both = true;
     this.display = 2;
+    this.onDisplayChanged();
+  }
+  onDisplayChanged() {
+    if (this.display_public) {
+      this.value = this.value.split('_')[0] + '_public' 
+      this.direction = this.direction.split('_')[0] + '_public'
+      // console.log(this.direction)  
+    } else {
+      this.value = this.value.split('_')[0] + '_all' 
+      this.direction = this.direction.split('_')[0] + '_all'
+    }
+    this.onSortChanged();
   }
 
   onCellClicked(value: any) {
-    console.log("clicked cell: ", value, this.display_public, this.direction)
+    // console.log("clicked cell: ", value, this.display_public, this.direction)
     if (this.direction === "asc-"+value) {
       this.direction = 'desc-'+value;
     } else if (this.direction === "desc-"+value) {
@@ -190,7 +206,8 @@ export class TableComponent implements OnInit {
             })
       } else if ((value === "url") ||
           (value === "new_client_url") ||
-          (value === "version")
+          (value === "version") ||
+          (value === "new_client_version")
           ) {
             this.filteredData.sort((a,b) => {
               let x = "";

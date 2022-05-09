@@ -12,11 +12,14 @@ export class AboutComponent implements OnInit {
   documents: number;
   documents_public: number;
   pages: number;
+  pages_public: number;
 
   constructor(public dataService: DataService) { 
     this.libraries = dataService.data.length;
     this.documents = dataService.getAllDocCount();
     this.documents_public = dataService.getPublicDocCount();
+    this.pages = dataService.getAllPagesCount();
+    this.pages_public = dataService.getPublicPagesCount();
   }
 
   ngOnInit(): void {

@@ -8,6 +8,7 @@ export class Record {
     version: string;
     url: string;
     new_client_url: string;
+    new_client_version: string;
     logo: string;
     email: string;
     web: string;
@@ -73,6 +74,7 @@ export class Record {
         record.version = source['version'];
         record.url = source['url'];
         record.new_client_url = source['new_client_url'];
+        record.new_client_version = source['new_client_version'];
         record.logo = source['logo'];
         record.email = source['email'];
         record.web = source['web'];

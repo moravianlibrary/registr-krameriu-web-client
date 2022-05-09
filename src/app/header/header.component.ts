@@ -7,13 +7,19 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  displayLanguage: string = "English";
+  displayLanguage: string = '';
   isExpanded: boolean = false;
   constructor(public translate: TranslateService) { 
 
   }
 
   ngOnInit(): void {
+
+    if (this.translate.currentLang == 'cs') {
+      this.displayLanguage = "English"
+    } else {
+      this.displayLanguage = "Čeština"
+    }
   }
 
   toggle() {

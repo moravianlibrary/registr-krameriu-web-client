@@ -1,30 +1,78 @@
 .app-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 80px 30px 30px 30px;
+    .app-col1 {
+        margin: 0 15px;
+        width: 50%;
+    }
+    .app-col2 {
+        margin: 0 15px;
+        width: 50%;
+    }
     .app-title {
         display: flex;
-        // justify-content: center;
-        margin: 40px;
-        font-size: 35px;
-        color: #276690
+        margin: 20px 0px;
+        font-size: 20px;
+        color: #4896d1;
     }
     .app-text {
         display: flex;
         
         // justify-content: center;
     }
-    .app-button {
+    .app-picture1 {
+        // background-image: url('/assets/pictures/logo_main_cs.png');
+        max-width: 100%;
+        height: 100%;
+        object-fit: contain;
+        a {
+            img {
+                width: 320px;
+                margin: 10px 0;
+            }
+        }
+    }
+    .app-row {
         display: flex;
-        justify-content: center;
-        margin: 30px;
-        button {
-            background-color: #276690;
-            color: white;
-            font-size: larger;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+        flex-direction: row;
+        align-items: center;
+        .app-icon {
+            margin-right: 5px;
+            margin-top: 3px;
+        }
+        .app-number {
+            margin-right: 5px;
+            font-weight: bolder;
+        }
+        .app-text {
+            margin-right: 5px;
+        }
+    }
+}
+@media screen and (max-width: 1050px) {
+    .app-container {
+        flex-direction: column;
+        .app-col1 {
+            margin: 0px 15px 30px 15px;
+            width: 100%;
+        }
+        .app-col2 {
+            margin: 0 15px;
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 420px) {
+    .app-container {
+        padding: 60px 10px 10px 10px;
+        .app-picture1 {
+            a {
+                img {
+                    width: 260px;
+                    margin: 10px 0;
+                }
+            }
         }
     }
 }
