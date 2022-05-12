@@ -27,7 +27,6 @@
                     </div>
                 </div>       
             </div>
-
             <div class="app-filters-small-screen">
                 <div class="app-filter line1">
                     <!-- <div class="app-button-title">{{ 'table.filter.filter' | translate }}</div> -->
@@ -56,9 +55,12 @@
                           </div>
                     </div>
                 </div>        
-            </div>
-  
-            <div class="app-row app-row-first">
+            </div>  
+        </div>
+
+        <!-- FIRST ROW -->
+        <div class="app-first-row">
+            <div class="app-row-first">
                 <!-- LOGO -->
                 <div class="app-col app-col-logo"></div>
                 
@@ -121,8 +123,8 @@
                 <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-simple app-col-version" (click)="onCellClicked('new_client_version')">
                     <div class="app-col-sort">
                         <span>{{ 'table.cols.version' | translate }}</span>
-                        <mat-icon *ngIf="direction === 'desc-version'">arrow_downward</mat-icon>
-                        <mat-icon *ngIf="direction === 'asc-version'">arrow_upward</mat-icon>
+                        <mat-icon *ngIf="direction === 'desc-new_client_version'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-new_client_version'">arrow_upward</mat-icon>
                     </div>
                 </div>
 
@@ -347,9 +349,8 @@
                         <mat-icon *ngIf="direction === 'asc-model_picture_public'">arrow_upward</mat-icon>
                     </div>
                 </div>
-            </div>               
+            </div>  
         </div>
-
 
         <!-- TABULKA -->
         <div class="app-scrollable" >
@@ -361,8 +362,8 @@
                     <div class="app-logo-hover-text">{{ record.name }}</div>
                 </div>
                 <div class="app-col app-col-name">
-                    <a [routerLink]="['/library/', record.code ]" *ngIf="translate.currentLang == 'cs'">{{ record.name }}</a>
-                    <a [routerLink]="['/library/', record.code ]" *ngIf="translate.currentLang == 'en'">{{ record.name_en }}</a>
+                    <a [routerLink]="['/library/', record.code ]" *ngIf="translate.currentLang == 'cs'"><div class="app-col app-col-name">{{ record.name }}</div></a>
+                    <a [routerLink]="['/library/', record.code ]" *ngIf="translate.currentLang == 'en'"><div class="app-col app-col-name">{{ record.name_en }}</div></a>
                 </div>
                 <div *ngIf="viewAllCols || viewTechCols" class="app-col app-col-code">
                     <div>{{ record.code }}</div>

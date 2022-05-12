@@ -103,17 +103,21 @@
                         <div class="app-text-2 app-dl-url-text">{{detail.pdf_max | number:'':'cs'}}</div>
                     </div>
                     <div class="app-dl-time">
-                        <div class="app-dl-time-item app-dl-time-created">
-                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.created_at' | translate}}</div>
-                            {{detail.created_at | date: 'medium':'':'cs'}}
+                        <div class="app-dl-time-1">
+                            <div class="app-dl-time-item app-dl-time-created">
+                                <div class="app-title-2 app-dl-url-title">{{ 'table.cols.created_at' | translate}}</div>
+                                <div class="app-text-2 app-dl-url-text">{{detail.created_at | date: 'medium':'':'cs'}}</div>
+                            </div>
+                            <div class="app-dl-time-item app-dl-time-updated">
+                                <div class="app-title-2 app-dl-url-title">{{ 'table.cols.updated_at' | translate}}</div>
+                                <div class="app-text-2 app-dl-url-text">{{detail.updated_at | date: 'medium':'':'cs'}}</div>
+                            </div>
                         </div>
-                        <div class="app-dl-time-item app-dl-time-updated">
-                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.updated_at' | translate}}</div>
-                            {{detail.updated_at | date: 'medium':'':'cs'}}
-                        </div>
-                        <div class="app-dl-time-item app-dl-time-days">
-                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.days' | translate}}</div>
-                            {{days | number:'1.0-0'}}
+                        <div class="app-dl-time-2">
+                            <div class="app-dl-time-item app-dl-time-days">
+                                <div class="app-title-2 app-dl-url-title">{{ 'table.cols.days' | translate}}</div>
+                                <div class="app-text-2 app-dl-url-text">{{days | number:'1.0-0'}}</div>
+                            </div>
                         </div>
                     </div>
 

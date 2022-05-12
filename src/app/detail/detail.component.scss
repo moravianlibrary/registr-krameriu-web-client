@@ -122,8 +122,19 @@
                     .app-dl-time {
                         display: flex;
                         width: 100%;
-                        .app-dl-time-item {
+                        .app-dl-time-1 {
+                            display: flex;
+                            width: 66%;
+                            .app-dl-time-item {
+                                width: 50%;
+                            }
+                        }
+                        .app-dl-time-2 {
+                            display: flex;
                             width: 33%;
+                            .app-dl-time-item {
+                                width: 100%;
+                            }
                         }
                     }
                     .app-dl-intro-title {
@@ -218,24 +229,68 @@
                         .app-dl-pdf {
                             width: 50%;
                         }
+                        .app-dl-time {
+                            flex-direction: column;
+                            .app-dl-time-1 {
+                                display: flex;
+                                width: 100%;
+                                .app-dl-time-item {
+                                    width: 50%;
+                                }
+                            }
+                            .app-dl-time-2 {
+                                display: flex;
+                                width: 100%;
+                                .app-dl-time-item {
+                                    width: 100%;
+                                }
+                            }
+                        }
                     }
                 } 
             }
             .app-card-3 {
                 .app-contact-container {
-                    margin: 20px 30px 10px 50px;
+                    margin: 20px 30px;
+                    flex-direction: column;
+                    .app-contact-container-row {
+                        width: 100%;
+                        .app-contact-item {
+                            width: 50%;
+                            margin-bottom: 10px;
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 650px) {
     .app-container {
         .app-card {
-            margin: 0 0 30px 0;
+            // margin: 0 0 30px 0;
+            .app-card-1 {
+                .app-title-container {
+                    .app-logo {
+                        height: 60px; 
+                        margin: 20px 10px 10px 30px;
+                    }
+                    .app-title-title {
+                        .app-title-name {
+                            margin: 25px 15px 0 15px;
+                            font-size: 20px;
+                        }
+                        .app-title-url {
+                            font-size: 13px;
+                            font-weight: lighter;
+                        }
+                    }      
+                }
+            }
             .app-card-2 {
                 .app-dl-container {
+                    margin: 20px 30px;
                     .app-dl-body {
                         .app-dl-new-client-url {
                             .app-dl-url-title {
@@ -281,46 +336,24 @@
                         .app-dl-pdf {
                             width: 100%;
                         }
-                    }
-                } 
-            }
-        }
-    }
-}
-@media screen and (max-width: 600px) {
-    .app-container {
-        .app-card {
-            .app-card-1 {
-                .app-title-container {
-                    .app-logo {
-                        height: 60px; 
-                        margin: 20px 10px 10px 30px;
-                    }
-                    .app-title-title {
-                        .app-title-name {
-                            margin: 25px 15px 0 15px;
-                            font-size: 20px;
-                        }
-                        .app-title-url {
-                            font-size: 13px;
-                            font-weight: lighter;
-                        }
-                    }      
-                }
-            }
-            .app-card-2 {
-                .app-dl-container {
-                    margin: 20px 30px;
-                    .app-dl-body {
                         .app-dl-time {
                             flex-direction: column;
-                            width: 100%;
-                            .app-dl-time-item {
-                                width: 100%;
-                                margin-bottom: 10px;
+                            .app-dl-time-1 {
+                                flex-direction: column;
+                                .app-dl-time-item {
+                                    width: 100%;
+                                }
                             }
+                            .app-dl-time-2 {
+                                display: flex;
+                                width: 100%;
+                                .app-dl-time-item {
+                                    width: 100%;
+                                }
+                            }
+    
                         }
-                    } 
+                    }
                 } 
             }
             .app-card-3 {
@@ -329,14 +362,14 @@
                     flex-direction: column;
                     .app-contact-container-row {
                         width: 100%;
+                        flex-direction: column;
                         .app-contact-item {
-                            width: 50%;
-                            margin-bottom: 10px;
+                            width: 100%;
+                            margin-bottom: 20px;
                         }
                     }
                 }
             }
-             
         }
     }
 }

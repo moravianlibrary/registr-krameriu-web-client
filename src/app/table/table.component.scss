@@ -6,12 +6,11 @@
         min-width: 100%;
         // overflow-x: auto;
         .app-row-header {
-            height: 30px;
-            background-color: white;
-            position: sticky;
-            top: 68px;
-            z-index: 1;
-            padding: 35px 0 0 0;
+            // height: 30px;
+            // background-color: white;
+            // position: sticky;
+            // top: 102px;
+            
             .app-filters {
                 padding: 10px 25px;
                 position: fixed;
@@ -19,6 +18,7 @@
                 background-color: #EFF6FB;
                 top: 50px;
                 display: flex;
+                z-index: 2;
                 .input {
                     padding: 0 15px 0 10px;
                     margin: 0 15px 0 0px;
@@ -71,83 +71,67 @@
             .app-filters-small-screen {
                 display: none;
             }
-            .app-col {
-                color: #64696d;
-                // font-weight: bolder;
-            }
-            .app-col-simple {
-                cursor: pointer;
-                user-select: none;
-            }
-            .app-col-double  {
-                cursor: pointer;
-                user-select: none;
-            }
-            .app-col-sort {
+  
+        }
+        .app-first-row {
+            position: sticky;
+            top: 100px;
+            z-index: 2;
+            .app-row-first {
                 display: flex;
-                justify-content: flex-start;
-                padding-top: 3px;
-            }
-            .app-col-sort-center {
-                display: flex;
-                justify-content: center;
-                padding-top: 3px;
+                border-bottom: 1px solid rgb(175, 175, 175);
+                height: 30px;
+                line-height: 30px;
+                background-color: white;
+                color: #737373;
             }
             mat-icon {
-                margin: 3px 0px 0px 5px;
+                margin: 7px 0px 0px 5px;
                 font-size: 15px;
                 width: auto;
                 height: auto;
             }
-            .app-col-sort-all-public {
+            .app-col-sort {
                 display: flex;
-                justify-content: space-between;
-                .app-col-documents_all {
-                    display: flex;
-                    flex-direction: row;
-                    font-size: 13px;
-                    font-weight: normal;
-                    cursor: pointer;
-                    user-select: none;
-                    mat-icon {
-                        font-size: 13px;
-                        width: auto;
-                        height: auto;
-                    }
-                    // width: 75px;
-                }
-                .app-col-documents_public {
-                    display: flex;
-                    flex-direction: row;
-                    font-size: 13px;
-                    font-weight: normal;
-                    cursor: pointer;
-                    user-select: none;
-                    mat-icon {
-                        font-size: 13px;
-                        width: auto;
-                        height: auto;
-                    }
-                    // width: 75px;
-                }
-            }   
+                justify-content: flex-start;
+                cursor: pointer;
+                user-select: none;
+            }
+            .app-col-sort-center {
+                display: flex;
+                justify-content: center;
+                cursor: pointer;
+                user-select: none;
+            }
+            // .app-col-name {
+            //     padding: 0 0 0 10px;
+            // }
         }
+
         .app-scrollable {
             height: calc(100% - 80px);
             width: fit-content;
-            padding: 67px 0 0 0;
+            padding: 100px 0 0 0;
             min-width: 100%;
+            .app-row {
+                display: flex; 
+                border-bottom: 1px solid rgb(216, 216, 216);
+                height: 30px;
+                line-height: 30px;
+            }
+            .app-col {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
         }
-        .app-row {
-            display: flex;  
-            border-bottom: 1px solid rgb(216, 216, 216);
-        }
+
         .app-row:hover:not(.app-row-first) {
             border-bottom: 1px solid rgb(175, 175, 175);
             background-color: rgb(236, 236, 236);
         }
         .app-col {
-            padding: 5px 0px 0 5px;       
+            padding: 0px 0px 0 5px;       
         }
         .app-col-logo {
             position: sticky;
@@ -155,10 +139,11 @@
             width: 30px;
             background-color: white;
             display: flex;
+            margin: 0 10px 0 0;
             // overflow: hidden;
             // z-index: 0;
             a img {
-                padding: 0 0 0 5px;
+                padding: 5px 5px 0 5px;
                 // overflow: hidden;
 
             }
@@ -167,10 +152,11 @@
             background-color: rgb(236, 236, 236);
 
         }
-        .app-col-logo .app-logo-hover-text {
+        .app-logo-hover-text {
             visibility: hidden;
+            overflow: auto;
             position: absolute;
-            z-index: 1;
+            z-index: 2;
             width: 200px;
             margin: 0 0 0 35px;
             padding: 5px;
@@ -179,19 +165,19 @@
             color: white;
         }
 
-        .app-col-logo:hover .app-logo-hover-text {
+        .app-col-logo:hover .app-logo-hover-text:hover {
             visibility: visible;
         }
         .app-col-name {
-            width: 280px;
-            margin: 0 0 0 0px;
+            width: 300px;
+            padding: 0 10px 0px 0px;
             a {
                 color: #000000;
                 text-decoration: none;
             }
         }
         .app-col-code {
-            width: 50px;
+            width: 55px;
         }
         .app-col-alive {
             width: 30px;
@@ -202,21 +188,21 @@
                 height: 12px;
                 border-radius: 50%;
                 background: #36b11c;
-                margin: 4px 0 0 0;
+                margin: 9px 0 0 0;
             }
             .app-col-alive-false {
                 width: 12px;
                 height: 12px;
                 border-radius: 50%;
                 background: #b11c1c;
-                margin: 4px 0 0 0;
+                margin: 9px 0 0 0;
             }
             .app-col-alive-grey {
                 width: 7px;
-                height: 7px;
+                height: 12px;
                 border-radius: 50%;
-                background: #7f7f7f;
-                margin: 4px 0 0 0;
+                background: #aeaaaa;
+                margin: 9px 0 0 0;
             }
         }
         .app-col-url {
