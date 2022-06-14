@@ -28,11 +28,13 @@
         "recommended_all": "Počet doporučených dokumentů",
         "recommended_public": "Počet veřejných doporučených dokumentů",
         "pdf_max": "Maximální počet stran pro generování pdf",
-        "created_at": "Vytvořeno",
-        "updated_at": "Poslední update",
+        "created_at": "Záznam vytvořen",
+        "updated_at": "Poslední update záznamu",
         "days": "Počet dnů od poslední změny",
         "all": "Všechny",
+        "model": "Model",
         "public": "Veřejné",
+        "private": "Neveřejné",
         "documents": "Dokumenty",
         "pages": "Stránky",
         "recommended": "Doporučené",
@@ -54,7 +56,13 @@
         "soundunit": "soundunit",
         "internalpart": "internalpart",
         "oldprintomnibusvolume": "oldprintomnibusvolume",
-        "picture": "picture"
+        "picture": "picture",
+        "last_at": "Poslední přírůstek",
+        "last": "Poslední",
+        "licenses": "Licence",
+        "dnnto": "DNNTO",
+        "last-info": "Počet dnů od posledního přírůstku",
+        "dnnto-info": "Počet objektů pod licencí DNNTO" 
       }
     },
     "home": {
@@ -82,6 +90,24 @@
     "detail": {
       "intro": "Obsah záložky informace",
       "right_msg": "Informace o dostupnosti",
-      "display_on_map": "Zobraz na mapě"
+      "display_on_map": "Zobraz na mapě",
+      "tab-about": "O digitální knihovně",
+      "tab-counts": "Počty dokumentů",
+      "tab-digitization": "Průběh digitalizace"
+    },
+    "statistics": {
+      "doc-count": "Počet všech dokumentů",
+      "pages-count": "Počet všech stran",
+      "collection-count": "Počet sbírek"
+    },
+    "history": {
+      "date": "Datum",
+      "documents_all": "Všechny dokumenty",
+      "inc": "Přírůstek",
+      "documents_public": "Veřejné dokumenty",
+      "pages_all": "Všechny stránky",
+      "pages_public": "Veřejné stránky",
+      "version": "Verze"
     }
+
   }

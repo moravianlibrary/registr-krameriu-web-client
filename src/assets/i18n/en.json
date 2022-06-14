@@ -31,29 +31,38 @@
       "updated_at": "Last update",
       "days": "Days from last update",
       "all": "All",
+      "model": "Model",
       "public": "Public",
+      "private": "Private",
       "documents": "Documents",
       "pages": "Pages",
       "recommended": "Recommended",
       "collections": "Collections",
       "monograph": "Monographs",
-      "periodical": "Periodicals",
+      "periodical": "Newspapers",
       "soundrecording": "Soundrecordings",
       "map": "Maps",
       "graphic": "Graphics",
-      "sheetmusic": "Sheetmusic",
+      "sheetmusic": "Sheet Music",
       "archive": "Archivals",
       "manuscript": "Manuscripts",
       "article": "Articles",
-      "periodicalitem": "Periodical items",
+      "periodicalitem": "Periodical Items",
       "supplement": "Supplements",
-      "periodicalvolume": "Periodical volumes",
-      "monographunit": "Monograph units",
+      "periodicalvolume": "Periodical Volumes",
+      "monographunit": "Monograph Units",
       "track": "Tracks",
-      "soundunit": "Soundunits",
-      "internalpart": "Internal parts",
-      "oldprintomnibusvolume": "oldprintomnibusvolume",
-      "picture": "Pictures"
+      "soundunit": "Sound Units",
+      "internalpart": "Internal Parts",
+      "oldprintomnibusvolume": "Omnibus",
+      "picture": "Pictures",
+      "last_at": "Last update",
+      "last_before" : "Days",
+      "licenses": "Licenses",
+      "dnnto": "DNNTO",
+      "last": "Last",
+      "last-info": "Number of days since last increment",
+      "dnnto-info": "Nsumber of objects under license dnnto" 
     }
   },
   "home": {
@@ -71,16 +80,33 @@
     "statistic-pages-public": "public pages",
     "statistic-includes": "includes",
     "statistic-public": "public",
-    "statistic": "Statistic"
+    "statistic": "Statistics"
   },
   "header": {
-    "title": "Kramerius registry",
+    "title": "Kramerius Registry",
     "table": "Table",
     "about": "About"
   },
   "detail": {
     "intro": "Introduction",
     "right_msg": "Right message",
-    "display_on_map": "Display on map"
+    "display_on_map": "Display on the map",
+    "tab-about": "About Digital Library",
+    "tab-counts": "Statistics",
+    "tab-digitization": "Digitization Progress"
+  },
+  "statistics": {
+    "doc-count": "All Documents",
+    "pages-count": "All Pages",
+    "collection-count": "Collections"
+  },
+  "history": {
+    "date": "Date",
+    "documents_all": "All Documents",
+    "inc": "Increase",
+    "documents_public": "Public Documents",
+    "pages_all": "All Pages",
+    "pages_public": "Public Pages",
+    "version": "Version"
   }
 }

@@ -349,14 +349,43 @@
                         <mat-icon *ngIf="direction === 'asc-model_picture_public'">arrow_upward</mat-icon>
                     </div>
                 </div>
+                <!-- <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-double app-col-last" (click)="onCellClicked('last_document_at')">
+                    <div class="app-col-sort-center">
+                        <div>{{ 'table.cols.last_at' | translate }}</div>
+                        <mat-icon *ngIf="direction === 'desc-last_document_at'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-last_document_at'">arrow_upward</mat-icon>
+                    </div>
+                </div> -->
+                <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-double app-col-last" (click)="onCellClicked('last_document_before')">
+                    <div class="app-col-sort-center">
+                        <div>{{ 'table.cols.last' | translate }}</div>
+                        <div class="app-info-icon" matTooltip="{{ 'table.cols.last-info' | translate }}">
+                            <mat-icon>info</mat-icon>
+                        </div>
+                        <mat-icon *ngIf="direction === 'desc-last_document_before'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-last_document_before'">arrow_upward</mat-icon>
+                        
+                    </div>
+                </div>
+                <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-double app-col-license" (click)="onCellClicked('dnnto')">
+                    <div class="app-col-sort-center">
+                        <div>{{ 'table.cols.dnnto' | translate }}</div>
+                        <div class="app-info-icon" matTooltip="{{ 'table.cols.dnnto-info' | translate }}">
+                            <mat-icon>info</mat-icon>
+                        </div>
+                        <mat-icon *ngIf="direction === 'desc-dnnto'">arrow_downward</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-dnnto'">arrow_upward</mat-icon>
+                        
+                    </div>
+                </div>
             </div>  
         </div>
 
         <!-- TABULKA -->
         <div class="app-scrollable" >
             <div class="app-row" *ngFor="let record of filteredData">
-                <div class="app-col app-col-logo">
-                    <a href="./library/{{ record.code }}">
+                <div class="app-col app-col-logo" matTooltip="{{record.name}}">
+                    <a [routerLink]="['/library/', record.code ]">
                         <img src="{{ record.logo }}" style="height: 20px; width: 20px; object-fit: cover; overflow: hidden;">
                     </a>
                     <div class="app-logo-hover-text">{{ record.name }}</div>
@@ -491,6 +520,15 @@
                     <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_picture_all | number:'':'cs'}}</div>
                     <div *ngIf="display_both" >|</div> 
                     <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_picture_public | number:'':'cs'}}</div>
+                </div>
+                <!-- <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-last">
+                    <div class="app-col-number1">{{record.last_document_at | date: 'short':'':'cs'}}</div>
+                </div> -->
+                <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-last">
+                    <div class="app-col-number1" matTooltip="Poslední přírůstek dne: {{record.last_document_at | date: 'short':'':'cs'}}">{{record.last_document_before | number:'':'cs'}}</div>
+                </div>
+                <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-license">
+                    <div class="app-col-number1">{{record.dnnto | number:'':'cs'}}</div>
                 </div>
             </div>
         </div>

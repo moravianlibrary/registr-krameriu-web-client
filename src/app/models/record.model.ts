@@ -62,6 +62,11 @@ export class Record {
     model_oldprintomnibusvolume_public: number;
     model_picture_all: number;
     model_picture_public: number;
+    last_document_at: Date;
+    last_document_before: number;
+    licenses: [];
+    dnnto: number;
+
 
     static build(source: any): Record {
         const record = new Record();
@@ -129,6 +134,14 @@ export class Record {
         record.model_picture_all = source['model_picture_all'];
         record.model_picture_public = source['model_picture_public'];
         record.created_at = new Date(source['created_at']);
+        if (source['last_document_at']) {
+            record.last_document_at = new Date(source['last_document_at']);
+        }
+        record.last_document_before = source['last_document_before'];
+        if (source['licenses'].filter((licence: { [x: string]: string; }) => licence.id === 'dnnto')[0]) {
+            record.dnnto = source['licenses'].filter((licence: { [x: string]: string; }) => licence.id === 'dnnto')[0].count;
+        }
+        record.licenses = source['licenses'];
         return record;
     } 
 

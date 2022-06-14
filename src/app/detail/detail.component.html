@@ -1,54 +1,43 @@
 <div class="app-container">
-    <div class="app-card" *ngIf='!loading'>
+    <div class="app-parts" *ngIf='!loading'>
          <!-- TITLE-->
-        <div class="app-card-1">
-            <div class="app-title-container">
-                <img src="{{detail.logo}}" class="app-logo">
-                <div class="app-title-title">
-                    <div class="app-title-name" *ngIf="translate.currentLang == 'cs'">{{detail.name}}</div>
-                    <div class="app-title-name" *ngIf="translate.currentLang == 'en'">{{detail.name_en}}</div>
-                    <div *ngIf="detail.new_client_url; then thenBlock else elseBlock"></div>
-                        <ng-template #thenBlock>
-                            <div class="app-title-url">
-                                <a href="{{record.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
-                            </div>
-                        </ng-template>
-                        <ng-template #elseBlock>
-                            <div class="app-title-url">
-                                <a href="{{record.url}}" target="_blank">{{detail.url}}</a>
-                            </div>
-                        </ng-template>
-                </div>
+        <div class="app-part1-title">
+            <img src="{{detail.logo}}" class="app-logo">
+            <div class="app-title-title">
+                <div class="app-title-name" *ngIf="translate.currentLang == 'cs'">{{detail.name}}</div>
+                <div class="app-title-name" *ngIf="translate.currentLang == 'en'">{{detail.name_en}}</div>
+                <div *ngIf="detail.new_client_url; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                        <div class="app-title-url">
+                            <a href="{{detail.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
+                        </div>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <div class="app-title-url">
+                            <a href="{{detail.url}}" target="_blank">{{detail.url}}</a>
+                        </div>
+                    </ng-template>
             </div>
-            <!-- O KNIHOVNE V HLAVICCE -->
-            <!-- <div class="app-title-contact-container">
-                <div class="app-contact-sigla">
-                    <div class="app-title-right"><mat-icon>local_library</mat-icon></div>
-                    <div>{{detail.sigla}}</div>
-                </div>
-                <div class="app-contact-mail">
-                    <div class="app-title-right"><mat-icon>mail_outline</mat-icon></div>
-                    <div>{{detail.mail}}</div>
-                    <div><a href="{{detail.web}}" target="_blank">{{detail.web}}</a></div>
-                </div>
-                <div class="app-contact-address">
-                    <div class="app-title-right"><mat-icon>home</mat-icon></div>
-                    <div>{{detail.street}}</div>
-                    <div>{{detail.city}}</div>
-                    <div>{{detail.zip}}</div>
-                </div>
-            </div> -->
         </div>
-        <!-- O DIGITALNI KNIHOVE -->
-        <div  class="app-card-2">
-            <div class="app-dl-container">
-                <!-- <div class="app-title app-dl-title">O digitální knihovně</div> -->
-                <div class="app-dl-body">
+        
+        <!-- TABS -->
+
+        <div class="app-part2-tabs">
+            <div class="app-tab app-tab1" (click)="showAbout()" [ngClass]="{'active' : display === 1}">{{'detail.tab-about' | translate}}</div>
+            <div class="app-tab app-tab2" (click)="showStatistics()" [ngClass]="{'active' : display === 2}">{{'detail.tab-counts' | translate}}</div>
+            <div class="app-tab app-tab3" (click)="showDigidata()" [ngClass]="{'active' : display === 3}">{{'detail.tab-digitization' | translate}}</div>
+        </div>
+
+        <div class="app-tabs-container">
+
+            <!-- O DIGITALNI KNIHOVE -->
+            <div  class="app-tab-container app-tab1-container" *ngIf="display === 0 || display === 1">
+                <div class="app-kramerius-container">
                     <div class="app-dl-kramerius"  *ngIf="record.new_client_url">
                         <div class="app-dl-url">
                             <div class="app-title-2 app-dl-url-title">{{'table.cols.new_client_url' | translate}}</div>
                             <div class="app-text-2 app-dl-url-text">
-                                <a href="{{record.new_client_url}}" target="_blank">{{record.new_client_url}}</a>
+                                <a href="{{detail.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
                             </div>
                         </div>
                         <div class="app-dl-version"  *ngIf="detail.version">
@@ -68,120 +57,253 @@
                             <div class="app-text-2 app-dl-url-text">{{detail.version}}</div>
                         </div>
                     </div>
-                    <div class="app-dl-documents">
-                        <div class="app-dl-documents-all" *ngIf="detail.documents_all">
-                            <div class="app-title-2 app-dl-url-title">{{'table.cols.documents_all' | translate}}</div>
-                            <div class="app-text-2 app-dl-url-text">{{detail.documents_all | number:'':'cs'}}</div>
-                        </div>
-                        <div class="app-dl-documents-public" *ngIf="detail.documents_public">
-                            <div class="app-title-2 app-dl-url-title">{{'table.cols.documents_public' | translate}}</div>
-                            <div class="app-text-2 app-dl-url-text">{{detail.documents_public | number:'':'cs'}}</div>
-                        </div>
-                    </div>
-                    <div class="app-dl-pages">
-                        <div class="app-dl-pages-all" *ngIf="detail.pages_all">
-                            <div class="app-title-2 app-dl-url-title">{{'table.cols.pages_all' | translate}}</div>
-                            <div class="app-text-2 app-dl-url-text">{{detail.pages_all | number:'':'cs'}}</div>
-                        </div>
-                        <div class="app-dl-pages-public" *ngIf="detail.pages_public">
-                            <div class="app-title-2 app-dl-url-title">{{'table.cols.pages_public' | translate}}</div>
-                            <div class="app-text-2 app-dl-url-text">{{detail.pages_public | number:'':'cs'}}</div>
-                        </div>
-                    </div>
-                    <div class="app-dl-recommended">
-                        <div class="app-dl-recommended-all" *ngIf="detail.recommended_all">
-                            <div class="app-title-2 app-dl-url-title">{{'table.cols.recommended_all' | translate}}</div>
-                            <div class="app-text-2 app-dl-url-text">{{detail.recommended_all | number:'':'cs'}}</div>
-                        </div>
-                        <div class="app-dl-recommended-public" *ngIf="detail.recommended_public">
-                            <div class="app-title-2 app-dl-url-title">{{'table.cols.recommended_public' | translate}}</div>
-                            <div class="app-text-2 app-dl-url-text">{{detail.recommended_public | number:'':'cs'}}</div>
-                        </div>
-                    </div>
-                    <div class="app-dl-pdf" *ngIf="detail.pdf_max">
-                        <div class="app-title-2 app-dl-url-title">{{'table.cols.pdf_max' | translate}}</div>
-                        <div class="app-text-2 app-dl-url-text">{{detail.pdf_max | number:'':'cs'}}</div>
-                    </div>
-                    <div class="app-dl-time">
-                        <div class="app-dl-time-1">
-                            <div class="app-dl-time-item app-dl-time-created">
-                                <div class="app-title-2 app-dl-url-title">{{ 'table.cols.created_at' | translate}}</div>
-                                <div class="app-text-2 app-dl-url-text">{{detail.created_at | date: 'medium':'':'cs'}}</div>
-                            </div>
-                            <div class="app-dl-time-item app-dl-time-updated">
-                                <div class="app-title-2 app-dl-url-title">{{ 'table.cols.updated_at' | translate}}</div>
-                                <div class="app-text-2 app-dl-url-text">{{detail.updated_at | date: 'medium':'':'cs'}}</div>
-                            </div>
-                        </div>
-                        <div class="app-dl-time-2">
-                            <div class="app-dl-time-item app-dl-time-days">
-                                <div class="app-title-2 app-dl-url-title">{{ 'table.cols.days' | translate}}</div>
-                                <div class="app-text-2 app-dl-url-text">{{days | number:'1.0-0'}}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div *ngIf="!this.intro && detail.intro" (click)="toggleExpandIntro()">
-                        <div class="app-dl-intro-title">
-                            <div class="app-title-2 app-dl-url-title">{{ 'detail.intro' | translate}}</div>
-                            <mat-icon >expand_more</mat-icon>
-                        </div>
-                    </div>
-                    <div *ngIf="this.intro && detail.intro" (click)="toggleExpandIntro()">
-                        <div class="app-dl-intro-title">
-                            <div class="app-title-2 app-dl-url-title">{{ 'detail.intro' | translate}}</div>
-                            <mat-icon>expand_less</mat-icon>
-                        </div>
-                        <div class="app-dl-intro" [innerHTML]="detail.intro"></div>
-                    </div>
-                    <div *ngIf="!this.private && detail.private" (click)="toggleExpandPrivate()">
-                        <div class="app-dl-intro-title">
-                            <div class="app-title-2 app-dl-url-title">{{ 'detail.right_msg' | translate}}</div>
-                            <mat-icon>expand_more</mat-icon>
-                        </div>
-                    </div>
-                    <div *ngIf="this.private && detail.private" (click)="toggleExpandPrivate()">
-                        <div class="app-dl-intro-title">
-                            <div class="app-title-2 app-dl-url-title">{{ 'detail.right_msg' | translate}}</div>
-                            <mat-icon>expand_less</mat-icon>
-                        </div>
-                        <div class="app-dl-intro" [innerHTML]="detail.right_msg"></div>
-                    </div>         
-                </div>
-            </div>
-        </div>
-        <!-- O KNIHOVNE JAKO PATICKA-->
-        <div class="app-card-3">   
-            <div class="app-contact-container">
-                <div class="app-contact-container-row" *ngIf="detail.city || detail.longitude">
+                </div>   
+                <div class="app-contact-container">
                     <div class="app-contact-item app-contact-address"  *ngIf="detail.city">
-                        <div class="app-title-3"><mat-icon>home</mat-icon></div>
-                        <div>{{detail.street}}</div>
-                        <div>{{detail.zip}} {{detail.city}}</div>
-                        <!-- <div>{{detail.zip}}</div> -->
+                        <mat-icon class="app-contact-icon">home</mat-icon>
+                        <div>{{detail.street}}, {{detail.zip}} {{detail.city}}</div>
                     </div>
                     <div class="app-contact-item app-contact-map"  *ngIf="detail.longitude">
-                        <div class="app--title-3"><mat-icon>place</mat-icon></div>
+                        <mat-icon class="app-contact-icon">place</mat-icon>
                         <!-- <div>{{detail.longitude}}</div>
                         <div>{{detail.latitude}}</div> -->
-                        <!-- <a href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">Zobraz v mapě</a> -->
-                        <a href="https://www.google.com/maps/search/{{detail.name}}" target="_blank">{{'detail.display_on_map' | translate}}</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">{{'detail.display_on_map' | translate}}</a>
+                        <!-- <a href="https://www.google.com/maps/search/{{detail.name}}" target="_blank">{{'detail.display_on_map' | translate}}</a> -->
                     </div> 
-                </div>
-                <div class="app-contact-container-row">
                     <div class="app-contact-item app-contact-mail"  *ngIf="detail.web">
-                        <div class="app-title-3"><mat-icon>mail_outline</mat-icon></div>
+                        <mat-icon class="app-contact-icon">mail_outline</mat-icon>
                         <div>{{detail.mail}}</div>
                         <div><a href="{{detail.web}}" target="_blank">{{detail.web}}</a></div>
                     </div>
-    
+
                     <div class="app-contact-item app-contact-sigla" *ngIf="detail.sigla">
-                        <div class="app-title-3"><mat-icon>local_library</mat-icon></div>
+                        <mat-icon class="app-contact-icon">local_library</mat-icon>
                         <div><a href="http://aleph.nkp.cz/F?func=find-c&local_base=ADR&ccl_term=SIG={{detail.sigla}}" target="_blank">{{detail.sigla}}</a></div>
                         
                     </div>
                 </div>
+
+                <div class="app-time-container">
+                    <div class="app-dl-time-2">
+                        <div class="app-dl-time-item app-dl-time-updated">
+                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.last_at' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.last_document_at | date: 'medium':'':'cs'}}</div>
+                        </div>
+                        <div class="app-dl-time-item app-dl-time-days">
+                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.last_before' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.last_document_before}}</div>
+                        </div>
+                    </div>
+                    <div class="app-dl-time-1">
+                        <div class="app-dl-time-item app-dl-time-created">
+                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.created_at' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.created_at | date: 'medium':'':'cs'}}</div>
+                        </div>
+                        <div class="app-dl-time-item app-dl-time-updated">
+                            <div class="app-title-2 app-dl-url-title">{{ 'table.cols.updated_at' | translate}}</div>
+                            <div class="app-text-2 app-dl-url-text">{{detail.updated_at | date: 'medium':'':'cs'}}</div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+
+            <div  class="app-tab-container app-tab2-container" *ngIf="display === 0 || display === 2">
+                <div class="app-cards">
+                    <div class="app-card app-card-documents">
+                        <div class="app-card-title app-card-documents-title">{{'statistics.doc-count' | translate}}</div>
+                        <div class="app-card-number app-card-documents-number">{{detail.documents_all | number:'':'cs'}}</div>
+                        <div class="app-card-number-public app-card-documents-number-public">{{detail.documents_public | number:'':'cs'}} / {{'table.cols.public' | translate}}</div>
+                        <div class="app-card-number-private app-card-documents-number-private">{{detail.documents_all-detail.documents_public  | number:'':'cs'}} / {{'table.cols.private' | translate}}</div>
+                    </div>
+                    <div class="app-card app-card-pages">
+                        <div class="app-card-title app-card-pages-title">{{'statistics.pages-count' | translate}}</div>
+                        <div class="app-card-number app-card-pages-number">{{detail.pages_all | number:'':'cs'}}</div>
+                        <div class="app-card-number-public app-card-pages-number-public">{{detail.pages_public | number:'':'cs'}} / {{'table.cols.public' | translate}}</div>
+                        <div class="app-card-number-private app-card-pages-number-private">{{detail.pages_all-detail.pages_public  | number:'':'cs'}} / {{'table.cols.private' | translate}}</div>
+                    </div>
+                    <div class="app-card app-card-collections">
+                        <div class="app-card-title app-card-collections-title">{{'statistics.collection-count' | translate}}</div>
+                        <div class="app-card-number app-card-collections-number">{{detail.collections | number:'':'cs'}}</div>
+                        
+                    </div>
+                    <div class="app-card app-card-licenses" *ngIf="record.licenses.length > 0">
+                        <div class="app-card-title app-card-licenses-title">{{'table.cols.licenses' | translate}}</div>
+                        <div class="app-card-licenses-list" *ngFor="let license of record.licenses">
+                            <div class="app-card-license"> {{license['id']}}</div> 
+                            <div class="app-card-lisense-count">{{license['count'] | number:'':'cs'}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-table">
+                    <div class="app-row app-row-header">
+                        <div class="app-cell app-cell-first">{{'table.cols.model' | translate}}</div>
+                        <div class="app-cell">{{'table.cols.all' | translate}}</div>
+                        <div class="app-cell">{{'table.cols.public' | translate}}</div>
+                        <div class="app-cell">{{'table.cols.private' | translate}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.documents' | translate}}</div>
+                        <div class="app-cell">{{detail.documents_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.documents_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.documents_all-detail.documents_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.pages' | translate}}</div>
+                        <div class="app-cell">{{detail.pages_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.pages_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.pages_all-detail.pages_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.recommended' | translate}}</div>
+                        <div class="app-cell">{{detail.recommended_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.recommended_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.recommended_all-detail.recommended_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.periodical' | translate}}</div>
+                        <div class="app-cell">{{detail.model_periodical_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_periodical_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_periodical_all-detail.model_periodical_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.soundrecording' | translate}}</div>
+                        <div class="app-cell">{{detail.model_soundrecording_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_soundrecording_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_soundrecording_all-detail.model_soundrecording_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.map' | translate}}</div>
+                        <div class="app-cell">{{detail.model_map_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_map_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_map_all-detail.model_map_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.graphic' | translate}}</div>
+                        <div class="app-cell">{{detail.model_graphic_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_graphic_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_graphic_all-detail.model_graphic_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.sheetmusic' | translate}}</div>
+                        <div class="app-cell">{{detail.model_sheetmusic_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_sheetmusic_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_sheetmusic_all-detail.model_sheetmusic_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.archive' | translate}}</div>
+                        <div class="app-cell">{{detail.model_archive_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_archive_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_archive_all-detail.model_archive_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.manuscript' | translate}}</div>
+                        <div class="app-cell">{{detail.model_manuscript_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_manuscript_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_manuscript_all-detail.model_manuscript_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.article' | translate}}</div>
+                        <div class="app-cell">{{detail.model_article_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_article_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_article_all-detail.model_article_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.periodicalitem' | translate}}</div>
+                        <div class="app-cell">{{detail.model_periodicalitem_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_periodicalitem_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_periodicalitem_all-detail.model_periodicalitem_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.supplement' | translate}}</div>
+                        <div class="app-cell">{{detail.model_supplement_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_supplement_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_supplement_all-detail.model_supplement_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.periodicalvolume' | translate}}</div>
+                        <div class="app-cell">{{detail.model_periodicalvolume_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_periodicalvolume_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_periodicalvolume_all-detail.model_periodicalvolume_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.monographunit' | translate}}</div>
+                        <div class="app-cell">{{detail.model_monographunit_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_monographunit_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_monographunit_all-detail.model_monographunit_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.track' | translate}}</div>
+                        <div class="app-cell">{{detail.model_track_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_track_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_track_all-detail.model_track_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.soundunit' | translate}}</div>
+                        <div class="app-cell">{{detail.model_soundunit_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_soundunit_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_soundunit_all-detail.model_soundunit_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.internalpart' | translate}}</div>
+                        <div class="app-cell">{{detail.model_internalpart_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_internalpart_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_internalpart_all-detail.model_internalpart_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.soundunit' | translate}}</div>
+                        <div class="app-cell">{{detail.model_oldprintomnibusvolume_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_oldprintomnibusvolume_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_oldprintomnibusvolume_all-detail.model_oldprintomnibusvolume_public  | number:'':'cs'}}</div>
+                    </div>
+                    <div class="app-row">
+                        <div class="app-cell app-cell-first">{{'table.cols.picture' | translate}}</div>
+                        <div class="app-cell">{{detail.model_picture_all | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_picture_public | number:'':'cs'}}</div>
+                        <div class="app-cell">{{detail.model_picture_all-detail.model_picture_public  | number:'':'cs'}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-tab-container app-tab3-container" *ngIf="display === 0 || display === 3" >
+                <div class="app-table">
+                    <div class="app-row app-row-header">
+                        <div class="app-cell app-cell-header app-cell-width-1">{{'history.date' | translate}}</div>
+                        <div class="app-cell app-cell-header app-cell-width-2">{{'history.documents_all' | translate}}</div>
+                        <!-- <div class="app-cell app-cell-header app-cell-width-2">{{'history.inc' | translate}}</div> -->
+                        <div class="app-cell app-cell-header app-cell-width-2">{{'history.documents_public' | translate}}</div>
+                        <!-- <div class="app-cell app-cell-header app-cell-width-2">{{'history.inc' | translate}}</div> -->
+                        <div class="app-cell app-cell-header app-cell-width-3">{{'history.pages_all' | translate}}</div>
+                        <!-- <div class="app-cell app-cell-header app-cell-width-2">{{'history.inc' | translate}}</div> -->
+                        <div class="app-cell app-cell-header app-cell-width-3">{{'history.pages_public' | translate}}</div>
+                        <!-- <div class="app-cell app-cell-header app-cell-width-2">{{'history.inc' | translate}}</div> -->
+                        <div class="app-cell app-cell-header app-cell-width-4">{{'history.version' | translate}}</div>
+                    </div>
+                    <div class="app-row" *ngFor="let day of history">
+                        <div class="app-cell app-cell-width-1">{{day['date'] | date: 'mediumDate':'':'cs'}}</div>
+                        <div class="app-cell app-cell-width-2">
+                            <div>{{day['documents_all'] | number:'':'cs'}}</div>
+                            <!-- <div class="app-inc" [ngClass]="day['inc_documents_all'] < 0 ? 'red' : 'green'">{{day['inc_documents_all'] | number:'':'cs'}}</div> -->
+                            <div class="app-inc" [ngClass]="{red: day['inc_documents_all'] < 0, green: day['inc_documents_all'] > 0}">{{day['inc_documents_all'] | number:'':'cs'}}</div>
+                        </div>
+                        <!-- <div class="app-cell app-cell-width-2">{{day['inc_documents_all'] | number:'':'cs'}}</div> -->
+                        <div class="app-cell app-cell-width-2">
+                            <div>{{day['documents_public'] | number:'':'cs'}}</div>
+                            <div class="app-inc" [ngClass]="{red: day['inc_documents_public'] < 0, green: day['inc_documents_public'] > 0}">{{day['inc_documents_public'] | number:'':'cs'}}</div>
+                        </div>
+                        <!-- <div class="app-cell app-cell-width-2">{{day['inc_documents_public'] | number:'':'cs'}}</div> -->
+                        <div class="app-cell app-cell-width-3">
+                            <div>{{day['pages_all'] | number:'':'cs'}}</div>
+                            <div class="app-inc" [ngClass]="{red: day['inc_pages_all'] < 0, green: day['inc_pages_all'] > 0}">{{day['inc_pages_all'] | number:'':'cs'}}</div>
+                        </div>
+                        <!-- <div class="app-cell app-cell-width-2">{{day['inc_pages_all'] | number:'':'cs'}}</div> -->
+                        <div class="app-cell app-cell-width-3">
+                            <div>{{day['pages_public'] | number:'':'cs'}}</div>
+                            <div class="app-inc" [ngClass]="{red: day['inc_pages_public'] < 0, green: day['inc_pages_public'] > 0}">{{day['inc_pages_public'] | number:'':'cs'}}</div>
+                        </div>
+                        <!-- <div class="app-cell app-cell-width-2">{{day['inc_pages_public'] | number:'':'cs'}}</div> -->
+                        <div class="app-cell app-cell-width-4">{{day['version']}}</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </div>

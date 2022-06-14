@@ -188,50 +188,67 @@ export class TableComponent implements OnInit {
     this.onSortChanged(); 
   }
 
+
+  private compareTitles(a: Record, b: Record) {
+    let x = "";
+    let y = "";
+    if (a.getTitleForLanguage(this.translate.currentLang) && a.getTitleForLanguage(this.translate.currentLang).length > 0) {
+      x = a.getTitleForLanguage(this.translate.currentLang);
+    }
+    if (b.getTitleForLanguage(this.translate.currentLang) && b.getTitleForLanguage(this.translate.currentLang).length > 0) {
+      y = b.getTitleForLanguage(this.translate.currentLang);
+    }
+    return x.localeCompare(y) * (this.direction == 'desc-name' ? -1 : 1);
+  }
+
   onSortChanged() {
     // console.log("clicked cell: ", this.value, this.direction);
-    const value = this.value;
-    // if ((this.direction === 'asc-'+value) || (this.direction === 'desc-'+value)) {
-      if ((value === "name") || (value === "code")) {
-            this.filteredData.sort((a,b) => {
-              let x = "";
-              let y = "";
-              if (a.getTitleForLanguage(this.translate.currentLang) && a.getTitleForLanguage(this.translate.currentLang).length > 0) {
-                x = a.getTitleForLanguage(this.translate.currentLang);
-              }
-              if (b.getTitleForLanguage(this.translate.currentLang) && b.getTitleForLanguage(this.translate.currentLang).length > 0) {
-                y = b.getTitleForLanguage(this.translate.currentLang);
-              }
-              return x.localeCompare(y) * (this.direction == 'desc-'+value ? -1 : 1);
-            })
-      } else if ((value === "url") ||
-          (value === "new_client_url") ||
-          (value === "version") ||
-          (value === "new_client_version")
-          ) {
-            this.filteredData.sort((a,b) => {
-              let x = "";
-              let y = "";
-              if (a[value] && a[value].length > 0) {
-                x = a[value];
-              }
-              if (b[value] && b[value].length > 0) {
-                y = b[value];
-              }
-              return x.localeCompare(y) * (this.direction == 'desc-'+value ? -1 : 1);
-            })
-      }
-      else if (value === "alive") {
-      this.filteredData.sort((a,b)=> ((a[value]===b[value])?0 :(a[value]===true)?1:-1) * (this.direction == 'asc-'+value ? -1 : 1)) 
-      }
-      else {
-        this.filteredData.sort((a,b) => ((<any>b)[value] - (<any>a)[value]) * (this.direction == 'asc-'+value ? -1 : 1))
-      }
-    // }
-    // else {
-    //   this.data.sort((a,b) => (b["id"] - a["id"]) * -1)
-    // }
+  const value = this.value;
+    if (value === "name") {
+          this.filteredData.sort((a,b) => {
+            return this.compareTitles(a,b);
+          })
+    } else if ((value === "url") ||
+        (value === "new_client_url") ||
+        (value === "version") ||
+        (value === "new_client_version") || 
+        (value === "code")
+        ) {
+          this.filteredData.sort((a,b) => {
+            let x = "";
+            let y = "";
+            if (a[value] && a[value].length > 0) {
+              x = a[value];
+            }
+            if (b[value] && b[value].length > 0) {
+              y = b[value];
+            }
+            const d = x.localeCompare(y);
+            if (d == 0) {
+              return this.compareTitles(a,b);
+            }
+            return d * (this.direction == 'desc-'+value ? -1 : 1);
+          })
+    } 
+    else if (value === "alive") {
+    this.filteredData.sort((a,b)=> ((a[value]===b[value])?0 :(a[value]===true)?1:-1) * (this.direction == 'asc-'+value ? -1 : 1)) 
+    }
+    else {
+      this.filteredData.sort((a,b) => {
+        const x = (<any>a)[value];
+        const y = (<any>b)[value];
+        if (x == null) {
+          return 1;
+        }
+        if (y == null) {
+          return -1;
+        }
+        const d = y - x;
+        if (d == 0) {
+          return this.compareTitles(a,b);
+        }
+        return d * (this.direction == 'asc-'+value ? -1 : 1)
+      });
+    }
   }
-  
-
 }
