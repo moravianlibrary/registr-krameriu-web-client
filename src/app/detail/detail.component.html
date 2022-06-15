@@ -279,7 +279,7 @@
                         <div class="app-cell app-cell-header app-cell-width-4">{{'history.version' | translate}}</div>
                     </div>
                     <div class="app-row" *ngFor="let day of history">
-                        <div class="app-cell app-cell-width-1">{{day['date'] | date: 'mediumDate':'':'cs'}}</div>
+                        <div class="app-cell app-cell-width-1">{{day['date'] | date: 'dd.MM.yyyy'}}</div>
                         <div class="app-cell app-cell-width-2">
                             <div>{{day['documents_all'] | number:'':'cs'}}</div>
                             <!-- <div class="app-inc" [ngClass]="day['inc_documents_all'] < 0 ? 'red' : 'green'">{{day['inc_documents_all'] | number:'':'cs'}}</div> -->
