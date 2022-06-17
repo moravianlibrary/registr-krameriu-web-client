@@ -3,8 +3,8 @@
         <a [routerLink]="['/']">{{'header.title' | translate}}</a>
     </div>
     <div class="app-header-links" [class.app-expanded]="isExpanded">
-        <a [routerLink]="['/']"><div class="app-table">{{ 'header.table' | translate }}</div></a>
-        <a [routerLink]="['/about']"><div class="app-about">{{ 'header.about' | translate }}</div></a>
+        <!-- <a [routerLink]="['/']"><div class="app-table">{{ 'header.table' | translate }}</div></a> -->
+        <!-- <a [routerLink]="['/about']"><div class="app-about">{{ 'header.about' | translate }}</div></a> -->
         <div class="app-lang" (click)="toggleLanguage()">{{ displayLanguage }}</div>
     </div>
     <!-- HAMBURGER MENU -->

@@ -32,7 +32,7 @@
         "updated_at": "Poslední update záznamu",
         "days": "Počet dnů od poslední změny",
         "all": "Všechny",
-        "model": "Model",
+        "model": "Typ dokumentu",
         "public": "Veřejné",
         "private": "Neveřejné",
         "documents": "Dokumenty",
@@ -91,22 +91,23 @@
       "intro": "Obsah záložky informace",
       "right_msg": "Informace o dostupnosti",
       "display_on_map": "Zobraz na mapě",
-      "tab-about": "O digitální knihovně",
-      "tab-counts": "Počty dokumentů",
-      "tab-digitization": "Průběh digitalizace"
+      "open_in_catalog": "Zorbazit v katalogu",
+      "tab-about": "Informace",
+      "tab-counts": "Obsah",
+      "tab-digitization": "Historie"
     },
     "statistics": {
-      "doc-count": "Počet všech dokumentů",
-      "pages-count": "Počet všech stran",
-      "collection-count": "Počet sbírek"
+      "doc-count": "Tituly",
+      "doc-public-count": "Veřejné tituly",
+      "pages-count": "Strany",
+      "collection-count": "Sbírky"
     },
     "history": {
       "date": "Datum",
-      "documents_all": "Všechny dokumenty",
-      "inc": "Přírůstek",
+      "documents_all": "Dokumenty",
       "documents_public": "Veřejné dokumenty",
-      "pages_all": "Všechny stránky",
-      "pages_public": "Veřejné stránky",
+      "pages_all": "Strany",
+      "pages_public": "Veřejné strany",
       "version": "Verze"
     }
 

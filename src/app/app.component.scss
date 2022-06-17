@@ -1,9 +1,12 @@
+@import './src/variables.scss';
+
 .app-container {
     height: 100%;
     app-header {
         position: fixed;
         height: 50px;
         width: 100%;
-        z-index: 2;
+        border-bottom: 1px solid $border-light;
+        z-index: 10;
     }
 }
