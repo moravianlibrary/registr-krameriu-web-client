@@ -91,21 +91,23 @@
     "intro": "Introduction",
     "right_msg": "Right message",
     "display_on_map": "Display on the map",
-    "tab-about": "About Digital Library",
-    "tab-counts": "Statistics",
-    "tab-digitization": "Digitization Progress"
+    "open_in_catalog": "Open in a catalog",
+    "tab-about": "Info",
+    "tab-counts": "Content",
+    "tab-digitization": "History"
   },
   "statistics": {
-    "doc-count": "All Documents",
-    "pages-count": "All Pages",
+    "doc-count": "Titles",
+    "doc-public-count": "Public Titles",
+    "pages-count": "Pages",
     "collection-count": "Collections"
+    
   },
   "history": {
     "date": "Date",
-    "documents_all": "All Documents",
-    "inc": "Increase",
-    "documents_public": "Public Documents",
-    "pages_all": "All Pages",
+    "documents_all": "Titles",
+    "documents_public": "Public Titles",
+    "pages_all": "Pages",
     "pages_public": "Public Pages",
     "version": "Version"
   }
