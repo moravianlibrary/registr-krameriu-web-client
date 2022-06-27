@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:3000/api'
-  // baseUrl: 'https://registr.digitalniknihovna.cz/api'
+  // baseUrl: 'https://api.registr.digitalniknihovna.cz/api'
 };
 
 /*
