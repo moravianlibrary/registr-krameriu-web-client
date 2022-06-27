@@ -319,14 +319,14 @@
                         <mat-icon *ngIf="direction === 'asc-model_internalpart_public'">arrow_drop_up</mat-icon>
                     </div>
                 </div>
-                <!-- oldprintomnibusvolume -->
-                <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-double app-col-oldprintomnibusvolume" (click)="onDoubleCellClicked('model_oldprintomnibusvolume')">
+                <!-- convolute -->
+                <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-double app-col-convolute" (click)="onDoubleCellClicked('model_convolute')">
                     <div class="app-col-sort-center">
-                        <div>{{ 'table.cols.oldprintomnibusvolume' | translate }}</div>
-                        <mat-icon *ngIf="direction === 'desc-model_oldprintomnibusvolume_all'">arrow_drop_down</mat-icon>
-                        <mat-icon *ngIf="direction === 'asc-model_oldprintomnibusvolume_all'">arrow_drop_up</mat-icon>
-                        <mat-icon *ngIf="direction === 'desc-model_oldprintomnibusvolume_public'">arrow_drop_down</mat-icon>
-                        <mat-icon *ngIf="direction === 'asc-model_oldprintomnibusvolume_public'">arrow_drop_up</mat-icon>
+                        <div>{{ 'table.cols.convolute' | translate }}</div>
+                        <mat-icon *ngIf="direction === 'desc-model_convolute_all'">arrow_drop_down</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-model_convolute_all'">arrow_drop_up</mat-icon>
+                        <mat-icon *ngIf="direction === 'desc-model_convolute_public'">arrow_drop_down</mat-icon>
+                        <mat-icon *ngIf="direction === 'asc-model_convolute_public'">arrow_drop_up</mat-icon>
                     </div>
                 </div>
                 <!-- picture -->
@@ -500,10 +500,10 @@
                     <div *ngIf="display_both" >|</div> 
                     <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_internalpart_public | number:'':'cs'}}</div>
                 </div>
-                <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-oldprintomnibusvolume">
-                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_oldprintomnibusvolume_all | number:'':'cs'}}</div>
+                <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-convolute">
+                    <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_convolute_all | number:'':'cs'}}</div>
                     <div *ngIf="display_both" >|</div> 
-                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_oldprintomnibusvolume_public | number:'':'cs'}}</div>
+                    <div *ngIf="display_public || display_both" class="app-col-number2">{{record.model_convolute_public | number:'':'cs'}}</div>
                 </div>
                 <div *ngIf="viewAllCols || viewStatCols" class="app-col app-col-picture">
                     <div *ngIf="display_all || display_both" class="app-col-number1">{{record.model_picture_all | number:'':'cs'}}</div>
