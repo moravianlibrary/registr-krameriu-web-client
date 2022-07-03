@@ -58,8 +58,8 @@ export class Record {
     model_soundunit_public: number;
     model_internalpart_all: number;
     model_internalpart_public: number;
-    model_oldprintomnibusvolume_all: number;
-    model_oldprintomnibusvolume_public: number;
+    model_convolute_all: number;
+    model_convolute_public: number;
     model_picture_all: number;
     model_picture_public: number;
     last_document_at: Date;
@@ -129,8 +129,8 @@ export class Record {
         record.model_soundunit_public = source['model_soundunit_public'];
         record.model_internalpart_all = source['model_internalpart_all'];
         record.model_internalpart_public = source['model_internalpart_public'];
-        record.model_oldprintomnibusvolume_all = source['model_oldprintomnibusvolume_all'];
-        record.model_oldprintomnibusvolume_public = source['model_oldprintomnibusvolume_public'];
+        record.model_convolute_all = source['model_convolute_all'];
+        record.model_convolute_public = source['model_convolute_public'];
         record.model_picture_all = source['model_picture_all'];
         record.model_picture_public = source['model_picture_public'];
         record.created_at = new Date(source['created_at']);

@@ -41,3 +41,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: flex;
   max-width: 120px !important;
 }
+
+
+@import './src/variables.scss';
+
+
+a {
+  text-decoration: none !important;
+  color: $link-color;
+}

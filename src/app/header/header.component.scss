@@ -1,66 +1,69 @@
+@import './src/variables.scss';
+
 .app-header-container {
-    background-color: #4896d1;
-    color: white;
+    background-color: #fff;
     display: flex;
     width: 100%;
     justify-content: space-between;
     flex-wrap: wrap;
     .app-header-title {
-        padding: 15px 25px;
-        font-size: 25px;
+        margin-left: 20px;
+        line-height: 50px;
+        font-size: 22px;
         a {
             text-decoration: none;
-            color: white;
+            color: #2b303d;
         }
     }
     .app-header-links {
         display: flex;
         justify-content: space-between;
         a {
-            color: white;
+            color: #5b6172;
             text-decoration: none;
         }
         .app-about, .app-table {
             margin: 15px 20px;
-            color: white;
+            // color: white;
         }
         .app-lang {
             margin: 15px 25px;
-            color: white;
+            // color: white;
+            color: #5b6172;
             cursor: pointer;
         }
     }
     .hamburger {
         display: none;
-        padding: 13px 5px 5px 5px;
         cursor: pointer;
-        color: white;
+        color: #94979d;
+        margin-right: 18px;
+        margin-top: 13px;
     }
     
 }
 
-@media screen and (max-width: 710px) {
-    .app-header-container {
-        .app-header-title {
-            padding: 15px 10px;
-            font-size: 22px;
-        }
-        .app-header-links {
-            .app-about, .app-table  {
-                margin: 15px 20px;
-            }
-            .app-lang {
-                margin: 15px 20px;
-            }
+// @media screen and (max-width: 710px) {
+//     .app-header-container {
+//         .app-header-title {
+//             padding: 15px 10px;
+//             font-size: 22px;
+//         }
+//         .app-header-links {
+//             .app-about, .app-table  {
+//                 margin: 15px 20px;
+//             }
+//             .app-lang {
+//                 margin: 15px 20px;
+//             }
             
-        }
-    }  
-}
+//         }
+//     }  
+// }
 
 @media screen and (max-width: 500px) {
     .app-header-container {
         .app-header-title {
-            padding: 15px 10px;
             font-size: 22px;
         }
         .app-header-links {
@@ -74,7 +77,7 @@
             &.app-expanded {
                 order: 1; 
                 display: flex;
-                background-color: #3586bb;
+                background-color: #fff;
                 width: 100%;
                 z-index: 2;
             }
@@ -82,7 +85,6 @@
         .hamburger {
             display: flex;
             order: 0;
-            color: whitesmoke;
         }
     }  
 }
@@ -90,27 +92,7 @@
 @media screen and (max-width: 350px) {
     .app-header-container {
         .app-header-title {
-            padding: 15px 10px;
-            font-size: 20px;
-        }
-        .app-header-links {
-            .app-about, .app-table  {
-                margin: 15px 15px;
-                font-size: smaller;
-            }
-            .app-lang {
-                margin: 15px 15px;
-                font-size: smaller;
-            }
-        }
-    }  
-}
-
-@media screen and (max-width: 280px) {
-    .app-header-container {
-        .app-header-title {
-            padding: 15px 10px;
-            font-size: 16px;
+            font-size: 18px;
         }
     }  
 }
