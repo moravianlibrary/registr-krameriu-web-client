@@ -74,7 +74,7 @@ export class Record {
         record.code = source['code'];
         record.sigla = source['sigla'];
         record.name = source['name'];
-        record.name_en = source['name_en'];
+        record.name_en = source['name_en'] || '';
         record.alive = !!source['alive'];
         record.version = source['version'];
         record.url = source['url'];

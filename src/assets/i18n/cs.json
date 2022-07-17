@@ -11,7 +11,7 @@
         "display_both": "Obojí",
         "filter": "Filtr",
         "view": "Zobrazení",
-        "display": "Počet dokumentů"
+        "display": "Počet titulů"
 
       },
       "cols": {
@@ -70,12 +70,12 @@
       "text": "Registr krameriů je rozcestník instalací digitální knihovny Kramerius.",
       "statistic-part1": "Registr sdružuje ",
       "statistic-part2": " digitálních knihoven. Ty obsahují celkem ",
-      "statistic-part3": " dokumentů, z toho je ",
+      "statistic-part3": " titulů, z toho je ",
       "statistic-part4": " veřejných.",
       "button": "Pokračuj na tabulku",
       "statistic-libraries": " knihoven",
-      "statistic-documents": " dokumentů",
-      "statistic-documents-public": " veřejně dostupných dokumentů",
+      "statistic-documents": " titulů",
+      "statistic-documents-public": " veřejně dostupných titulů",
       "statistic-pages": " stránek",
       "statistic-pages-public": " veřejně dostupných stránek",
       "statistic-includes": "- z toho",
@@ -104,8 +104,8 @@
     },
     "history": {
       "date": "Datum",
-      "documents_all": "Dokumenty",
-      "documents_public": "Veřejné dokumenty",
+      "documents_all": "Tituly",
+      "documents_public": "Veřejné tituly",
       "pages_all": "Strany",
       "pages_public": "Veřejné strany",
       "version": "Verze"

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DataService } from '../services/data.service';
 
@@ -9,11 +9,12 @@ import { Record } from '../models/record.model';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewChecked {
   
   data: Record[] = [];
   direction = '';
   value = '';
+  selectedView = 'all';
   filteredData: Record[] = [];
   filter: string = '';
   viewAllCols: boolean = true;
@@ -25,10 +26,11 @@ export class TableComponent implements OnInit {
   display_all: boolean = true;
   display_public: boolean = false;
   display_both: boolean = false;
-  selectedView: 'all';
+  
 
   constructor(public dataService: DataService,
-              public translate: TranslateService) {
+              public translate: TranslateService,
+              private cdr: ChangeDetectorRef) {
     this.data = dataService.data;
     this.filteredData = this.data.filter(p => p.name.includes(this.filter))
     // console.log(this.filteredData);
@@ -43,8 +45,12 @@ export class TableComponent implements OnInit {
     });
     this.direction = 'desc-documents_all';
     this.value = 'documents_all';
+    this.selectedView = 'all';
     this.onSortChanged();
   }
+  ngAfterViewChecked() {
+    this.cdr.detectChanges();
+}
   
   filterMe(filter: string) {
     if (this.translate.currentLang == 'cs') {
@@ -63,8 +69,8 @@ export class TableComponent implements OnInit {
       this.filteredData = this.data.filter(record => {
         return (
           record.name_en.toLowerCase().includes(filter.toLowerCase()) ||
-          record.code.toLowerCase().includes(filter.toLowerCase()) ||
-          record.url.toLowerCase().includes(filter.toLowerCase())
+          record.code.toLowerCase().includes(filter.toLowerCase())
+          // record.url.toLowerCase().includes(filter.toLowerCase())
         );
       })
     }

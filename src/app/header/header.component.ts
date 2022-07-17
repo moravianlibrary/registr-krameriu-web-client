@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     if (this.translate.currentLang == 'cs') {
       this.displayLanguage = "English"
     } else {
@@ -29,6 +28,7 @@ export class HeaderComponent implements OnInit {
 
   toggleLanguage() {
     let lang = '';
+    
     if (this.translate.currentLang == 'cs') {
       lang = 'en';
       this.displayLanguage = "Čeština"
@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
     }
     this.translate.use(lang);
     localStorage.setItem('app.lang', lang);
+    
   }
 
 }

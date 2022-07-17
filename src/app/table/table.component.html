@@ -12,40 +12,14 @@
                         <input class="input" type="text" [(ngModel)]="filter" (ngModelChange)="filterMe(filter)" placeholder="{{ 'table.filter.placeholder' | translate }}" />    
                     </div>
                 </div>
-
-                <!-- <div class="app-filter">
-                    <div class="app-button-container">
-                        <div class="app-button app-button-col-all" (click)="displayAll()" [ngClass]="{'active' : display === 0}">{{ 'table.filter.display_all' | translate }}</div>
-                        <div class="app-button app-button-col-public" (click)="displayPublic()" [ngClass]="{'active' : display === 1}">{{ 'table.filter.display_public' | translate }}</div>
-                        <div class="app-button app-button-col-public" (click)="displayBoth()" [ngClass]="{'active' : display === 2}">{{ 'table.filter.display_both' | translate }}</div>
-                    </div>
-                </div>  
-                 -->
-                 <!-- <div style="flex: 1; min-height: 1px"></div> -->
                 <div class="app-select-wrapper">
-                    <mat-select value="all" class="app-button-container">
-                        <mat-option value="all"><div class="app-button app-button-col-all" (click)="displayAll()" [ngClass]="{'active' : display === 0}">{{ 'table.filter.display_all' | translate }}</div></mat-option>
-                        <mat-option value="public"><div class="app-button app-button-col-public" (click)="displayPublic()" [ngClass]="{'active' : display === 1}">{{ 'table.filter.display_public' | translate }}</div></mat-option>
-                        <mat-option value="both"><div class="app-button app-button-col-public" (click)="displayBoth()" [ngClass]="{'active' : display === 2}">{{ 'table.filter.display_both' | translate }}</div></mat-option>
+                    <mat-select [(value)]="selectedView">
+                        <mat-option value="all" (click)="displayAll()">{{ 'table.filter.display_all' | translate }}</mat-option>
+                        <mat-option value="public" (click)="displayPublic()">{{ 'table.filter.display_public' | translate }}</mat-option>
+                        <mat-option value="both" (click)="displayBoth()">{{ 'table.filter.display_both' | translate }}</mat-option>
                     </mat-select>
                 </div>
              </div>
-            <!-- <div class="app-filters-small-screen">
-                <div class="app-filter line1">
-                    <input class="input" type="text" [(ngModel)]="filter" (ngModelChange)="filterMe(filter)" placeholder="{{ 'table.filter.placeholder' | translate }}" />    
-                </div>
-                <div class="line2">
-                    <div class="app-filter">
-                        <div>
-                            <mat-select value="all" class="app-button-container">
-                                <mat-option value="all"><div class="app-button app-button-col-all" (click)="displayAll()" [ngClass]="{'active' : display === 0}">{{ 'table.filter.display_all' | translate }}</div></mat-option>
-                                <mat-option value="public"><div class="app-button app-button-col-public" (click)="displayPublic()" [ngClass]="{'active' : display === 1}">{{ 'table.filter.display_public' | translate }}</div></mat-option>
-                                <mat-option value="both"><div class="app-button app-button-col-public" (click)="displayBoth()" [ngClass]="{'active' : display === 2}">{{ 'table.filter.display_both' | translate }}</div></mat-option>
-                            </mat-select>
-                          </div>
-                    </div>
-                </div>        
-            </div>   -->
         </div>
 
         <!-- FIRST ROW -->
