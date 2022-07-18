@@ -90,8 +90,8 @@
     "detail": {
       "intro": "Obsah záložky informace",
       "right_msg": "Informace o dostupnosti",
-      "display_on_map": "Zobraz na mapě",
-      "open_in_catalog": "Zorbazit v katalogu",
+      "display_on_map": "Zobrazit na mapě",
+      "open_in_catalog": "Zobrazit v katalogu",
       "tab-about": "Informace",
       "tab-counts": "Obsah",
       "tab-digitization": "Historie"
