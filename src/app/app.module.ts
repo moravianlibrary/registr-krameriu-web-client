@@ -20,6 +20,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import '@angular/common/locales/global/cs';
 import { AboutComponent } from './about/about.component';
+import { GraphComponent } from './graph/graph.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json?v=2');
@@ -32,7 +33,8 @@ export function createTranslateLoader(http: HttpClient) {
     HeaderComponent,
     TableComponent,
     DetailComponent,
-    AboutComponent
+    AboutComponent,
+    GraphComponent
 
   ],
   imports: [

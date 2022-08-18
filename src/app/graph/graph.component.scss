@@ -1,0 +1,42 @@
+.app-intervals {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+    .app-interval {
+        padding: 4px 7px;
+        margin: 2px;
+        border-radius: 4px;
+        border: 1px solid lightgray;
+        background-color: lightgray;
+        cursor: pointer;
+        &.active {
+            background-color: white;
+        }
+    }
+}
+.app-sequences {
+    display: flex;
+    .app-sequence {
+        overflow: hidden; 
+        width: 100%; 
+        height: 40px; 
+        background: blue;
+    }
+    .app-percent {
+        display: flex;
+        margin: 10px;
+        width: 100px;
+        height: 40px;
+        justify-content: baseline;
+        .app-percent-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            background-color: green;
+            margin: 2px 3px;
+    
+        }
+    }
+}
+
+

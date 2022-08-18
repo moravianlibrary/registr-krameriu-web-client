@@ -1,0 +1,25 @@
+<div  *ngIf="!loading">
+    <div class="app-intervals">
+        <div class="app-interval" (click)="changeInterval('5h')" [ngClass]="{'active' : display === '5h'}">5h</div>
+        <div class="app-interval" (click)="changeInterval('24h')" [ngClass]="{'active' : display === '24h'}">24h</div>
+        <div class="app-interval" (click)="changeInterval('7d')" [ngClass]="{'active' : display === '7d'}">7d</div>
+        <div class="app-interval" (click)="changeInterval('1m')" [ngClass]="{'active' : display === '1m'}">1m</div>
+        <div class="app-interval" (click)="changeInterval('6m')" [ngClass]="{'active' : display === '6m'}">6m</div>
+        <div class="app-interval" (click)="changeInterval('1y')" [ngClass]="{'active' : display === '1y'}">1y</div>
+    </div>
+    <div class="app-sequences">
+        <div class="app-sequence">
+            <div style="float: left; height: 100%;" 
+                [style.background]="color(item[0])" 
+                [style.width]="item[1] + '%'"
+                matTooltip=" {{item[4]}} {{state(item[0])}} ({{item[2]}} - {{item[3]}})"
+                *ngFor="let item of graph">
+            </div>
+        </div>
+        <div class="app-percent">
+            <div class="app-percent-dot"></div>
+            <div>{{percent}} %</div>
+        </div>
+    </div>
+</div>
+

@@ -23,7 +23,8 @@ export class DetailComponent implements OnInit {
   about: boolean = true;
   statistics: boolean = false;
   digidata:boolean = false;
-  display: number = 1;
+  graph: boolean = false;
+  display: number = 4;
   history: any;
 
 
@@ -58,19 +59,29 @@ export class DetailComponent implements OnInit {
     this.about = true;
     this.statistics = false;
     this.digidata = false;
+    this.graph = false;
     this.display = 1;
   }
   showStatistics() {
     this.about = false;
     this.statistics = true;
     this.digidata = false;
+    this.graph = false;
     this.display = 2;
   }
   showDigidata() {
     this.about = false;
     this.statistics = false;
     this.digidata = true;
+    this.graph = false;
     this.display = 3;
+  }
+  showGraph() {
+    this.about = false;
+    this.statistics = false;
+    this.digidata = false;
+    this.graph = true;
+    this.display = 4;
   }
 
   setDetail(data:any) {

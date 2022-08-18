@@ -94,7 +94,8 @@
     "open_in_catalog": "Open in a catalog",
     "tab-about": "Info",
     "tab-counts": "Content",
-    "tab-digitization": "History"
+    "tab-digitization": "History",
+    "tab-graph": "Graph"
   },
   "statistics": {
     "doc-count": "Titles",
@@ -110,5 +111,27 @@
     "pages_all": "Pages",
     "pages_public": "Public Pages",
     "version": "Version"
+  },
+  "graph": {
+    "y": "y",
+    "year": "year",
+    "years2-4": "years",
+    "years5+": "years",
+    "mon": "m",
+    "month": "month",
+    "months2-4": "months",
+    "months5+": "months",
+    "d": "d",
+    "day": "day",
+    "days2-4": "days",
+    "days5+": "days",
+    "h": "h",
+    "hour": "hour",
+    "hours2-4": "hours",
+    "hours5+": "hours",
+    "min": "min",
+    "minute": "minute",
+    "minutes2-4": "minutes",
+    "minutes5+": "minutes"
   }
 }

@@ -36,6 +36,7 @@
             <div class="app-tab app-tab1" (click)="showAbout()" [ngClass]="{'active' : display === 1}">{{'detail.tab-about' | translate}}</div>
             <div class="app-tab app-tab2" (click)="showStatistics()" [ngClass]="{'active' : display === 2}">{{'detail.tab-counts' | translate}}</div>
             <div class="app-tab app-tab3" (click)="showDigidata()" [ngClass]="{'active' : display === 3}">{{'detail.tab-digitization' | translate}}</div>
+            <div class="app-tab app-tab3" (click)="showGraph()" [ngClass]="{'active' : display === 4}">{{'detail.tab-graph' | translate}}</div>
         </div>
 
         <div class="app-tabs-container">
@@ -353,6 +354,9 @@
                         <div class="app-cell  app-cell-version">{{day['version']}}</div>
                     </div>
                 </div>
+            </div>
+            <div class="app-tab-container app-tab4-container" *ngIf="display === 0 || display === 4" >
+                <app-graph></app-graph>
             </div>
         </div>
 </div>
