@@ -13,7 +13,7 @@ import { DataService } from '../services/data.service';
 export class GraphComponent implements OnInit {
   graph_all: any;
   graph: any;
-  display: string = '24h';
+  display: string = '7d';
   percent: any;
   code: string;
   baseUrl = environment.baseUrl;

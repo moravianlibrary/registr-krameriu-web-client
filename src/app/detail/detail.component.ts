@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit {
   statistics: boolean = false;
   digidata:boolean = false;
   graph: boolean = false;
-  display: number = 4;
+  display: number = 1;
   history: any;
 
 
