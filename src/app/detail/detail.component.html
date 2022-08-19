@@ -56,21 +56,25 @@
                         <a href="{{detail.new_client_url}}" target="_blank">{{detail.new_client_url}}</a>
                     </div>
 
-                    <div class="app-label">Knihovna</div>
-                    <div class="app-address">
-                        {{detail.street}}, {{detail.zip}} {{detail.city}}
-                        (<a *ngIf="detail.longitude" href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">{{'detail.display_on_map' | translate}}</a>)
+                    <div class="app-library-address" *ngIf="detail.street || detail.zip || detail.city || detail.email || detail.web || detail.sigla">
+                        <div class="app-label">Knihovna</div>
+                        <div class="app-address">
+                            {{detail.street}}, {{detail.zip}} {{detail.city}}
+                            (<a *ngIf="detail.longitude" href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">{{'detail.display_on_map' | translate}}</a>)
+                        </div>
+                        <div class="app-address" *ngIf="detail.email">
+                            <a href="mailto:{{detail.email}}" target="_blank">{{detail.email}}</a>
+                        </div>
+                        <div class="app-address">
+                            <a href="{{detail.web}}" target="_blank">{{detail.web}}</a>
+                        </div>
+                        <div class="app-address" *ngIf="detail.sigla">
+                            {{detail.sigla}}
+                            (<a href="http://aleph.nkp.cz/F?func=find-c&local_base=ADR&ccl_term=SIG={{detail.sigla}}" target="_blank">{{'detail.open_in_catalog' | translate}}</a>)
+                        </div>
                     </div>
-                    <div class="app-address" *ngIf="detail.email">
-                        <a href="mailto:{{detail.email}}" target="_blank">{{detail.email}}</a>
-                    </div>
-                    <div class="app-address">
-                        <a href="{{detail.web}}" target="_blank">{{detail.web}}</a>
-                    </div>
-                    <div class="app-address" *ngIf="detail.sigla">
-                        {{detail.sigla}}
-                        (<a href="http://aleph.nkp.cz/F?func=find-c&local_base=ADR&ccl_term=SIG={{detail.sigla}}" target="_blank">{{'detail.open_in_catalog' | translate}}</a>)
-                    </div>
+
+                    
 
                     <!-- <div class="app-dl-time-2">
                         <div class="app-dl-time-item app-dl-time-updated">
@@ -333,22 +337,22 @@
                         <div class="app-cell app-cell-width-2">
                             <div>{{day['documents_all'] | number:'':'cs'}}</div>
                             <!-- <div class="app-inc" [ngClass]="day['inc_documents_all'] < 0 ? 'red' : 'green'">{{day['inc_documents_all'] | number:'':'cs'}}</div> -->
-                            <div class="app-inc" [ngClass]="{red: day['inc_documents_all'] < 0, green: day['inc_documents_all'] > 0}">{{day['inc_documents_all'] | number:'':'cs'}}</div>
+                            <div class="app-inc" *ngIf="day['inc_documents_all'] != 0" [ngClass]="{red: day['inc_documents_all'] < 0, green: day['inc_documents_all'] > 0}">{{day['inc_documents_all'] | number:'':'cs'}}</div>
                         </div>
                         <!-- <div class="app-cell app-cell-width-2">{{day['inc_documents_all'] | number:'':'cs'}}</div> -->
                         <div class="app-cell app-cell-width-2">
                             <div>{{day['documents_public'] | number:'':'cs'}}</div>
-                            <div class="app-inc" [ngClass]="{red: day['inc_documents_public'] < 0, green: day['inc_documents_public'] > 0}">{{day['inc_documents_public'] | number:'':'cs'}}</div>
+                            <div class="app-inc" *ngIf="day['inc_documents_public'] != 0" [ngClass]="{red: day['inc_documents_public'] < 0, green: day['inc_documents_public'] > 0}">{{day['inc_documents_public'] | number:'':'cs'}}</div>
                         </div>
                         <!-- <div class="app-cell app-cell-width-2">{{day['inc_documents_public'] | number:'':'cs'}}</div> -->
                         <div class="app-cell app-cell-width-3">
                             <div>{{day['pages_all'] | number:'':'cs'}}</div>
-                            <div class="app-inc" [ngClass]="{red: day['inc_pages_all'] < 0, green: day['inc_pages_all'] > 0}">{{day['inc_pages_all'] | number:'':'cs'}}</div>
+                            <div class="app-inc" *ngIf="day['inc_pages_all'] != 0" [ngClass]="{red: day['inc_pages_all'] < 0, green: day['inc_pages_all'] > 0}">{{day['inc_pages_all'] | number:'':'cs'}}</div>
                         </div>
                         <!-- <div class="app-cell app-cell-width-2">{{day['inc_pages_all'] | number:'':'cs'}}</div> -->
                         <div class="app-cell app-cell-width-3">
                             <div>{{day['pages_public'] | number:'':'cs'}}</div>
-                            <div class="app-inc" [ngClass]="{red: day['inc_pages_public'] < 0, green: day['inc_pages_public'] > 0}">{{day['inc_pages_public'] | number:'':'cs'}}</div>
+                            <div class="app-inc" *ngIf="day['inc_pages_public'] != 0" [ngClass]="{red: day['inc_pages_public'] < 0, green: day['inc_pages_public'] > 0}">{{day['inc_pages_public'] | number:'':'cs'}}</div>
                         </div>
                         <!-- <div class="app-cell app-cell-width-2">{{day['inc_pages_public'] | number:'':'cs'}}</div> -->
                         <div class="app-cell  app-cell-version">{{day['version']}}</div>

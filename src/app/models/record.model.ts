@@ -5,6 +5,7 @@ export class Record {
     name: string;
     name_en: string;
     alive: boolean;
+    state_duration: number;
     version: string;
     url: string;
     new_client_url: string;
@@ -76,6 +77,7 @@ export class Record {
         record.name = source['name'];
         record.name_en = source['name_en'] || '';
         record.alive = !!source['alive'];
+        record.state_duration = source['state_duration'];
         record.version = source['version'];
         record.url = source['url'];
         record.new_client_url = source['new_client_url'];

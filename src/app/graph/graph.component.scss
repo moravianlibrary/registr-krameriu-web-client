@@ -7,10 +7,12 @@
         margin: 2px;
         border-radius: 4px;
         border: 1px solid lightgray;
-        background-color: lightgray;
+        // background-color: lightgray;
         cursor: pointer;
         &.active {
-            background-color: white;
+            border: 1px solid #4f78c6;
+            background-color: #4f78c6;
+            color: white;
         }
     }
 }

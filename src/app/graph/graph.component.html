@@ -1,11 +1,11 @@
 <div  *ngIf="!loading">
     <div class="app-intervals">
-        <div class="app-interval" (click)="changeInterval('5h')" [ngClass]="{'active' : display === '5h'}">5h</div>
-        <div class="app-interval" (click)="changeInterval('24h')" [ngClass]="{'active' : display === '24h'}">24h</div>
-        <div class="app-interval" (click)="changeInterval('7d')" [ngClass]="{'active' : display === '7d'}">7d</div>
-        <div class="app-interval" (click)="changeInterval('1m')" [ngClass]="{'active' : display === '1m'}">1m</div>
-        <div class="app-interval" (click)="changeInterval('6m')" [ngClass]="{'active' : display === '6m'}">6m</div>
-        <div class="app-interval" (click)="changeInterval('1y')" [ngClass]="{'active' : display === '1y'}">1y</div>
+        <div class="app-interval" (click)="changeInterval('5h')" [ngClass]="{'active' : display === '5h'}">5 H</div>
+        <div class="app-interval" (click)="changeInterval('24h')" [ngClass]="{'active' : display === '24h'}">24 H</div>
+        <div class="app-interval" (click)="changeInterval('5d')" [ngClass]="{'active' : display === '5d'}">5 D</div>
+        <div class="app-interval" (click)="changeInterval('1m')" [ngClass]="{'active' : display === '1m'}">1 M</div>
+        <div class="app-interval" (click)="changeInterval('6m')" [ngClass]="{'active' : display === '6m'}">6 M</div>
+        <div class="app-interval" (click)="changeInterval('1y')" [ngClass]="{'active' : display === '1y'}">1 Y</div>
     </div>
     <div class="app-sequences">
         <div class="app-sequence">

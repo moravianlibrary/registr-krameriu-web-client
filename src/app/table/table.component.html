@@ -361,8 +361,8 @@
                     <div>{{ record.code }}</div>
                 </div>
                 <div  *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-alive">
-                    <div class="app-col-alive-true" *ngIf="record.alive === true"></div>
-                    <div class="app-col-alive-false" *ngIf="record.alive === false"></div>
+                    <div class="app-col-alive-true" *ngIf="record.alive === true" [matTooltip]="dataService.unixDurationToHuman(record.state_duration)"></div>
+                    <div class="app-col-alive-false" *ngIf="record.alive === false" [matTooltip]="dataService.unixDurationToHuman(record.state_duration)"></div>
                 </div>
                 <div *ngIf="viewAllCols || viewSomeCols || viewTechCols" class="app-col app-col-url">
                     <a href="{{ record.url }}" target="_blank">{{ record.url }}</a>

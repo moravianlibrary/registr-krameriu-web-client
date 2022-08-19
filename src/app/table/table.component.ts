@@ -3,6 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { DataService } from '../services/data.service';
 
 import { Record } from '../models/record.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-table',
@@ -26,11 +28,14 @@ export class TableComponent implements OnInit, AfterViewChecked {
   display_all: boolean = true;
   display_public: boolean = false;
   display_both: boolean = false;
+
+  baseUrl = environment.baseUrl;
   
 
   constructor(public dataService: DataService,
               public translate: TranslateService,
-              private cdr: ChangeDetectorRef) {
+              private cdr: ChangeDetectorRef,
+              private http: HttpClient) {
     this.data = dataService.data;
     this.filteredData = this.data.filter(p => p.name.includes(this.filter))
     // console.log(this.filteredData);
@@ -43,14 +48,23 @@ export class TableComponent implements OnInit, AfterViewChecked {
       this.filteredData = this.data.filter(p => p.name.includes(this.filter));
       this.onSortChanged();
     });
-    this.direction = 'desc-documents_all';
-    this.value = 'documents_all';
+    this.direction = 'desc-pages_all';
+    this.value = 'pages_all';
     this.selectedView = 'all';
     this.onSortChanged();
   }
   ngAfterViewChecked() {
     this.cdr.detectChanges();
-}
+  }
+
+  getAliveTime(code: string) {
+    console.log(code)
+    // this.http.get(this.baseUrl + '/libraries/' + code + '/states?int=1y' ).subscribe((data: any) => { 
+    //   console.log(data.from)
+    // }
+    // )
+    return code;
+  }
   
   filterMe(filter: string) {
     if (this.translate.currentLang == 'cs') {
