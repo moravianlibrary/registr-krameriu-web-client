@@ -23,7 +23,7 @@ import { AboutComponent } from './about/about.component';
 import { GraphComponent } from './graph/graph.component';
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json?v=2');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json?v=3');
 }
 
 @NgModule({
