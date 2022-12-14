@@ -150,4 +150,14 @@ export class  DataService {
         } 
         return newT
       }
+
+      getData() {
+        let data = []
+        for (const record of this.data) {
+            if (record.name) {
+                data.push(record.name, record.url)
+            }
+        }
+        return data;
+      }
 }

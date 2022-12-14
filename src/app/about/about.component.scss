@@ -1,77 +1,101 @@
+@import './src/variables.scss';
+
 .app-container {
     display: flex;
-    flex-direction: row;
-    padding: 80px 30px 30px 30px;
-    .app-col1 {
-        margin: 0 15px;
-        width: 50%;
-    }
-    .app-col2 {
-        margin: 0 15px;
-        width: 50%;
-    }
-    .app-title {
+    background-color: $bg-color;
+    // height: calc(100% - 50px);
+    width: 100%;
+    // overflow-y: auto;
+    padding: 50px 0 0 0;
+    justify-content: center;
+    font-size: 15px;
+    .app-parts {
+        background: #fff;
         display: flex;
-        margin: 20px 0px;
-        font-size: 20px;
-        color: #4896d1;
-    }
-    .app-text {
-        display: flex;
-        
-        // justify-content: center;
-    }
-    .app-picture1 {
-        // background-image: url('/assets/pictures/logo_main_cs.png');
-        max-width: 100%;
-        height: 100%;
-        object-fit: contain;
-        a {
-            img {
-                width: 320px;
-                margin: 10px 0;
-            }
-        }
-    }
-    .app-row {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        .app-icon {
-            margin-right: 5px;
-            margin-top: 3px;
-        }
-        .app-number {
-            margin-right: 5px;
-            font-weight: bolder;
-        }
-        .app-text {
-            margin-right: 5px;
-        }
-    }
-}
-@media screen and (max-width: 1050px) {
-    .app-container {
         flex-direction: column;
-        .app-col1 {
-            margin: 0px 15px 30px 15px;
-            width: 100%;
+        width: 1000px;
+        @media screen and (min-width: 1000px) {
+            margin-top: 20px;
         }
-        .app-col2 {
-            margin: 0 15px;
-            width: 100%;
-        }
-    }
-}
-@media screen and (max-width: 420px) {
-    .app-container {
-        padding: 60px 10px 10px 10px;
-        .app-picture1 {
-            a {
-                img {
-                    width: 260px;
-                    margin: 10px 0;
+        padding: 20px;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+        // overflow: hidden;
+        .app-part1 {
+            margin-left: 20px;
+            .app-part1-title {
+                padding-top: 10px;
+                font-size: 25px;
+                color: #2b303d;
+                margin-bottom: 2px;
+                line-height: 1.1;
+            }
+            .app-part1-text {
+                padding-top: 20px;
+            }
+            .app-part1-logo {
+                padding-top: 10px;
+                height: 64px;
+                a {
+                    img {
+                        height: 100%;
+                    }
                 }
+            }
+
+        }
+        .app-partX {
+            margin-left: 20px;
+            padding-top: 50px;
+            .app-partX-title {
+                padding-bottom: 10px;
+                font-size: 20px;
+                color: #2b303d;
+                margin-bottom: 2px;
+                line-height: 1.1;
+            }
+            .app-partX-subtitle {
+                font-size: 17px;
+                margin-top: 10px;
+            }
+            .app-row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .app-icon {
+                    margin-right: 5px;
+                    margin-top: 3px;
+                }
+                .app-number {
+                    margin-right: 5px;
+                    font-weight: bolder;
+                }
+                .app-text {
+                    margin-right: 5px;
+                }
+            }
+            .app-code {
+                margin: 20px 10px;
+                background-color: rgb(245, 245, 245);
+                padding: 5px;
+                display: flex;
+                .app-code-get {
+                    border-radius: 4px;
+                    background-color: #4f78c6;
+                    color: white;
+                    padding: 0 3px;
+                    margin-right: 10px;
+                }
+                .app-code-example {
+                    border-radius: 4px;
+                    background-color: #9e4fc6;
+                    color: white;
+                    padding: 0 3px;
+                    margin-right: 10px;
+                }
+            }
+            .app-code-text {
+                margin: 10px 0px 30px 10px;
             }
         }
     }

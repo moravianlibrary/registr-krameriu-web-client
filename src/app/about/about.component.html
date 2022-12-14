@@ -1,43 +1,79 @@
 <div class="app-container">
-    <div class="app-col1">
-        <div class="app-title">{{ 'header.about' | translate }}</div>
-        <div class="app-text">{{ 'home.text' | translate }}</div>
-        <div class="app-picture1">
-            <a href="https://www.digitalniknihovna.cz/" target="_blank">
-                <img src="assets/pictures/logo_main_cs.png">
-            </a> 
+    <div class="app-parts">
+        <div class="app-part1">
+            <div class="app-part1-title">{{ 'header.about' | translate }}</div>
+            <div class="app-part1-text">{{ 'home.text' | translate }}</div>
+            <!-- <div class="app-part1-logo">
+                <a href="https://www.digitalniknihovna.cz/" target="_blank">
+                    <img src="assets/pictures/logo_main_cs.png">
+                </a> 
+            </div> -->
         </div>
-    </div>
-    <div class="app-col2">
-        <div class="app-title">{{ 'home.statistic' | translate }}</div>
-        <!-- <p class="app-text">{{ 'home.statistic-part1' | translate }} 
-                            {{ libraries }}
-                            {{ 'home.statistic-part2' | translate }} 
-                            {{ documents | number:'':'cs'}}
-                            {{ 'home.statistic-part3' | translate }} 
-                            {{ documents_public | number:'':'cs'}} 
-                            {{ 'home.statistic-part4' | translate }}
-        </p> -->
-        <div class="app-row">
-            <div class="app-icon"><mat-icon>home</mat-icon></div>
-            <div class="app-number">{{ libraries }}</div>
-            <div class="app-text">{{ 'home.statistic-libraries' | translate }}</div>
+        <div class="app-partX">
+            <div class="app-partX-title">{{ 'home.statistic' | translate }}</div>
+            <div class="app-row">
+                <div class="app-icon"><mat-icon>home</mat-icon></div>
+                <div class="app-number">{{ libraries }}</div>
+                <div class="app-text">{{ 'home.statistic-libraries' | translate }}</div>
+            </div>
+            <div class="app-row">
+                <div class="app-icon"><mat-icon>library_books</mat-icon></div>
+                <div class="app-number">{{ documents | number:'':'cs' }}</div>
+                <div class="app-text">{{ 'home.statistic-documents' | translate }}</div>
+                <div class="app-text">{{ 'home.statistic-includes' | translate }}</div>
+                <div class="app-number">{{ documents_public | number:'':'cs' }}</div>
+                <div class="app-text">{{ 'home.statistic-public' | translate }}</div>
+            </div>
+            <div class="app-row">
+                <div class="app-icon"><mat-icon>article</mat-icon></div>
+                <div class="app-number">{{ pages | number:'':'cs' }} </div>
+                <div class="app-text">{{ 'home.statistic-pages' | translate }}</div>
+                <div class="app-text">{{ 'home.statistic-includes' | translate }}</div>
+                <div class="app-number">{{ pages_public | number:'':'cs' }}</div>
+                <div class="app-text">{{ 'home.statistic-public' | translate }}</div>
+            </div>
         </div>
-        <div class="app-row">
-            <div class="app-icon"><mat-icon>library_books</mat-icon></div>
-            <div class="app-number">{{ documents | number:'':'cs' }}</div>
-            <div class="app-text">{{ 'home.statistic-documents' | translate }}</div>
-            <div class="app-text">{{ 'home.statistic-includes' | translate }}</div>
-            <div class="app-number">{{ documents_public | number:'':'cs' }}</div>
-            <div class="app-text">{{ 'home.statistic-public' | translate }}</div>
-        </div>
-        <div class="app-row">
-            <div class="app-icon"><mat-icon>article</mat-icon></div>
-            <div class="app-number">{{ pages | number:'':'cs' }} </div>
-            <div class="app-text">{{ 'home.statistic-pages' | translate }}</div>
-            <div class="app-text">{{ 'home.statistic-includes' | translate }}</div>
-            <div class="app-number">{{ pages_public | number:'':'cs' }}</div>
-            <div class="app-text">{{ 'home.statistic-public' | translate }}</div>
+        <div class="app-partX">
+            <div class="app-partX-title">{{ 'home.apidesc-title' | translate }}</div>
+            <!-- VSECHNY KNIHOVNY -->
+            <div class="app-partX-subtitle">{{ 'home.apidesc-subtitle1' | translate }}</div>
+            <code class="app-code">
+                <div class="app-code-get">GET</div>
+                    https://api.registr.digitalniknihovna.cz/api/libraries/
+            </code>
+            <div class="app-code-text">
+                <p class="app-code-text-desc">{{ 'home.apitext1' | translate }}</p>
+                <div class="app-code-text-example">{{ 'home.example' | translate }}</div>
+                <a class="app-code-text-link" href="https://api.registr.digitalniknihovna.cz/api/libraries/" target="_blank">
+                    https://api.registr.digitalniknihovna.cz/api/libraries/
+                </a>
+            </div>
+            <!-- JEDNA KNIHOVNA -->
+            <div class="app-partX-subtitle">{{ 'home.apidesc-subtitle2' | translate }}</div>
+            <code class="app-code">
+                <div class="app-code-get">GET</div>
+                <div>https://api.registr.digitalniknihovna.cz/api/libraries/{{ '{{' }}{{ 'home.kram-code' | translate }}{{ '}}' }}</div>
+            </code>
+            <div class="app-code-text">
+                <p class="app-code-text-desc">{{ 'home.apitext2' | translate }}</p>
+                <div class="app-code-text-example">{{ 'home.example' | translate }}</div>
+                <a class="app-code-text-link" href="https://api.registr.digitalniknihovna.cz/api/libraries/mzk" target="_blank">
+                    https://api.registr.digitalniknihovna.cz/api/libraries/mzk
+                </a>
+            </div>
+            <!-- LOGO -->
+            <div class="app-partX-subtitle">{{ 'home.apidesc-subtitle3' | translate }}</div>
+            <code class="app-code">
+                <div class="app-code-get">GET</div>
+                <div>https://api.registr.digitalniknihovna.cz/libraries/{{ '{{' }}{{ 'home.kram-code' | translate }}{{ '}}' }}/logo</div>
+            </code>
+            <div class="app-code-text">
+                <p class="app-code-text-desc">{{ 'home.apitext3' | translate }}</p>
+                <div class="app-code-text-example">{{ 'home.example' | translate }}</div>
+                <a class="app-code-text-link" href="https://api.registr.digitalniknihovna.cz/libraries/mzk/logo" target="_blank">
+                    https://api.registr.digitalniknihovna.cz/libraries/mzk/logo
+                </a>
+            </div>
         </div>
     </div>
 </div>

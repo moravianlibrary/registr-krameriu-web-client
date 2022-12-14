@@ -80,7 +80,17 @@
       "statistic-pages-public": " veřejně dostupných stránek",
       "statistic-includes": "- z toho",
       "statistic-public": " veřejných",
-      "statistic": "Statistika"
+      "statistic": "Statistika",
+      "apidesc-title": "Popis API",
+      "apidesc-subtitle1": "Seznam všech Krameriů",
+      "apidesc-subtitle2": "Konkrétní Kramerius",
+      "apidesc-subtitle3": "Logo",
+      "example": "Příklad",
+      "apitext1": "Vypíše všechny položky z Registru Krameriů ve formátu JSON.",
+      "apitext2": "Vypíše informace o konkrétním Krameriu dle zadaného kódu ve formátu JSON. V příkladu je použit kód Krameria Moravské zemské knihovny - mzk.",
+      "apitext3": "Logo knihovny dle zadaného kódu ve formátu PNG. V příkladu je použit kód Krameria Moravské zemské knihovny - mzk.",
+      "kram-code": "kod_krameria"
+
     },
     "header": {
       "title": "Registr Krameriů",

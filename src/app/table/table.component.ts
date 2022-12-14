@@ -38,6 +38,7 @@ export class TableComponent implements OnInit, AfterViewChecked {
               private http: HttpClient) {
     this.data = dataService.data;
     this.filteredData = this.data.filter(p => p.name.includes(this.filter))
+    // console.log(this.dataService.getData())
     // console.log(this.filteredData);
   }
 
@@ -45,7 +46,7 @@ export class TableComponent implements OnInit, AfterViewChecked {
     this.translate.onLangChange.subscribe((value) => {
       // console.log('new lang', value.lang);    
       this.filter = ''
-      this.filteredData = this.data.filter(p => p.name.includes(this.filter));
+      this.filteredData = this.data.filter(p => p.name.includes(this.filter)); 
       this.onSortChanged();
     });
     this.direction = 'desc-pages_all';

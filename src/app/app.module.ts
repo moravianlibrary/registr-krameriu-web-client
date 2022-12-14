@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import '@angular/common/locales/global/cs';
@@ -47,6 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatMenuModule,
     MatSelectModule,
     MatTooltipModule,
+    ClipboardModule,
     TranslateModule.forRoot({
       defaultLanguage: 'cs',
       loader: {
