@@ -58,9 +58,10 @@
 
                     <div class="app-library-address" *ngIf="detail.street || detail.zip || detail.city || detail.email || detail.web || detail.sigla">
                         <div class="app-label">Knihovna</div>
-                        <div class="app-address">
+                        <div class="app-address" *ngIf="detail.city">
                             {{detail.street}}, {{detail.zip}} {{detail.city}}
-                            (<a *ngIf="detail.longitude" href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">{{'detail.display_on_map' | translate}}</a>)
+                            <a *ngIf="detail.longitude" href="https://www.google.com/maps/search/?api=1&query={{detail.latitude}}%2C{{detail.longitude}}" target="_blank">({{'detail.display_on_map' | translate}})</a>
+                            <!-- <a *ngIf="detail.city" href="https://www.google.com/maps/place/{{detail.street}}, {{detail.city}}" target="_blank">pres adresu</a> -->
                         </div>
                         <div class="app-address" *ngIf="detail.email">
                             <a href="mailto:{{detail.email}}" target="_blank">{{detail.email}}</a>

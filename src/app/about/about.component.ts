@@ -8,6 +8,7 @@ import { DataService } from '../services/data.service';
 })
 export class AboutComponent implements OnInit {
 
+  data: any;
   libraries: number;
   documents: number;
   documents_public: number;
@@ -15,6 +16,7 @@ export class AboutComponent implements OnInit {
   pages_public: number;
 
   constructor(public dataService: DataService) { 
+    this.data = dataService.data;
     this.libraries = dataService.data.length;
     this.documents = dataService.getAllDocCount();
     this.documents_public = dataService.getPublicDocCount();
@@ -24,5 +26,10 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  getCSV() {
+    this.dataService.downloadTableAsCSV(this.data)
+  }
+
 
 }

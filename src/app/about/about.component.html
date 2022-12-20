@@ -32,6 +32,7 @@
                 <div class="app-number">{{ pages_public | number:'':'cs' }}</div>
                 <div class="app-text">{{ 'home.statistic-public' | translate }}</div>
             </div>
+            <button mat-raised-button (click)="getCSV()">Stáhout všechna data v CSV</button>
         </div>
         <div class="app-partX">
             <div class="app-partX-title">{{ 'home.apidesc-title' | translate }}</div>
@@ -75,5 +76,6 @@
                 </a>
             </div>
         </div>
+        
     </div>
 </div>

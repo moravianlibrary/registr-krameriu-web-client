@@ -57,6 +57,9 @@ export class TableComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked() {
     this.cdr.detectChanges();
   }
+  getCSV() {
+    this.dataService.downloadTableAsCSV(this.data)
+  }
 
   getAliveTime(code: string) {
     console.log(code)

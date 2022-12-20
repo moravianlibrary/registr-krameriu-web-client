@@ -149,9 +149,9 @@ export class  DataService {
           duration = duration - (hour * hours);
         } 
         return newT
-      }
+    }
 
-      getData() {
+    getData() {
         let data = []
         for (const record of this.data) {
             if (record.name) {
@@ -159,5 +159,163 @@ export class  DataService {
             }
         }
         return data;
-      }
+    }
+
+    private convertToCSV(objArray: any, columns: string[]) {
+        const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+        let str = '';
+        for (const obj of array) {
+            let line = '';
+            for (const col of columns) {
+            if (line !== '') {
+                line += ',';
+            }
+            let item = obj[col];
+            if (typeof item === 'boolean') {
+                line += '\"' + (item ? 'Ano' : 'Ne') + '\"';
+            } else if (typeof item === 'string') {
+                if (!item || item === '') {
+                item = '';
+                }
+                line += '\"' + item.replace(/\"/g, '""') + '\"';
+            } else if (typeof item !== undefined && item != null) {
+                line += item;
+            }
+            }
+            str += line + '\r\n';
+        }
+    return str;
+    }
+    
+    private exportCSVFile(headers: any, columns: any, items: any, fileTitle: any) {
+        let csv = '';
+        if (headers) {
+            csv = '"' + headers.join('","') + '"' + '\r\n';
+        }
+        const jsonObject = JSON.stringify(items);
+        csv += this.convertToCSV(jsonObject, columns);
+        const fileName = fileTitle + '.csv' || 'export.csv';
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        if (link.download !== undefined) {
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', fileName);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+    
+    // Příklad použití 
+    public downloadTableAsCSV(data: any[]) { // data - pole objektů (objekt = řádek v tabulce = záznam o Krameriovi)
+        const colNames = ['Název', 
+                          'Logo', 
+                          'Kód', 
+                          'Stav', 
+                          'Kramerius-API', 
+                          'Verze', 
+                          'Kramerius-klient', 
+                          'Verze', 
+                          'Sbírky', 
+                          'Tituly - vše', 
+                          'Tituly - veřejné', 
+                          'Strany - vše', 
+                          'Strany - veřejné', 
+                          'Doporučené - vše', 
+                          'Doporučené - veřejné', 
+                          'Knihy - vše', 
+                          'Knihy - veřejné', 
+                          'Periodika - vše', 
+                          'Periodika - veřejné', 
+                          'Zvukové nahrávky - vše', 
+                          'Zvukové nahrávky - veřejné', 
+                          'Mapy - vše', 
+                          'Mapy - veřejné', 
+                          'Grafiky - vše', 
+                          'Grafiky - veřejné', 
+                          'Hudebniny - vše', 
+                          'Hudebniny - veřejné', 
+                          'Archiválie - vše', 
+                          'Archiválie - veřejné', 
+                          'Rukopisy - vše', 
+                          'Rukopisy - veřejné', 
+                          'Články - vše', 
+                          'Články - veřejné', 
+                          'Čísla periodika - vše', 
+                          'Čísla periodika - veřejné',
+                          'Přílohy - vše', 
+                          'Přílohy - veřejné',
+                          'Ročníky periodika - vše', 
+                          'Ročníky periodika - veřejné',
+                          'Monographunit - vše',
+                          'Monographunit - veřejné',  
+                          'Track - vše',
+                          'Track - veřejné',
+                          'Soundunit - vše',
+                          'Soundunit - veřejné',
+                          'Internalpart - vše',
+                          'Internalpart - veřejné',
+                          'Konvoluty - vše',
+                          'Konvoluty - veřejné', 
+                          'Obrázky - vše',
+                          'Obrázky - veřejné',
+                          'DNNTO',
+                          'Poslední přírůstek']; // Názvy sloupců v CSV
+        const colIds = ['name', 
+                        'logo', 
+                        'code', 
+                        'alive', 
+                        'url', 
+                        'version', 
+                        'new_client_url', 
+                        'new_client_version', 
+                        'collections', 
+                        'documents_all', 
+                        'documents_public', 
+                        'pages_all', 
+                        'pages_public', 
+                        'recommended_all', 
+                        'recommended_public', 
+                        'model_monograph_all', 
+                        'model_monograph_public', 
+                        'model_periodical_all', 
+                        'model_periodical_public', 
+                        'model_soundrecording_all', 
+                        'model_soundrecording_public', 
+                        'model_map_all', 
+                        'model_map_public', 
+                        'model_graphic_all', 
+                        'model_graphic_public', 
+                        'model_sheetmusic_all', 
+                        'model_sheetmusic_public', 
+                        'model_archive_all', 
+                        'model_archive_public', 
+                        'model_manuscript_all', 
+                        'model_manuscript_public', 
+                        'model_article_all', 
+                        'model_article_public', 
+                        'model_periodicalitem_all', 
+                        'model_periodicalitem_public',
+                        'model_supplement_all', 
+                        'model_supplement_public',
+                        'model_periodicalvolume_all', 
+                        'model_periodicalvolume_public',
+                        'model_monographunit_all', 
+                        'model_monographunit_public',
+                        'model_track_all', 
+                        'model_track_public',
+                        'model_soundunit_all', 
+                        'model_soundunit_public',
+                        'model_internalpart_all', 
+                        'model_internalpart_public',
+                        'model_convolute_all', 
+                        'model_convolute_public',
+                        'model_picture_all', 
+                        'model_picture_public',
+                        'dnnto',
+                        'last_document_at']; // Klíče objektu
+        this.exportCSVFile(colNames, colIds, data, 'registr_data');
+    }
 }

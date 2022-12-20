@@ -2,24 +2,30 @@
     <div class="app-table">
         
         <!-- HLAVICKA -->
-        <div class="app-row-items app-row-header">
-            
+        <div class="app-row-items app-row-header"> 
             <div class="app-filters">
-
-                <div class="app-search-wrapper">
-                    <mat-icon class="app-search-btn">search</mat-icon>
-                    <div class="app-search">
-                        <input class="input" type="text" [(ngModel)]="filter" (ngModelChange)="filterMe(filter)" placeholder="{{ 'table.filter.placeholder' | translate }}" />    
+                <div class="app-filters-left">
+                    <div class="app-search-wrapper">
+                        <mat-icon class="app-search-btn">search</mat-icon>
+                        <div class="app-search">
+                            <input class="input" type="text" [(ngModel)]="filter" (ngModelChange)="filterMe(filter)" placeholder="{{ 'table.filter.placeholder' | translate }}" />    
+                        </div>
                     </div>
+                    <div class="app-select-wrapper">
+                        <mat-select [(value)]="selectedView">
+                            <mat-option value="all" (click)="displayAll()">{{ 'table.filter.display_all' | translate }}</mat-option>
+                            <mat-option value="public" (click)="displayPublic()">{{ 'table.filter.display_public' | translate }}</mat-option>
+                            <mat-option value="both" (click)="displayBoth()">{{ 'table.filter.display_both' | translate }}</mat-option>
+                        </mat-select>
+                    </div>  
                 </div>
-                <div class="app-select-wrapper">
-                    <mat-select [(value)]="selectedView">
-                        <mat-option value="all" (click)="displayAll()">{{ 'table.filter.display_all' | translate }}</mat-option>
-                        <mat-option value="public" (click)="displayPublic()">{{ 'table.filter.display_public' | translate }}</mat-option>
-                        <mat-option value="both" (click)="displayBoth()">{{ 'table.filter.display_both' | translate }}</mat-option>
-                    </mat-select>
+                <div class="app-filters-right">
+                    <button mat-raised-button (click)="getCSV()">
+                        <span class="material-icons">download</span>
+                        CSV
+                    </button>
                 </div>
-             </div>
+            </div>
         </div>
 
         <!-- FIRST ROW -->

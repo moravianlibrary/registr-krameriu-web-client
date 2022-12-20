@@ -41,6 +41,7 @@ export class DetailComponent implements OnInit {
       const code = params['code']; 
       this.code = code;
       this.record = this.dataService.getRecordByCode(code);
+      console.log(this.record)
       this.http.get(this.baseUrl + '/libraries/' + this.code).subscribe((data: any) => {
         this.setDetail(data);
         this.days = this.getDiffDays(this.detail['updated_at'], Date.now())
@@ -48,12 +49,10 @@ export class DetailComponent implements OnInit {
       });
       this.http.get(this.baseUrl + '/libraries/' + this.code + '/history').subscribe((history:any) => {
         this.setHistory(history);
-        // console.log(history)
       })
       if (this.record.sigla) {
         this.http.get('https://www.knihovny.cz/api/v1/libraries/search?lookfor=' + this.record.sigla + '&type=Sigla&sort=relevance&page=1&limit=20&prettyPrint=false&lng=cs').subscribe((knihovnycz:any) => {
           this.knihovnycz_link = 'https://www.knihovny.cz/LibraryRecord/' + knihovnycz.records[0].id
-          console.log(this.knihovnycz_link)
         })
       }
     });
