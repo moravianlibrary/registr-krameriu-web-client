@@ -89,7 +89,7 @@
     "apitext2": "Prints information about a specific library according to the entered code in JSON format. The code of the Moravian Library - mzk is used in the example.",
     "apitext3": "Library logo according to the entered code in PNG format. The code of the Moravian Library - mzk is used in the example.",
     "example": "Example",
-    "kram-code": "code_of_kramerius",
+    "kram-code": "Kramerius Code",
     "csv-download": "Download CSV"
   },
   "header": {
