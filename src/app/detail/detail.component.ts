@@ -17,6 +17,7 @@ export class DetailComponent implements OnInit {
   record: Record;
   detail: any;
   code: string;
+  tab: string;
   intro: boolean = false;
   private: boolean = false;
   days: number;
@@ -38,10 +39,12 @@ export class DetailComponent implements OnInit {
     this.loading = true;
     this.route.params.subscribe(params => {
       // console.log(params);
-      const code = params['code']; 
+      const code = params['code'];
       this.code = code;
+      const tab = params['tab'];
+      this.tab = tab;
       this.record = this.dataService.getRecordByCode(code);
-      console.log(this.record)
+      // console.log(this.record)
       this.http.get(this.baseUrl + '/libraries/' + this.code).subscribe((data: any) => {
         this.setDetail(data);
         this.days = this.getDiffDays(this.detail['updated_at'], Date.now())
@@ -55,32 +58,43 @@ export class DetailComponent implements OnInit {
           this.knihovnycz_link = 'https://www.knihovny.cz/LibraryRecord/' + knihovnycz.records[0].id
         })
       }
+      if (this.tab === 'info') {
+        // console.log('info', this.tab);
+        this.showInfo();
+      } else if (this.tab === 'content') {
+        this.showContent();
+        // console.log('content', this.tab)
+      } else if (this.tab === 'history') {
+        this.showHistory()
+      } else if (this.tab === 'traffic') {
+        this.showTraffic()
+      }
     });
     
   }
   
-  showAbout() {
+  showInfo() {
     this.about = true;
     this.statistics = false;
     this.digidata = false;
     this.graph = false;
     this.display = 1;
   }
-  showStatistics() {
+  showContent() {
     this.about = false;
     this.statistics = true;
     this.digidata = false;
     this.graph = false;
     this.display = 2;
   }
-  showDigidata() {
+  showHistory() {
     this.about = false;
     this.statistics = false;
     this.digidata = true;
     this.graph = false;
     this.display = 3;
   }
-  showGraph() {
+  showTraffic() {
     this.about = false;
     this.statistics = false;
     this.digidata = false;

@@ -138,7 +138,9 @@
             background-color: #f3f3f8;
         }
         .app-col {
-            padding-left: 5px;       
+            padding-left: 5px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         .app-col-logo {
             position: sticky;

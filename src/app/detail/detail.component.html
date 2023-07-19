@@ -33,10 +33,10 @@
         <!-- TABS -->
 
         <div class="app-part2-tabs">
-            <div class="app-tab app-tab1" (click)="showAbout()" [ngClass]="{'active' : display === 1}">{{'detail.tab-about' | translate}}</div>
-            <div class="app-tab app-tab2" (click)="showStatistics()" [ngClass]="{'active' : display === 2}">{{'detail.tab-counts' | translate}}</div>
-            <div class="app-tab app-tab3" (click)="showDigidata()" [ngClass]="{'active' : display === 3}">{{'detail.tab-digitization' | translate}}</div>
-            <div class="app-tab app-tab3" (click)="showGraph()" [ngClass]="{'active' : display === 4}">{{'detail.tab-graph' | translate}}</div>
+            <div class="app-tab app-tab1" (click)="showInfo()" [ngClass]="{'active' : display === 1}" [routerLink]="['/library', code, 'info']">{{'detail.tab-about' | translate}}</div>
+            <div class="app-tab app-tab2" (click)="showContent()" [ngClass]="{'active' : display === 2}" [routerLink]="['/library', code, 'content']">{{'detail.tab-counts' | translate}}</div>
+            <div class="app-tab app-tab3" (click)="showHistory()" [ngClass]="{'active' : display === 3}" [routerLink]="['/library', code, 'history']">{{'detail.tab-digitization' | translate}}</div>
+            <div class="app-tab app-tab3" (click)="showTraffic()" [ngClass]="{'active' : display === 4}" [routerLink]="['/library', code, 'traffic']">{{'detail.tab-graph' | translate}}</div>
         </div>
 
         <div class="app-tabs-container">

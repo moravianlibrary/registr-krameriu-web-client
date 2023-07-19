@@ -8,7 +8,8 @@ import { TableComponent } from './table/table.component';
 const routes: Routes = [
   { path: '', component: TableComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'library/:code', component: DetailComponent }
+  { path: 'library/:code', component: DetailComponent },
+  { path: 'library/:code/:tab', component: DetailComponent }
 ];
 
 @NgModule({
