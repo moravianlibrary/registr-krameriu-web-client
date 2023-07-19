@@ -81,13 +81,16 @@
     "statistic-includes": "includes",
     "statistic-public": "public",
     "statistic": "Statistics",
-    "apidesc": "API Description",
-    "apidescsubtitle": "Kramerius List",
+    "apidesc-title": "API Description",
+    "apidesc-subtitle1": "Kramerius List",
+    "apidesc-subtitle2": "Kramerius Detail",
+    "apidesc-subtitle3": "Logo",
     "apitext1": "Lists all items in the Kramerius Registry in JSON format.",
     "apitext2": "Prints information about a specific library according to the entered code in JSON format. The code of the Moravian Library - mzk is used in the example.",
     "apitext3": "Library logo according to the entered code in PNG format. The code of the Moravian Library - mzk is used in the example.",
     "example": "Example",
-    "kram-code": "code_of_kramerius"
+    "kram-code": "Kramerius Code",
+    "csv-download": "Download CSV"
   },
   "header": {
     "title": "Kramerius Registry",
